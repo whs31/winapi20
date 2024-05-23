@@ -6,20 +6,20 @@
 #include <winapi20/detail/windows_headers.h>
 #include <utility/utility.hh>
 
-using std::string;
+using std::wstring;
 
 namespace winapi
 {
   auto last_error() noexcept -> uint32_t { return GetLastError(); }
-  auto last_error_string() noexcept -> string
+  auto last_error_string() noexcept -> wstring
   {
     auto error = last_error();
     if(error == 0)
       return {};
-    auto buf = std::make_unique<char[]>(256);
-    if(not FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr, error, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buf.get(), 256, nullptr))
+    wchar_t buf[256];
+    if(not FormatMessageW(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr, error, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buf, (sizeof(buf) / sizeof(wchar_t)), nullptr))
       return {};
-    return {buf.get()};
+    return {buf};
   }
 }
 

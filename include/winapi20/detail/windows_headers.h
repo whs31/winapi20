@@ -12,6 +12,7 @@
 # endif // _WIN32_WINNT
 
 # define WIN32_LEAN_AND_MEAN
+# define UNICODE
 # include <windows.h>
 # include <commctrl.h>
 # include <commdlg.h>

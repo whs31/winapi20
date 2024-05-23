@@ -6,10 +6,11 @@
 TEST(Winbase, GetCurrentHwProfile)
 {
   auto expected = HW_PROFILE_INFO();
-  GetCurrentHwProfileA(&expected);
+  GetCurrentHwProfileW(nullptr);
 
   auto got = winapi::HWProfileInfo::get();
-  EXPECT_EQ(got.name, std::string(expected.szHwProfileName));
+  EXPECT_EQ(got.name, std::wstring(expected.szHwProfileName));
   EXPECT_EQ(got.dock_info, winapi::HWProfileInfo::DockInfo(expected.dwDockInfo));
-  EXPECT_EQ(got.guid, std::string(expected.szHwProfileGuid));
+  EXPECT_EQ(got.guid, std::wstring(expected.szHwProfileGuid));
+  throw winapi::windows_exception(winapi::last_error_string());
 }

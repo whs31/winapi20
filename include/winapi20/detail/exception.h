@@ -2,18 +2,20 @@
 
 #include <string>
 #include <stdexcept>
+#include <locale>
+#include <codecvt>
 
 namespace winapi
 {
   class windows_exception : public std::runtime_error
   {
     public:
-      explicit windows_exception(std::string const& message)
-        : std::runtime_error(std::string("windows_exception: ") + message)
+      explicit windows_exception(std::wstring const& message)
+        : std::runtime_error(std::string("winapi error: ") + std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>>().to_bytes(message))
       {}
 
-      explicit windows_exception(char const* message)
-        : windows_exception(std::string(message))
+      explicit windows_exception(wchar_t const* message)
+        : windows_exception(std::wstring(message))
       {}
 
       ~windows_exception() noexcept override = default;
