@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <winapi20/impl/winbase_impl.h>
+#include <winapi20/impl/errhandlingapi_impl.h>
 #include <winapi20/detail/windows_headers.h>
 
 TEST(Winbase, GetCurrentHwProfile)
