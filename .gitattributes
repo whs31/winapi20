@@ -1,0 +1,6 @@
+* text=auto
+
+*.yml linguist-detectable=true
+*.json linguist-detectable=true
+*.sh linguist-detectable=true
+*.toml linguist-detectable=true

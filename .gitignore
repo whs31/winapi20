@@ -1,0 +1,40 @@
+# Build artifacts
+cmake-build-*
+build*/
+cmake-visual-studio-*
+
+# Misc
+logs*/
+doc/html
+doc/doxy.log
+
+# Qt artifacts
+*.user
+*.autosave
+settings/userSettings.json
+settings/*.cfg
+moc_*
+ui_*
+*.moc
+*.o
+*.prl
+
+# Doxygen generated
+src/html/
+src/latex/
+docs/*
+!docs/images
+!docs/src
+!docs/pages
+
+# Conan (deps folder must have separate .gitignore)
+CMakeUserPresets.json
+conan_provider.cmake
+dependencies
+
+# Rust
+Cargo.lock
+target
+
+# DLL exports
+.export
