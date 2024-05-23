@@ -71,8 +71,12 @@ target_include_directories(${PROJECT_NAME}
 )
 
 if(TESTS)
-  enable_testing()
-  add_subdirectory(tests)
+  if(WIN32)
+    enable_testing()
+    add_subdirectory(tests)
+  else()
+    message(STATUS "[${PROJECT_NAME}] tests are not supported on non-windows platform")
+  endif()
 endif()
 
 message(STATUS "[${PROJECT_NAME}] installing ${PROJECT_NAME} in namespace ${PROJECT_NAMESPACE}")

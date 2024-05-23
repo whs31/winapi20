@@ -1,4 +1,7 @@
 #include <winapi20/impl/winbase_impl.h>
+
+#ifdef WINAPI20_ENABLED
+
 #include <winapi20/impl/errhandlingapi_impl.h>
 #include <winapi20/detail/windows_headers.h>
 
@@ -18,3 +21,5 @@ namespace winapi
     return res;
   }
 }
+
+#endif // WINAPI20_ENABLED

@@ -1,9 +1,12 @@
 #pragma once
 
+#include <winapi20/detail/export.h>
+
+#ifdef WINAPI20_ENABLED
+
 #include <cstdint>
 #include <string>
 #include <type_traits>
-#include <winapi20/detail/export.h>
 #include <winapi20/detail/exception.h>
 
 namespace winapi
@@ -106,3 +109,5 @@ namespace winapi
   using detail::operator|;
   using detail::operator&;
 } // namespace winapi
+
+#endif // WINAPI20_ENABLED

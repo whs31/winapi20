@@ -1,4 +1,7 @@
 #include <winapi20/impl/errhandlingapi_impl.h>
+
+#ifdef WINAPI20_ENABLED
+
 #include <memory>
 #include <winapi20/detail/windows_headers.h>
 #include <utility/utility.hh>
@@ -19,3 +22,5 @@ namespace winapi
     return {buf.get()};
   }
 }
+
+#endif // WINAPI20_ENABLED
