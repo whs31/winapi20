@@ -51,10 +51,12 @@ target_sources(${PROJECT_NAME}
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/winbase_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/winbase_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/errhandlingapi_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/errhandlingapi_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/shlobj_core_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/shlobj_core_impl.h>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/consoleapi_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/consoleapi_impl.h>
   PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/winbase_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/errhandlingapi_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/shlobj_core_impl.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/consoleapi_impl.cc
 )
 
 #target_link_libraries(${PROJECT_NAME})

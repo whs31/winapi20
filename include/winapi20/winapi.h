@@ -6,4 +6,5 @@
 # include <winapi20/impl/winbase_impl.h>
 # include <winapi20/impl/errhandlingapi_impl.h>
 # include <winapi20/impl/shlobj_core_impl.h>
+# include <winapi20/impl/consoleapi_impl.h>
 #endif

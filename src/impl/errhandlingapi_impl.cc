@@ -3,12 +3,13 @@
 #ifdef WINAPI20_ENABLED
 
 #include <array>
+#include <string>
 #include <winapi20/detail/windows_headers.h>
 #include <winapi20/detail/cvt.h>
-#include <utility/utility.hh>
 
 using std::array;
 using std::string;
+using std::string_view;
 using std::wstring;
 
 namespace winapi
@@ -31,6 +32,10 @@ namespace winapi
     ))
       return {};
     return detail::into<string>(wstring(buf.data()));
+  }
+
+  auto fatal_application_exit(string_view message) noexcept -> void {
+    FatalAppExitW(0, detail::into<wstring>(message).data());
   }
 }
 
