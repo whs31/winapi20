@@ -1,10 +1,12 @@
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include <winapi20/impl/shlobj_core_impl.h>
 #include <winapi20/impl/errhandlingapi_impl.h>
 #include <winapi20/detail/windows_headers.h>
 
 using winapi::enums::operator|;
 using namespace std;
+using namespace ::testing;
 namespace wd = winapi::detail;
 
 TEST(Shlobj, SHGetKnownFolderPath)
@@ -18,7 +20,7 @@ TEST(Shlobj, SHGetKnownFolderPath)
   );
 
   EXPECT_EQ(got.string(), filesystem::path(expected).string());
-  EXPECT_EQ(got.string(), "C:\\Windows");
+  EXPECT_THAT(got.string(), AnyOf("C:\\Windows", "C:\\windows"));
 
   CoTaskMemFree(expected);
 }

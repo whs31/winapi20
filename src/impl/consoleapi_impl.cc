@@ -1,6 +1,7 @@
 #include <winapi20/impl/consoleapi_impl.h>
 
 #include <array>
+#include <iostream>
 #include <winapi20/impl/errhandlingapi_impl.h>
 #include <winapi20/detail/exception.h>
 #include <winapi20/detail/windows_headers.h>
@@ -39,7 +40,9 @@ namespace winapi
         throw e;
       }
     }
+
     ::freopen_s(&this->m_stdout, "CONOUT$", "w", stdout);
+    ::freopen_s(&this->m_stdout, "CONOUT$", "w", stderr);
     ::freopen_s(&this->m_stdin, "CONIN$", "r", stdin);
     this->m_attached = true;
   }
@@ -60,7 +63,12 @@ namespace winapi
       }
     }
     ::freopen_s(&this->m_stdout, "CONOUT$", "w", stdout);
+    ::freopen_s(&this->m_stdout, "CONOUT$", "w", stderr);
     ::freopen_s(&this->m_stdin, "CONIN$", "r", stdin);
+    std::cout.clear();
+    std::clog.clear();
+    std::cerr.clear();
+    std::cin.clear();
     this->m_attached = true;
   }
 
@@ -73,6 +81,10 @@ namespace winapi
     ConsoleHost::free();
     ::fclose(this->m_stdout);
     ::fclose(this->m_stdin);
+    std::cout.clear();
+    std::clog.clear();
+    std::cerr.clear();
+    std::cin.clear();
   }
 
   auto ConsoleHost::is_attached() const noexcept -> bool { return this->m_attached; }
