@@ -43,15 +43,18 @@ cmake_print_properties(
 
 target_sources(${PROJECT_NAME}
   PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/winapi.h> $<INSTALL_INTERFACE:include/winapi20/winapi.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/export.h> $<INSTALL_INTERFACE:include/winapi20/detail/export.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/cvt.h> $<INSTALL_INTERFACE:include/winapi20/detail/cvt.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/exception.h> $<INSTALL_INTERFACE:include/winapi20/detail/exception.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/windows_headers.h> $<INSTALL_INTERFACE:include/winapi20/detail/windows_headers.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/winbase_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/winbase_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/errhandlingapi_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/errhandlingapi_impl.h>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/shlobj_core_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/shlobj_core_impl.h>
   PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/winbase_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/errhandlingapi_impl.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/shlobj_core_impl.cc
 )
 
 #target_link_libraries(${PROJECT_NAME})

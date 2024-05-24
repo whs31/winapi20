@@ -3,6 +3,12 @@ find_package(GTest REQUIRED)
 file(GLOB TEST_SOURCES "*.cc")
 
 add_executable(${PROJECT_NAME}-test)
+set_target_properties(${PROJECT_NAME}-test PROPERTIES
+  CXX_STANDARD 20
+  CXX_STANDARD_REQUIRED ON
+  CXX_EXTENSIONS OFF
+)
+
 target_sources(${PROJECT_NAME}-test PRIVATE ${TEST_SOURCES})
 
 target_link_libraries(${PROJECT_NAME}-test PRIVATE GTest::Main ${PROJECT_NAME})

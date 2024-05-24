@@ -1,12 +1,9 @@
 #pragma once
 
-#include <winapi20/detail/export.h>
-
-#ifdef WINAPI20_ENABLED
-
 #include <cstdint>
 #include <string>
 #include <type_traits>
+#include <winapi20/detail/export.h>
 #include <winapi20/detail/exception.h>
 
 namespace winapi
@@ -95,19 +92,10 @@ namespace winapi
 
   namespace detail
   {
-    inline auto operator|(HWProfileInfo::DockInfo const& lhs, HWProfileInfo::DockInfo const& rhs)
-      -> HWProfileInfo::DockInfo {
-      return static_cast<HWProfileInfo::DockInfo>(static_cast<uint32_t>(lhs) | static_cast<uint32_t>(rhs));
-    }
-
-    inline auto operator&(HWProfileInfo::DockInfo const& lhs, HWProfileInfo::DockInfo const& rhs)
-    -> HWProfileInfo::DockInfo {
-      return static_cast<HWProfileInfo::DockInfo>(static_cast<uint32_t>(lhs) | static_cast<uint32_t>(rhs));
-    }
+    [[maybe_unused]] void consteval enable_bitor(HWProfileInfo::DockInfo);
+    [[maybe_unused]] void consteval enable_bitand(HWProfileInfo::DockInfo);
   }
 
-  using detail::operator|;
-  using detail::operator&;
+  using enums::operator|;
+  using enums::operator&;
 } // namespace winapi
-
-#endif // WINAPI20_ENABLED
