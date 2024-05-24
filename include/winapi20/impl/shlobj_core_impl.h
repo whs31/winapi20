@@ -163,15 +163,6 @@ namespace winapi::shell
     AliasOnly                     = 0x80000000
   };
 
-  namespace detail
-  {
-    [[maybe_unused]] void consteval enable_bitand(KnownFolderFlag);
-    [[maybe_unused]] void consteval enable_bitor(KnownFolderFlag);
-  }
-
-  using enums::operator&;
-  using enums::operator|;
-
   [[nodiscard]] WINAPI20_EXPORT auto known_folder_path(
       FolderID id,
       KnownFolderFlag flags = KnownFolderFlag::Default,

@@ -89,13 +89,4 @@ namespace winapi
    private:
     HWProfileInfo() = default;
   };
-
-  namespace detail
-  {
-    [[maybe_unused]] void consteval enable_bitor(HWProfileInfo::DockInfo);
-    [[maybe_unused]] void consteval enable_bitand(HWProfileInfo::DockInfo);
-  }
-
-  using enums::operator|;
-  using enums::operator&;
 } // namespace winapi

@@ -138,6 +138,7 @@ namespace
       case winapi::shell::FolderID::Videos: return FOLDERID_Videos;
       case winapi::shell::FolderID::VideosLibrary: return FOLDERID_VideosLibrary;
       case winapi::shell::FolderID::Windows: return FOLDERID_Windows;
+      default: return {};
     }
   }
 }
