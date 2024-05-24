@@ -44,6 +44,7 @@ cmake_print_properties(
 target_sources(${PROJECT_NAME}
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/export.h> $<INSTALL_INTERFACE:include/winapi20/detail/export.h>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/cvt.h> $<INSTALL_INTERFACE:include/winapi20/detail/cvt.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/exception.h> $<INSTALL_INTERFACE:include/winapi20/detail/exception.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/windows_headers.h> $<INSTALL_INTERFACE:include/winapi20/detail/windows_headers.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/winbase_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/winbase_impl.h>

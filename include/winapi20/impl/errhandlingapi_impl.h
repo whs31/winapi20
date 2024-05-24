@@ -10,7 +10,7 @@
 namespace winapi
 {
   [[nodiscard]] WINAPI20_EXPORT auto last_error() noexcept -> uint32_t;
-  [[nodiscard]] WINAPI20_EXPORT auto last_error_string() noexcept -> std::wstring;
+  [[nodiscard]] WINAPI20_EXPORT auto last_error_string() noexcept -> std::string;
 } // namespace winapi
 
 #endif // WINAPI20_ENABLED

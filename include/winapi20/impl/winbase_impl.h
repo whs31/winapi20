@@ -84,10 +84,10 @@ namespace winapi
      * You can use this string as a registry subkey under your application's configuration settings key in HKEY_CURRENT_USER.
      * This enables you to store settings for each hardware profile.
      */
-    std::wstring guid;
+    std::string guid;
 
     /// \brief The display name for the current hardware profile.
-    std::wstring name;
+    std::string name;
 
    private:
     HWProfileInfo() = default;

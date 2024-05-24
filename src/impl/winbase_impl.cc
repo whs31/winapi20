@@ -5,6 +5,7 @@
 #include <winapi20/impl/errhandlingapi_impl.h>
 #include <winapi20/detail/windows_headers.h>
 
+using std::string;
 using std::wstring;
 
 namespace winapi
@@ -13,11 +14,11 @@ namespace winapi
   {
     auto info = HW_PROFILE_INFO();
     if(not GetCurrentHwProfileW(&info))
-      throw windows_exception(last_error_string());
+      throw windows_exception(winapi::last_error_string());
     auto res = HWProfileInfo();
     res.dock_info = static_cast<DockInfo>(info.dwDockInfo);
-    res.guid = wstring(info.szHwProfileGuid);
-    res.name = wstring(info.szHwProfileName);
+    res.guid = detail::into_utf8(info.szHwProfileGuid);
+    res.name = detail::into_utf8(info.szHwProfileName);
     return res;
   }
 }
