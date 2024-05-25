@@ -141,6 +141,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad127189b09646156f029d2c6ba83a5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1be61f0f4ee1b5720e746dacaa8447b" id="r_ab1be61f0f4ee1b5720e746dacaa8447b"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1be61f0f4ee1b5720e746dacaa8447b">absolute_address</a> (offset_type address_offset, std::optional&lt; size_t &gt; opcode_size=std::nullopt) const noexcept -&gt; <a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a></td></tr>
 <tr class="separator:ab1be61f0f4ee1b5720e746dacaa8447b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af10b95d42567026bf26c2fba27fe1448" id="r_af10b95d42567026bf26c2fba27fe1448"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af10b95d42567026bf26c2fba27fe1448">validate</a> (<a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09">memory::MemoryProtection</a> protection) const -&gt; bool</td></tr>
+<tr class="separator:af10b95d42567026bf26c2fba27fe1448"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8280b151fd475298dc51a561278bc6d" id="r_ab8280b151fd475298dc51a561278bc6d"><td class="memItemLeft" align="right" valign="top">virtual constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d87/structwinapi_1_1detail_1_1PointerLike.html#ab8280b151fd475298dc51a561278bc6d">valid</a> () const noexcept -&gt; bool</td></tr>
 <tr class="separator:ab8280b151fd475298dc51a561278bc6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08b3840dc7eccd94b533f411b0b49b61" id="r_a08b3840dc7eccd94b533f411b0b49b61"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
@@ -174,7 +176,7 @@ Friends</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00010">10</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00011">11</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="ad7a6aab5225c3c703a6fc33ee87c4f59" name="ad7a6aab5225c3c703a6fc33ee87c4f59"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7a6aab5225c3c703a6fc33ee87c4f59">&#9670;&#160;</a></span>offset_type</h2>
@@ -188,7 +190,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00013">13</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00014">14</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
 
 </div>
 </div>
@@ -264,7 +266,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00016">16</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00017">17</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
 
 </div>
 </div>
@@ -296,7 +298,45 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00020">20</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00021">21</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+
+</div>
+</div>
+<a id="af10b95d42567026bf26c2fba27fe1448" name="af10b95d42567026bf26c2fba27fe1448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af10b95d42567026bf26c2fba27fe1448">&#9670;&#160;</a></span>validate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto validate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09">memory::MemoryProtection</a></td>          <td class="paramname"><span class="paramname"><em>protection</em></span></td><td>)</td>
+          <td> const -&gt; bool</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns true if the specified memory protection is valid for the specified address. </p>
+<p>Example values for different operations: <br  />
+</p><ul>
+<li>Read: <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a060d84e58c348e44da6637e57e2e9201" title="Enables read-only access to the committed region of pages.">memory::MemoryProtection::Readonly</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09ac26b597863a6aed885013205f3049c58" title="Enables execute or read-only access to the committed region of pages.">memory::MemoryProtection::ExecuteRead</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a70a2a84088d405a2e3f1e3accaa16723" title="Enables read-only or read/write access to the committed region of pages.">memory::MemoryProtection::ReadWrite</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09ab4082047068113d3e76ff32df8842b38" title="Enables execute, read-only, or read/write access to the committed region of pages.">memory::MemoryProtection::ExecuteReadWrite</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a1d1f286d4bcef3fa32fb8be7682c1f35" title="Enables read-only or copy-on-write access to a mapped view of a file mapping object.">memory::MemoryProtection::WriteCopy</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09aeda67591cccf6542fcd62a113dadbf81" title="Enables execute, read-only, or copy-on-write access to a mapped view of a file mapping object.">memory::MemoryProtection::ExecuteWriteCopy</a> <br  />
+</li>
+<li>Write: <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09ab4082047068113d3e76ff32df8842b38" title="Enables execute, read-only, or read/write access to the committed region of pages.">memory::MemoryProtection::ExecuteReadWrite</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09aeda67591cccf6542fcd62a113dadbf81" title="Enables execute, read-only, or copy-on-write access to a mapped view of a file mapping object.">memory::MemoryProtection::ExecuteWriteCopy</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a70a2a84088d405a2e3f1e3accaa16723" title="Enables read-only or read/write access to the committed region of pages.">memory::MemoryProtection::ReadWrite</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a1d1f286d4bcef3fa32fb8be7682c1f35" title="Enables read-only or copy-on-write access to a mapped view of a file mapping object.">memory::MemoryProtection::WriteCopy</a> <br  />
+</li>
+<li>Execute: <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09ac26b597863a6aed885013205f3049c58" title="Enables execute or read-only access to the committed region of pages.">memory::MemoryProtection::ExecuteRead</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09ab4082047068113d3e76ff32df8842b38" title="Enables execute, read-only, or read/write access to the committed region of pages.">memory::MemoryProtection::ExecuteReadWrite</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09aeda67591cccf6542fcd62a113dadbf81" title="Enables execute, read-only, or copy-on-write access to a mapped view of a file mapping object.">memory::MemoryProtection::ExecuteWriteCopy</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a40cd014b7b6251e3a22e6a45a73a64e1" title="Enables execute access to the committed region of pages.">memory::MemoryProtection::Execute</a> <br  />
+ <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">protection</td><td>Flags specifying the desired memory protection. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the specified memory protection is valid for the specified address. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-readprocessmemory">https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-readprocessmemory</a> </dd></dl>
+</li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/ddc/wrappers_8cc_source.html#l00023">23</a> of file <a class="el" href="../../d9/ddc/wrappers_8cc_source.html">wrappers.cc</a>.</p>
 
 </div>
 </div>
@@ -574,7 +614,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00034">34</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00047">47</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
 
 </div>
 </div>
@@ -603,8 +643,9 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a></li>
+<li><a class="el" href="../../d9/ddc/wrappers_8cc_source.html">wrappers.cc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -2,6 +2,8 @@ var structwinapi_1_1memory_1_1MemoryBasicInformation =
 [
     [ "query", "d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a168f13763f5000632852034476ffc955", null ],
     [ "query", "d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a0b8d62844937dabfbf91ddc16643788f", null ],
+    [ "try_query", "d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a76ecf3820c5dbe610900e320b64691bf", null ],
+    [ "try_query", "d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#acb1b2dd637e25c089582c5d038dbc931", null ],
     [ "base_address", "d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#ad87e1d68ae75284611e76bd40d1287f0", null ],
     [ "allocation_base", "d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#adc750e0a2aee716526e88e32c4bd974e", null ],
     [ "allocation_protection", "d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#aded4eaaeb5811cc886ccfbdc7c37e26d", null ],

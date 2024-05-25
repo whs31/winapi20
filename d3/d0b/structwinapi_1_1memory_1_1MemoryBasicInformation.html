@@ -120,6 +120,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a168f13763f5000632852034476ffc955"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b8d62844937dabfbf91ddc16643788f" id="r_a0b8d62844937dabfbf91ddc16643788f"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b8d62844937dabfbf91ddc16643788f">query</a> (<a class="el" href="../../dc/d41/classwinapi_1_1Process.html">Process</a> const &amp;process, uintptr_t address) -&gt; <a class="el" href="../../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html">MemoryBasicInformation</a></td></tr>
 <tr class="separator:a0b8d62844937dabfbf91ddc16643788f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76ecf3820c5dbe610900e320b64691bf" id="r_a76ecf3820c5dbe610900e320b64691bf"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76ecf3820c5dbe610900e320b64691bf">try_query</a> (uintptr_t address) -&gt; std::optional&lt; <a class="el" href="../../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html">MemoryBasicInformation</a> &gt;</td></tr>
+<tr class="separator:a76ecf3820c5dbe610900e320b64691bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb1b2dd637e25c089582c5d038dbc931" id="r_acb1b2dd637e25c089582c5d038dbc931"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb1b2dd637e25c089582c5d038dbc931">try_query</a> (<a class="el" href="../../dc/d41/classwinapi_1_1Process.html">Process</a> const &amp;process, uintptr_t address) -&gt; std::optional&lt; <a class="el" href="../../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html">MemoryBasicInformation</a> &gt;</td></tr>
+<tr class="separator:acb1b2dd637e25c089582c5d038dbc931"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -182,7 +186,7 @@ Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The memory state at the specified address. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualquery">https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualquery</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html#l00066">66</a> of file <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html">memoryapi_impl.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html#l00069">69</a> of file <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html">memoryapi_impl.cc</a>.</p>
 
 </div>
 </div>
@@ -231,7 +235,86 @@ Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The memory state at the specified address. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualqueryex">https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualqueryex</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html#l00083">83</a> of file <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html">memoryapi_impl.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html#l00086">86</a> of file <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html">memoryapi_impl.cc</a>.</p>
+
+</div>
+</div>
+<a id="a76ecf3820c5dbe610900e320b64691bf" name="a76ecf3820c5dbe610900e320b64691bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76ecf3820c5dbe610900e320b64691bf">&#9670;&#160;</a></span>try_query() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto try_query </td>
+          <td>(</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span></td><td>)</td>
+          <td> -&gt; std::optional&lt;<a class="el" href="../../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html">MemoryBasicInformation</a>&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Queries the memory state at the specified address in the address space of the calling process. </p>
+<p>This function uses <code>VirtualQuery</code> to query the memory state at the specified address. If you need to query memory state at an address that is not in the address space of the calling process, use <code><a class="el" href="#a0b8d62844937dabfbf91ddc16643788f" title="Queries the memory state at the specified address in the address space of the specified process.">MemoryBasicInformation::query(Process const&amp;, uintptr_t)</a></code>. If the query fails, the function returns an empty <code>std::optional</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>The address to query. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The memory state at the specified address. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualquery">https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualquery</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html#l00103">103</a> of file <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html">memoryapi_impl.cc</a>.</p>
+
+</div>
+</div>
+<a id="acb1b2dd637e25c089582c5d038dbc931" name="acb1b2dd637e25c089582c5d038dbc931"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb1b2dd637e25c089582c5d038dbc931">&#9670;&#160;</a></span>try_query() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto try_query </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dc/d41/classwinapi_1_1Process.html">Process</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>process</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>&#160;) -&gt; std::optional&lt;<a class="el" href="../../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html">MemoryBasicInformation</a>&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Queries the memory state at the specified address in the address space of the specified process. </p>
+<p>This function uses <code>VirtualQueryEx</code> to query the memory state at the specified address. If the query fails, the function returns an empty <code>std::optional</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">process</td><td>The process to query. </td></tr>
+    <tr><td class="paramname">address</td><td>The address to query. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The memory state at the specified address. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualqueryex">https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualqueryex</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html#l00111">111</a> of file <a class="el" href="../../db/d98/memoryapi__impl_8cc_source.html">memoryapi_impl.cc</a>.</p>
 
 </div>
 </div>

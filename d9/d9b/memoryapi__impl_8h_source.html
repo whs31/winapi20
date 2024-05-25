@@ -227,9 +227,13 @@ $(function(){initNavTree('d9/d9b/memoryapi__impl_8h_source.html','../../'); init
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> query(uintptr_t address) -&gt; <a class="code hl_struct" href="../../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html">MemoryBasicInformation</a>;</div>
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> query(<a class="code hl_class" href="../../dc/d41/classwinapi_1_1Process.html">Process</a> <span class="keyword">const</span>&amp; process, uintptr_t address) -&gt; <a class="code hl_struct" href="../../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html">MemoryBasicInformation</a>;</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>  };</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> try_query(uintptr_t address) -&gt; std::optional&lt;MemoryBasicInformation&gt;;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> try_query(<a class="code hl_class" href="../../dc/d41/classwinapi_1_1Process.html">Process</a> <span class="keyword">const</span>&amp; process, uintptr_t address) -&gt; std::optional&lt;MemoryBasicInformation&gt;;</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>  };</div>
 </div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>}</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>}</div>
 </div>
 <div class="ttc" id="aclasswinapi_1_1Process_html"><div class="ttname"><a href="../../dc/d41/classwinapi_1_1Process.html">winapi::Process</a></div><div class="ttdef"><b>Definition</b> <a href="../../d6/d4d/processthreadsapi__impl_8h_source.html#l00092">processthreadsapi_impl.h:93</a></div></div>
 <div class="ttc" id="anamespacewinapi_1_1memory_html"><div class="ttname"><a href="../../de/d9e/namespacewinapi_1_1memory.html">winapi::memory</a></div><div class="ttdoc">Namespace for memory-related operations in the Windows API.</div><div class="ttdef"><b>Definition</b> <a href="#l00013">memoryapi_impl.h:14</a></div></div>

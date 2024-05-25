@@ -29,7 +29,7 @@ var annotated_dup =
       [ "Function", "dd/de8/classwinapi_1_1Function.html", null ],
       [ "Handle", "dd/d5e/structwinapi_1_1Handle.html", null ],
       [ "HWProfileInfo", "d3/d01/structwinapi_1_1HWProfileInfo.html", "d3/d01/structwinapi_1_1HWProfileInfo" ],
-      [ "MemoryAddress", "d7/d70/classwinapi_1_1MemoryAddress.html", null ],
+      [ "MemoryAddress", "d7/d70/classwinapi_1_1MemoryAddress.html", "d7/d70/classwinapi_1_1MemoryAddress" ],
       [ "Process", "dc/d41/classwinapi_1_1Process.html", null ],
       [ "windows_exception", "d1/dd0/classwinapi_1_1windows__exception.html", null ]
     ] ]
