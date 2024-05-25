@@ -1,0 +1,7 @@
+<map id="Process" name="Process">
+<area shape="rect" id="Node000001" title=" " alt="" coords="15,169,88,195"/>
+<area shape="rect" id="Node000002" href="$dd/d5e/structwinapi_1_1Handle.html" title=" " alt="" coords="18,80,85,106"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,122,54,169,49,169,49,122"/>
+<area shape="rect" id="Node000003" href="$db/d87/structwinapi_1_1detail_1_1PointerLike.html" title=" " alt="" coords="5,5,98,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="54,46,54,80,49,80,49,46"/>
+</map>

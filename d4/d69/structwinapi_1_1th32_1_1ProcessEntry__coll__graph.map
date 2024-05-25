@@ -1,0 +1,7 @@
+<map id="ProcessEntry" name="ProcessEntry">
+<area shape="rect" id="Node000001" title="Describes an entry from a list of the processes residing in the system address space when a snapshot ..." alt="" coords="29,169,137,195"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="55,80,111,106"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,122,86,169,80,169,80,122"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,161,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="86,46,86,80,80,80,80,46"/>
+</map>
