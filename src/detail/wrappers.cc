@@ -20,7 +20,7 @@ namespace winapi
       ::CloseHandle(this->m_);
   }
 
-  auto MemoryAddress::validate(memory::MemoryProtection const protection) const -> bool {
+  auto MemoryAddress::permissions(memory::MemoryProtection const protection) const -> bool {
     using enum memory::MemoryProtection;
     using enum memory::MemoryState;
 

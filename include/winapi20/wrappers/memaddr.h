@@ -39,7 +39,7 @@ namespace winapi
        * \return True if the specified memory protection is valid for the specified address.
        * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-readprocessmemory
        */
-      [[nodiscard]] auto validate(memory::MemoryProtection protection) const -> bool;
+      [[nodiscard]] auto permissions(memory::MemoryProtection protection) const -> bool;
 
       friend std::ostream& operator<<(std::ostream& os, MemoryAddress const& addr);
   };
