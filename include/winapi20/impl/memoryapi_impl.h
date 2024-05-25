@@ -129,6 +129,21 @@ namespace winapi::memory
     EnclaveDecommit           = EnclaveMask,
     EnclaveSsFirst            = EnclaveMask | 1,
     EnclaveSsRest             = EnclaveMask | 2,
+
+    /**
+     * \brief Shortcut for <b>Read | ExecuteRead | ReadWrite | ExecuteReadWrite | WriteCopy | ExecuteWriteCopy</b>.
+     */
+    AllRead                   = Readonly | ExecuteRead | ReadWrite | ExecuteReadWrite | WriteCopy | ExecuteWriteCopy,
+
+    /**
+     * \brief Shortcut for <b>ExecuteReadWrite | ExecuteWriteCopy | ReadWrite | WriteCopy</b>.
+     */
+    AllWrite                  = ExecuteReadWrite | ExecuteWriteCopy | ReadWrite | WriteCopy,
+
+    /**
+     * \brief Shortcut for <b>ExecuteRead | ExecuteReadWrite | ExecuteWriteCopy | Execute</b>.
+     */
+    AllExecute                = ExecuteRead | ExecuteReadWrite | ExecuteWriteCopy | Execute,
   };
 
   enum class MemoryState : uint64_t

@@ -31,10 +31,13 @@ namespace winapi
 
       /**
        * \brief Returns true if the specified memory protection is valid for the specified address.
-       * \details Example values for different operations: <br>
-       * - Read: memory::MemoryProtection::Readonly | memory::MemoryProtection::ExecuteRead | memory::MemoryProtection::ReadWrite | memory::MemoryProtection::ExecuteReadWrite | memory::MemoryProtection::WriteCopy | memory::MemoryProtection::ExecuteWriteCopy <br>
-       * - Write: memory::MemoryProtection::ExecuteReadWrite | memory::MemoryProtection::ExecuteWriteCopy | memory::MemoryProtection::ReadWrite | memory::MemoryProtection::WriteCopy <br>
-       * - Execute: memory::MemoryProtection::ExecuteRead | memory::MemoryProtection::ExecuteReadWrite | memory::MemoryProtection::ExecuteWriteCopy | memory::MemoryProtection::Execute <br>
+       * \details
+       * Executes query to determine if the specified memory protection is valid for the specified address.
+       * Do not invoke this method frequently.
+       * Example values for different operations: <br>
+       * - Read: Readonly | ExecuteRead | ReadWrite | ExecuteReadWrite | WriteCopy | ExecuteWriteCopy <br>
+       * - Write: ExecuteReadWrite | ExecuteWriteCopy | ReadWrite | WriteCopy <br>
+       * - Execute: ExecuteRead | ExecuteReadWrite | ExecuteWriteCopy | Execute <br>
        * \param protection Flags specifying the desired memory protection.
        * \return True if the specified memory protection is valid for the specified address.
        * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-readprocessmemory

@@ -10,4 +10,5 @@
 # include <winapi20/impl/consoleapi_impl.h>
 # include <winapi20/impl/tlhelp32_impl.h>
 # include <winapi20/impl/processthreadsapi_impl.h>
+# include <winapi20/impl/libloaderapi_impl.h>
 #endif
