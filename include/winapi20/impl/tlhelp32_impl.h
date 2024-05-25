@@ -18,9 +18,6 @@ struct SnapshotIterator;
 
 namespace winapi::th32
 {
-  /// \brief Syntax sugar for specifying the current process.
-  enum PID : uint32_t { CurrentProcess = 0 };
-
   /**
    * \brief Describes an entry from a list of the processes residing in the system address space when a snapshot was taken.
    * \see https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32
@@ -112,7 +109,7 @@ namespace winapi::th32
         Inherit  = 0x80000000
       };
 
-      explicit Snapshot(IncludeFlags flags, uint32_t pid) noexcept(false);
+      explicit Snapshot(IncludeFlags flags, uint32_t pid = PID::CurrentProcess) noexcept(false);
       ~Snapshot();
 
       [[nodiscard]] inline auto flags() const noexcept -> IncludeFlags { return this->m_flags; }

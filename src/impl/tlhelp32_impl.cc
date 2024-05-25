@@ -122,8 +122,10 @@ namespace winapi::th32
     , m_handle(::CreateToolhelp32Snapshot(static_cast<DWORD>(flags), static_cast<DWORD>(pid)))
     , m_flags_valid(std::set<Snapshot::IncludeFlags>())
   {
-    if(not this->m_handle)
+    if(not this->m_handle) {
+      ::CloseHandle(*this->m_handle);
       throw winapi::windows_exception(winapi::last_error_string());
+    }
   }
 
   Snapshot::~Snapshot() {

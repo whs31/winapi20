@@ -2,18 +2,27 @@
 
 #include <cstdint>
 #include <iostream>
+#include <winapi20/detail/export.h>
 #include <winapi20/detail/formatters.h>
+#include <winapi20/detail/definitions.h>
 
 namespace winapi
 {
-  struct Handle
+  struct WINAPI20_EXPORT Handle
   {
     using pointer_type = void*;
     using integer_type = uintptr_t;
 
     Handle() = default;
-    constexpr explicit Handle(pointer_type handle);
-    explicit Handle(integer_type handle);
+    constexpr explicit Handle(pointer_type handle, Cleanup cleanup = Cleanup::Manual);
+    explicit Handle(integer_type handle, Cleanup cleanup = Cleanup::Manual);
+
+    virtual ~Handle();
+    Handle(Handle const&) = default;
+    Handle(Handle&&) = default;
+
+    Handle& operator=(Handle const&) = default;
+    Handle& operator=(Handle&&) = default;
 
     [[nodiscard]] constexpr inline auto valid() const noexcept -> bool;
 
@@ -35,17 +44,15 @@ namespace winapi
     private:
       static inline auto invalid_handle_ptr = reinterpret_cast<pointer_type>(-1);
       pointer_type m_handle = nullptr;
+      Cleanup m_cleanup;
   };
 }
 
 namespace winapi
 {
-  constexpr inline Handle::Handle(Handle::pointer_type handle)
+  constexpr inline Handle::Handle(Handle::pointer_type handle, Cleanup cleanup)
     : m_handle(handle)
-  {}
-
-  inline Handle::Handle(Handle::integer_type handle)
-    : m_handle(reinterpret_cast<pointer_type>(handle))
+    , m_cleanup(cleanup)
   {}
 
   constexpr inline auto Handle::valid() const noexcept -> bool {
@@ -92,7 +99,7 @@ namespace winapi
   }
 
   inline std::ostream& operator<<(std::ostream& os, Handle const& handle) {
-    os << "Handle(0x" << std::hex << handle.as_integer() << std::dec << ")";
+    os << fmt::format("Handle(0x{:x})", handle.as_integer());
     return os;
   }
 }

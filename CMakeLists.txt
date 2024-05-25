@@ -45,7 +45,6 @@ cmake_print_properties(
 target_sources(${PROJECT_NAME}
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/winapi.h> $<INSTALL_INTERFACE:include/winapi20/winapi.h>
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/extensions.h> $<INSTALL_INTERFACE:include/winapi20/extensions.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/export.h> $<INSTALL_INTERFACE:include/winapi20/detail/export.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/definitions.h> $<INSTALL_INTERFACE:include/winapi20/detail/definitions.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/cvt.h> $<INSTALL_INTERFACE:include/winapi20/detail/cvt.h>
@@ -58,6 +57,7 @@ target_sources(${PROJECT_NAME}
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/shlobj_core_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/shlobj_core_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/consoleapi_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/consoleapi_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/tlhelp32_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/tlhelp32_impl.h>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/processthreadsapi_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/processthreadsapi_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/wrappers/handle.h> $<INSTALL_INTERFACE:include/winapi20/wrappers/handle.h>
   PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/winbase_impl.cc
@@ -65,6 +65,8 @@ target_sources(${PROJECT_NAME}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/shlobj_core_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/consoleapi_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/tlhelp32_impl.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/processthreadsapi_impl.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/detail/handle.cc
 )
 
 target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)

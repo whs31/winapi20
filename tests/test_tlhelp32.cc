@@ -10,13 +10,13 @@ using enum th32::Snapshot::IncludeFlags;
 
 TEST(TLHelp32, Snapshot)
 {
-  auto snapshot = th32::Snapshot(winapi::th32::Snapshot::IncludeFlags::Process, th32::PID::CurrentProcess);
+  auto snapshot = th32::Snapshot(winapi::th32::Snapshot::IncludeFlags::Process, PID::CurrentProcess);
   EXPECT_TRUE(snapshot.valid());
 }
 
 TEST(TLHelp32, FindProcessByName)
 {
-  auto snapshot = th32::Snapshot(Process, th32::PID::CurrentProcess);
+  auto snapshot = th32::Snapshot(Process, PID::CurrentProcess);
   auto pid = snapshot.find_first_by_name<th32::ProcessEntry>("ExPloRer.exe");
   EXPECT_TRUE(snapshot.valid());
   EXPECT_TRUE(pid.has_value());
@@ -28,7 +28,7 @@ TEST(TLHelp32, FindProcessByName)
 
 TEST(TLHelp32, FindModuleByName)
 {
-  auto snapshot = th32::Snapshot(Process, th32::PID::CurrentProcess);
+  auto snapshot = th32::Snapshot(Process, PID::CurrentProcess);
   auto pid = snapshot.find_first_by_name<th32::ProcessEntry>("explorer.exe");
   EXPECT_TRUE(snapshot.valid());
   EXPECT_TRUE(pid.has_value());
