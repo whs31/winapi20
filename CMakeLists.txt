@@ -4,7 +4,7 @@ include_guard(GLOBAL)
 
 project(winapi20
   VERSION 0.0.1
-  DESCRIPTION "Windows API wrapper in modern C++20 "
+  DESCRIPTION "Windows API wrapper in modern C++20"
   HOMEPAGE_URL "https://github.com/whs31/winapi20"
   LANGUAGES C CXX
 )
@@ -21,6 +21,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 include(CMakePrintHelpers)
+find_package(fmt REQUIRED)
 
 add_library(${PROJECT_NAME})
 add_library(${PROJECT_NAMESPACE}api20 ALIAS ${PROJECT_NAME})
@@ -51,22 +52,22 @@ target_sources(${PROJECT_NAME}
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/exception.h> $<INSTALL_INTERFACE:include/winapi20/detail/exception.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/windows_headers.h> $<INSTALL_INTERFACE:include/winapi20/detail/windows_headers.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/template_util.h> $<INSTALL_INTERFACE:include/winapi20/detail/template_util.h>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/detail/formatters.h> $<INSTALL_INTERFACE:include/winapi20/detail/formatters.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/winbase_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/winbase_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/errhandlingapi_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/errhandlingapi_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/shlobj_core_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/shlobj_core_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/consoleapi_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/consoleapi_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/tlhelp32_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/tlhelp32_impl.h>
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/extension/process_util.h> $<INSTALL_INTERFACE:include/winapi20/extension/process_util.h>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/wrappers/handle.h> $<INSTALL_INTERFACE:include/winapi20/wrappers/handle.h>
   PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/winbase_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/errhandlingapi_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/shlobj_core_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/consoleapi_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/tlhelp32_impl.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/extension/process_util.cc
 )
 
-#target_link_libraries(${PROJECT_NAME})
+target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
   $<$<BOOL:${BUILD_SHARED_LIBS}>:-DWINAPI20_LIBRARY=1>

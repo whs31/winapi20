@@ -46,5 +46,6 @@ TEST(TLHelp32, FindModuleByName)
     EXPECT_TRUE(m.pid == pid->pid);
     EXPECT_FALSE(m.name.empty());
     EXPECT_FALSE(m.path.empty());
+    EXPECT_TRUE(m.handle);
   }
 }

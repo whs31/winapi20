@@ -1,6 +1,7 @@
 #include <winapi20/impl/tlhelp32_impl.h>
 
 #include <iostream>
+#include <fmt/format.h>
 #include <winapi20/impl/errhandlingapi_impl.h>
 #include <winapi20/detail/exception.h>
 #include <winapi20/detail/windows_headers.h>
@@ -40,7 +41,7 @@ struct SnapshotIterator
 
     typename T::raw_type entry;
     entry.dwSize = sizeof(typename T::raw_type);
-    if(not f(snapshot->handle_raw(), &entry)) {
+    if(not f(*snapshot->handle(), &entry)) {
       if constexpr(option)
         return std::nullopt;
       else
@@ -77,11 +78,16 @@ namespace winapi::th32
     };
   }
 
-  std::ostream& operator<<(std::ostream& stream, const ProcessEntry &entry) {
-    stream << "ProcessEntry { pid: " << entry.pid << ", parent_pid: " << entry.parent_pid
-           << ", thread_count: " << entry.thread_count
-           << ", thread_base_priority: " << entry.thread_base_priority
-           << ", name: " << entry.name << " }";
+  std::ostream& operator<<(std::ostream& stream, ProcessEntry const& entry) {
+    stream << fmt::format(
+        "ProcessEntry {{ pid: {}, parent_pid: {}, thread_count: {}, "
+        "thread_base_priority: {}, name: {} }}",
+        entry.pid,
+        entry.parent_pid,
+        entry.thread_count,
+        entry.thread_base_priority,
+        entry.name
+    );
     return stream;
   }
 
@@ -90,37 +96,42 @@ namespace winapi::th32
         .pid = entry.th32ProcessID,
         .base_address = reinterpret_cast<uintptr_t>(entry.modBaseAddr),
         .size = entry.modBaseSize,
+        .handle = Handle(entry.hModule),
         .name = detail::into_utf8(entry.szModule),
         .path = detail::into_utf8(entry.szExePath)
     };
   }
 
-  std::ostream& operator<<(std::ostream &stream, const ModuleEntry &entry) {
-    stream << "ModuleEntry { pid: " << entry.pid
-           << ", base_address: " << entry.base_address
-           << ", size: " << entry.size
-           << ", name: " << entry.name
-           << ", path: " << entry.path << " }";
+  std::ostream& operator<<(std::ostream& stream, ModuleEntry const& entry) {
+    stream << fmt::format(
+        "ModuleEntry {{ pid: {}, base_address: {}, size: {}, "
+        "handle: {}, name: {}, path: {} }}",
+        entry.pid,
+        entry.base_address,
+        entry.size,
+        entry.handle,
+        entry.name,
+        entry.path
+    );
     return stream;
   }
 
   Snapshot::Snapshot(Snapshot::IncludeFlags flags, uint32_t pid) noexcept(false)
     : m_flags(flags)
     , m_pid(pid)
-    , m_handle(nullptr)
+    , m_handle(::CreateToolhelp32Snapshot(static_cast<DWORD>(flags), static_cast<DWORD>(pid)))
     , m_flags_valid(std::set<Snapshot::IncludeFlags>())
   {
-    this->m_handle = ::CreateToolhelp32Snapshot(static_cast<DWORD>(flags), static_cast<DWORD>(pid));
-    if(this->m_handle == INVALID_HANDLE_VALUE)
+    if(not this->m_handle)
       throw winapi::windows_exception(winapi::last_error_string());
   }
 
   Snapshot::~Snapshot() {
-    ::CloseHandle(this->m_handle);
+    ::CloseHandle(*this->m_handle);
   }
 
   auto Snapshot::valid() const noexcept -> bool {
-    return this->m_handle != nullptr and this->m_handle != INVALID_HANDLE_VALUE;
+    return this->m_handle.valid();
   }
 
   auto Snapshot::processes() const noexcept(false) -> std::vector<ProcessEntry> {

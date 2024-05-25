@@ -10,6 +10,7 @@
 #include <winapi20/detail/export.h>
 #include <winapi20/detail/definitions.h>
 #include <winapi20/detail/template_util.h>
+#include <winapi20/wrappers/handle.h>
 
 typedef struct tagPROCESSENTRY32W PROCESSENTRY32W;
 typedef struct tagMODULEENTRY32W MODULEENTRY32W;
@@ -40,14 +41,8 @@ namespace winapi::th32
     /// \brief The base priority of any threads started by this process.
     int64_t thread_base_priority;
 
-    /// \brief A handle to the module in the context of the owning process.
-    void* module;
-
-    /// \brief The module name.
+    /// \brief The name of the executable file for the process.
     std::string name;
-
-    /// \brief The module path.
-    std::string path;
 
     [[nodiscard]] static auto from_raw(raw_type const& entry) -> ProcessEntry;
 
@@ -70,6 +65,9 @@ namespace winapi::th32
 
     /// \brief The size of the module, in bytes.
     size_t size;
+
+    /// \brief A handle to the module in the context of the owning process.
+    Handle handle;
 
     /// \brief The name of the module.
     std::string name;
@@ -119,7 +117,7 @@ namespace winapi::th32
 
       [[nodiscard]] inline auto flags() const noexcept -> IncludeFlags { return this->m_flags; }
       [[nodiscard]] inline auto pid() const noexcept -> uint32_t { return this->m_pid; }
-      [[nodiscard]] inline auto handle_raw() const noexcept -> void* { return this->m_handle; }
+      [[nodiscard]] inline auto handle() const noexcept -> Handle { return this->m_handle; }
 
       [[nodiscard]] auto valid() const noexcept -> bool;
       [[nodiscard]] auto processes() const noexcept(false) -> std::vector<ProcessEntry>;
@@ -153,7 +151,7 @@ namespace winapi::th32
     private:
       IncludeFlags m_flags;
       uint32_t m_pid;
-      void* m_handle;
+      Handle m_handle;
       std::set<IncludeFlags> mutable m_flags_valid;
   };
 }
@@ -229,3 +227,6 @@ namespace winapi::th32
     return res;
   }
 }
+
+template <> struct fmt::formatter<winapi::th32::ProcessEntry> : winapi::utility::ostream_formatter {};
+template <> struct fmt::formatter<winapi::th32::ModuleEntry> : winapi::utility::ostream_formatter {};
