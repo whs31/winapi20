@@ -16,7 +16,9 @@ namespace winapi::detail
 
     virtual ~PointerLike() = default;
 
-    [[nodiscard]] constexpr virtual auto valid() const noexcept -> bool = 0;
+    [[nodiscard]] constexpr virtual auto valid() const noexcept -> bool {
+      return this->m_ != nullptr;
+    };
 
     template <typename T>
     requires std::is_integral_v<T> or std::is_pointer_v<T>

@@ -16,4 +16,5 @@
 # define WINAPI20_EXPORT
 #endif // WINAPI20_ENABLED
 
+/// \brief The main namespace of the library.
 namespace winapi {}
