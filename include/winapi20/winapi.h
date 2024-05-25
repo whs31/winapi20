@@ -7,4 +7,5 @@
 # include <winapi20/impl/errhandlingapi_impl.h>
 # include <winapi20/impl/shlobj_core_impl.h>
 # include <winapi20/impl/consoleapi_impl.h>
+# include <winapi20/impl/tlhelp32_impl.h>
 #endif
