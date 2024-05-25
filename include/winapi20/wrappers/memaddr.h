@@ -9,12 +9,15 @@ namespace winapi
   class MemoryAddress : public detail::PointerLike
   {
     public:
-      using integer_type = uintptr_t;
-      using pointer_type = void*;
-
       using detail::PointerLike::PointerLike;
 
-    private:
-      pointer_type m_ = nullptr;
+      friend std::ostream& operator<<(std::ostream& os, MemoryAddress const& handle);
   };
+
+  inline std::ostream& operator<<(std::ostream& os, MemoryAddress const& handle) {
+    os << fmt::format("MemoryAddress(0x{:x})", handle.as_integer());
+    return os;
+  }
 } // namespace winapi
+
+template <> struct fmt::formatter<winapi::MemoryAddress> : winapi::utility::ostream_formatter {};

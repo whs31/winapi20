@@ -21,7 +21,7 @@ namespace winapi
 
     [[nodiscard]] constexpr inline auto valid() const noexcept -> bool override;
 
-    friend std::ostream& operator<<(std::ostream& os, const Handle& handle);
+    friend std::ostream& operator<<(std::ostream& os, Handle const& handle);
 
     private:
       static inline auto invalid_handle_ptr = reinterpret_cast<pointer_type>(-1);
