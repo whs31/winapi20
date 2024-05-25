@@ -59,7 +59,9 @@ target_sources(${PROJECT_NAME}
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/consoleapi_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/consoleapi_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/tlhelp32_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/tlhelp32_impl.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/impl/processthreadsapi_impl.h> $<INSTALL_INTERFACE:include/winapi20/impl/processthreadsapi_impl.h>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/wrappers/detail/pointerlike.h> $<INSTALL_INTERFACE:include/winapi20/wrappers/detail/pointerlike.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/wrappers/handle.h> $<INSTALL_INTERFACE:include/winapi20/wrappers/handle.h>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/wrappers/memaddr.h> $<INSTALL_INTERFACE:include/winapi20/wrappers/memaddr.h>
   PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/winbase_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/errhandlingapi_impl.cc
