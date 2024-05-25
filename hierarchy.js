@@ -9,6 +9,7 @@ var hierarchy =
     [ "formatter", null, [
       [ "basic_ostream_formatter< C >", "db/d58/structwinapi_1_1utility_1_1basic__ostream__formatter.html", [
         [ "formatter< winapi::Handle >", "dd/daa/structfmt_1_1formatter_3_01winapi_1_1Handle_01_4.html", null ],
+        [ "formatter< winapi::MemoryAddress >", "d3/df8/structfmt_1_1formatter_3_01winapi_1_1MemoryAddress_01_4.html", null ],
         [ "formatter< winapi::th32::ModuleEntry >", "dc/d79/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ModuleEntry_01_4.html", null ],
         [ "formatter< winapi::th32::ProcessEntry >", "d1/d78/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ProcessEntry_01_4.html", null ]
       ] ]

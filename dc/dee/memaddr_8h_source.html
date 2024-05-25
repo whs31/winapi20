@@ -126,18 +126,22 @@ $(function(){initNavTree('dc/dee/memaddr_8h_source.html','../../'); initResizabl
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">    9</a></span>  <span class="keyword">class </span><a class="code hl_class" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a> : <span class="keyword">public</span> <a class="code hl_struct" href="../../db/d87/structwinapi_1_1detail_1_1PointerLike.html">detail::PointerLike</a></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>      <span class="keyword">using </span>integer_type = uintptr_t;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>      <span class="keyword">using </span>pointer_type = <span class="keywordtype">void</span>*;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>      <span class="keyword">using </span>detail::PointerLike::PointerLike;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>      pointer_type m_ = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  };</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>      <span class="keyword">using </span>detail::PointerLike::PointerLike;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>      <span class="keyword">friend</span> std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, <a class="code hl_class" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a> <span class="keyword">const</span>&amp; handle);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  };</div>
 </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>} <span class="comment">// namespace winapi</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keyword">inline</span> std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, <a class="code hl_class" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a> <span class="keyword">const</span>&amp; handle) {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    os &lt;&lt; fmt::format(<span class="stringliteral">&quot;MemoryAddress(0x{:x})&quot;</span>, handle.as_integer());</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordflow">return</span> os;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>} <span class="comment">// namespace winapi</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../d3/df8/structfmt_1_1formatter_3_01winapi_1_1MemoryAddress_01_4.html">   23</a></span><span class="keyword">template</span> &lt;&gt; <span class="keyword">struct </span>fmt::formatter&lt;winapi::MemoryAddress&gt; : <a class="code hl_struct" href="../../db/d58/structwinapi_1_1utility_1_1basic__ostream__formatter.html">winapi::utility::ostream_formatter</a> {};</div>
 <div class="ttc" id="aclasswinapi_1_1MemoryAddress_html"><div class="ttname"><a href="../../d7/d70/classwinapi_1_1MemoryAddress.html">winapi::MemoryAddress</a></div><div class="ttdef"><b>Definition</b> <a href="#l00009">memaddr.h:10</a></div></div>
 <div class="ttc" id="astructwinapi_1_1detail_1_1PointerLike_html"><div class="ttname"><a href="../../db/d87/structwinapi_1_1detail_1_1PointerLike.html">winapi::detail::PointerLike</a></div><div class="ttdef"><b>Definition</b> <a href="../../d5/d88/pointerlike_8h_source.html#l00009">pointerlike.h:10</a></div></div>
+<div class="ttc" id="astructwinapi_1_1utility_1_1basic__ostream__formatter_html"><div class="ttname"><a href="../../db/d58/structwinapi_1_1utility_1_1basic__ostream__formatter.html">winapi::utility::basic_ostream_formatter</a></div><div class="ttdef"><b>Definition</b> <a href="../../d6/d45/formatters_8h_source.html#l00010">formatters.h:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
