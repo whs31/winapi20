@@ -1,10 +1,16 @@
 #pragma once
 
 #include <cstdint>
+#include <set>
 #include <string>
 #include <vector>
 #include <optional>
+#include <algorithm>
 #include <winapi20/detail/export.h>
+
+typedef struct tagPROCESSENTRY32W PROCESSENTRY32W;
+typedef struct tagMODULEENTRY32W MODULEENTRY32W;
+struct SnapshotIterator;
 
 namespace winapi::th32
 {
@@ -17,6 +23,8 @@ namespace winapi::th32
    */
   struct WINAPI20_EXPORT ProcessEntry
   {
+    using raw_type = PROCESSENTRY32W;
+
     /// \brief The process ID.
     uint32_t pid;
 
@@ -29,8 +37,42 @@ namespace winapi::th32
     /// \brief The base priority of any threads started by this process.
     int64_t thread_base_priority;
 
-    /// \brief The name of the executable file associated with the process.
+    /// \brief A handle to the module in the context of the owning process.
+    void* module;
+
+    /// \brief The module name.
     std::string name;
+
+    /// \brief The module path.
+    std::string path;
+
+    [[nodiscard]] static auto from_raw(raw_type const& entry) -> ProcessEntry;
+  };
+
+  /**
+   * \brief Describes an entry from a list of the modules belonging to the specified process.
+   * \see https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-moduleentry32w
+   */
+  struct WINAPI20_EXPORT ModuleEntry
+  {
+    using raw_type = MODULEENTRY32W;
+
+    /// \brief The identifier of the process whose modules are to be examined.
+    uint32_t pid;
+
+    /// \brief The base address of the module in the context of the owning process.
+    uintptr_t base_address;
+
+    /// \brief The size of the module, in bytes.
+    size_t size;
+
+    /// \brief The name of the module.
+    std::string name;
+
+    /// \brief The path of the module.
+    std::string path;
+
+    [[nodiscard]] static auto from_raw(raw_type const& entry) -> ModuleEntry;
   };
 
   class WINAPI20_EXPORT Snapshot
@@ -80,18 +122,66 @@ namespace winapi::th32
 
       [[nodiscard]] auto valid() const noexcept -> bool;
       [[nodiscard]] auto processes() const noexcept(false) -> std::vector<ProcessEntry>;
-      [[nodiscard]] auto process_by_name(std::string_view name, CaseSensitivity cs) const noexcept(false) -> std::optional<ProcessEntry>;
+      [[nodiscard]] auto modules() const noexcept(false) -> std::vector<ModuleEntry>;
+
+      template <typename T>
+      [[nodiscard]] auto entries() const noexcept(false) -> std::vector<T>;
+
+      template <typename T>
+      [[nodiscard]] auto find_by_name(
+          std::string_view name,
+          CaseSensitivity cs = CaseSensitivity::CaseInsensitive
+      ) const noexcept(false) -> std::optional<T>;
 
       inline explicit operator bool() const noexcept { return this->valid(); }
 
-    protected:
-      [[nodiscard]] auto first() const noexcept(false) -> ProcessEntry;
-      [[nodiscard]] auto next() const noexcept(false) -> std::optional<ProcessEntry>;
+      friend ::SnapshotIterator;
 
     private:
       IncludeFlags m_flags;
       uint32_t m_pid;
       void* m_handle;
-      bool mutable m_processes_valid;
+      std::set<IncludeFlags> mutable m_flags_valid;
   };
+}
+
+namespace winapi::th32
+{
+  template <typename T>
+  inline auto Snapshot::entries() const noexcept(false) -> std::vector<T>
+  {
+    static_assert(
+        std::is_same_v<T, ProcessEntry> or std::is_same_v<T, ModuleEntry>,
+        "Type must be either ProcessEntry or ModuleEntry"
+    );
+    if constexpr(std::is_same_v<T, ProcessEntry>)
+      return this->processes();
+    if constexpr(std::is_same_v<T, ModuleEntry>)
+      return this->modules();
+  }
+
+  template <typename T>
+  inline auto Snapshot::find_by_name(
+    std::string_view name,
+    Snapshot::CaseSensitivity cs
+  ) const noexcept(false) -> std::optional<T>
+  {
+    auto to_lowercase = [](std::string_view str) -> std::string {
+      std::string result;
+      result.resize(str.size());
+      std::transform(str.begin(), str.end(), result.begin(), ::tolower);
+      return result;
+    };
+
+    if(not this->m_flags_valid.contains(IncludeFlags::Process))
+      std::ignore = this->processes();
+
+    auto name_cs = std::string(name);
+    if(cs == CaseSensitivity::CaseInsensitive)
+      name_cs = to_lowercase(name_cs);
+    for(auto const& entry : this->entries<T>())
+      if(cs == CaseSensitivity::CaseSensitive ? name_cs == entry.name : name_cs == to_lowercase(entry.name))
+        return entry;
+    return std::nullopt;
+  }
 }

@@ -1,4 +1,5 @@
 #include <winapi20/impl/tlhelp32_impl.h>
+
 #include <winapi20/impl/errhandlingapi_impl.h>
 #include <winapi20/detail/exception.h>
 #include <winapi20/detail/windows_headers.h>
@@ -18,13 +19,78 @@
 using winapi::enums::operator&;
 using winapi::enums::operator|;
 
+using namespace winapi::th32;
+using enum Snapshot::IncludeFlags;
+
+struct SnapshotIterator
+{
+  template <bool option, typename T, typename F>
+  [[nodiscard]] static auto iterator(
+      Snapshot const* snapshot,
+      Snapshot::IncludeFlags flag,
+      F f
+  ) -> std::conditional_t<option, std::optional<T>, T>
+  {
+    if(not *snapshot)
+      throw winapi::windows_exception("snapshot is not valid");
+
+    if(not static_cast<std::underlying_type_t<Snapshot::IncludeFlags>>(snapshot->flags() & flag))
+      throw winapi::windows_exception("snapshot contains no processes. specify IncludeFlags correctly");
+
+    typename T::raw_type entry;
+    entry.dwSize = sizeof(typename T::raw_type);
+    if(not f(snapshot->handle_raw(), &entry)) {
+      if constexpr(option)
+        return std::nullopt;
+      else
+        throw winapi::windows_exception(winapi::last_error_string());
+    }
+    return T::from_raw(entry);
+  }
+
+  template <typename T, typename F1, typename F2>
+  [[nodiscard]] static auto collect(Snapshot const* snapshot, Snapshot::IncludeFlags flag, F1 f1, F2 f2) -> std::vector<T>
+  {
+    std::vector<T> entries;
+    auto entry = std::make_optional<T>(iterator<false, T>(snapshot, flag, f1));
+    if(not entry)
+      return entries;
+    while(entry) {
+      entries.push_back(*entry);
+      entry = iterator<true, T>(snapshot, flag, f2);
+    }
+    snapshot->m_flags_valid.insert(flag);
+    return entries;
+  }
+};
+
 namespace winapi::th32
 {
+  auto ProcessEntry::from_raw(PROCESSENTRY32W const& entry) -> ProcessEntry {
+    return {
+        .pid = entry.th32ProcessID,
+        .parent_pid = entry.th32ParentProcessID,
+        .thread_count = entry.cntThreads,
+        .thread_base_priority = entry.pcPriClassBase,
+        .name = winapi::detail::into_utf8(entry.szExeFile)
+    };
+  }
+
+  auto ModuleEntry::from_raw(MODULEENTRY32W const& entry) -> ModuleEntry {
+    return {
+        .pid = entry.th32ProcessID,
+        .base_address = reinterpret_cast<uintptr_t>(entry.modBaseAddr),
+        .size = entry.modBaseSize,
+        .name = detail::into_utf8(entry.szModule),
+        .path = detail::into_utf8(entry.szExePath)
+    };
+  }
+
   Snapshot::Snapshot(Snapshot::IncludeFlags flags, uint32_t pid) noexcept(false)
     : m_flags(flags)
     , m_pid(pid)
     , m_handle(nullptr)
-    , m_processes_valid(false)
+    , m_flags_valid(std::set<Snapshot::IncludeFlags>())
   {
     this->m_handle = ::CreateToolhelp32Snapshot(static_cast<DWORD>(flags), static_cast<DWORD>(pid));
     if(this->m_handle == INVALID_HANDLE_VALUE)
@@ -39,67 +105,11 @@ namespace winapi::th32
     return this->m_handle != nullptr and this->m_handle != INVALID_HANDLE_VALUE;
   }
 
-  auto Snapshot::first() const noexcept(false) -> ProcessEntry {
-    if(not *this)
-      throw winapi::windows_exception("snapshot is not valid");
-
-    if(not static_cast<std::underlying_type_t<Snapshot::IncludeFlags>>(this->m_flags & Snapshot::IncludeFlags::Process))
-      throw winapi::windows_exception("snapshot contains no processes. specify IncludeFlags::Process");
-
-    auto entry_raw = PROCESSENTRY32W();
-    entry_raw.dwSize = sizeof(PROCESSENTRY32W);
-    if(not ::Process32First(this->m_handle, &entry_raw))
-      throw winapi::windows_exception(winapi::last_error_string());
-    return ProcessEntry {
-      .pid = entry_raw.th32ProcessID,
-      .parent_pid = entry_raw.th32ParentProcessID,
-      .thread_count = entry_raw.cntThreads,
-      .thread_base_priority = entry_raw.pcPriClassBase,
-      .name = detail::into_utf8(entry_raw.szExeFile)
-    };
+  auto Snapshot::processes() const noexcept(false) -> std::vector<ProcessEntry> {
+    return SnapshotIterator::collect<ProcessEntry>(this, IncludeFlags::Process, ::Process32FirstW, ::Process32NextW);
   }
 
-  auto Snapshot::next() const noexcept(false) -> std::optional<ProcessEntry> {
-    if(not *this)
-      throw winapi::windows_exception("snapshot is not valid");
-
-    auto entry_raw = PROCESSENTRY32W();
-    entry_raw.dwSize = sizeof(PROCESSENTRY32W);
-    if(not ::Process32Next(this->m_handle, &entry_raw))
-      return std::nullopt;
-    return ProcessEntry {
-      .pid = entry_raw.th32ProcessID,
-      .parent_pid = entry_raw.th32ParentProcessID,
-      .thread_count = entry_raw.cntThreads,
-      .thread_base_priority = entry_raw.pcPriClassBase,
-      .name = detail::into_utf8(entry_raw.szExeFile)
-    };
-  }
-
-  auto Snapshot::processes() const noexcept(false) -> std::vector<ProcessEntry>
-  {
-    std::vector<ProcessEntry> entries;
-    auto entry = std::make_optional<ProcessEntry>(this->first());
-    while(entry) {
-      entries.push_back(*entry);
-      entry = this->next();
-    }
-    this->m_processes_valid = true;
-    return entries;
-  }
-
-  auto Snapshot::process_by_name(string_view name, CaseSensitivity cs) const noexcept(false)
-    -> std::optional<ProcessEntry>
-  {
-    if(not this->m_processes_valid)
-      std::ignore = this->processes();
-
-    auto name_cs = string(name);
-    if(cs == CaseSensitivity::CaseInsensitive)
-      name_cs = winapi::utility::to_lowercase(name_cs);
-    for(auto const& entry : this->processes())
-      if(cs == CaseSensitivity::CaseSensitive ? name_cs == entry.name : name_cs == winapi::utility::to_lowercase(entry.name))
-        return entry;
-    return std::nullopt;
+  auto Snapshot::modules() const noexcept(false) -> std::vector<ModuleEntry> {
+    return SnapshotIterator::collect<ModuleEntry>(this, IncludeFlags::Module, ::Module32FirstW, ::Module32NextW);
   }
 } // namespace winapi::th32
