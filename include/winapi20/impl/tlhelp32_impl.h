@@ -17,6 +17,7 @@ typedef struct tagPROCESSENTRY32W PROCESSENTRY32W;
 typedef struct tagMODULEENTRY32W MODULEENTRY32W;
 struct SnapshotIterator;
 
+/// \brief Namespace for functions and types originating from <tt>tlhelp32.h</tt> header file in the Windows API.
 namespace winapi::th32
 {
   /**
