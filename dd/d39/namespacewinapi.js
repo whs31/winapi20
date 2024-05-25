@@ -1,5 +1,7 @@
 var namespacewinapi =
 [
+    [ "memory", "de/d9e/namespacewinapi_1_1memory.html", "de/d9e/namespacewinapi_1_1memory" ],
+    [ "th32", "de/d82/namespacewinapi_1_1th32.html", "de/d82/namespacewinapi_1_1th32" ],
     [ "ConsoleHost", "d3/d0f/classwinapi_1_1ConsoleHost.html", null ],
     [ "Function", "dd/de8/classwinapi_1_1Function.html", null ],
     [ "Handle", "dd/d5e/structwinapi_1_1Handle.html", null ],

@@ -16,6 +16,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "HWProfileInfo", "d3/d01/structwinapi_1_1HWProfileInfo.html", null ],
+    [ "MemoryBasicInformation", "de/d9e/namespacewinapi_1_1memory.html#d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation", null ],
     [ "ModuleEntry", "d7/de2/structwinapi_1_1th32_1_1ModuleEntry.html", null ],
     [ "PointerLike", "db/d87/structwinapi_1_1detail_1_1PointerLike.html", [
       [ "Function", "dd/de8/classwinapi_1_1Function.html", null ],

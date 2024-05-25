@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['terminate_0',['Terminate',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550dea056fa3d840f48b7bfbbd68c19a4797b3',1,'winapi']]],
-  ['thread_1',['Thread',['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295fad97477d6d8a838ead9348185bb5b6742',1,'winapi::th32::Snapshot']]]
+  ['private_0',['Private',['../de/d9e/namespacewinapi_1_1memory.html#aa6f342ec01aac4f1e5b46d8b092309a5a47f9082fc380ca62d531096aa1d110f1',1,'winapi::memory']]],
+  ['process_1',['Process',['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295fab6ec7abeb6ae29cc35a4b47475e12afe',1,'winapi::th32::Snapshot']]]
 ];

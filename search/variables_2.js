@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['guid_0',['guid',['../d3/d01/structwinapi_1_1HWProfileInfo.html#a7a233f891c140ab125ec4894a9ea3371',1,'winapi::HWProfileInfo']]]
+  ['dock_5finfo_0',['dock_info',['../d3/d01/structwinapi_1_1HWProfileInfo.html#a1020c0d27a096aed6fb2c53f467bcba1',1,'winapi::HWProfileInfo']]]
 ];

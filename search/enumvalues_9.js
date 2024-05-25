@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['setinformation_0',['SetInformation',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550deafd76c8a174c8459590eb48380c4edc40',1,'winapi']]],
-  ['setquota_1',['SetQuota',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550deacd7befb4aef8f46bbb823af1d99cde83',1,'winapi']]],
-  ['suspendresume_2',['SuspendResume',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550dea225c7a85340534236811e3cae22e885e',1,'winapi']]],
-  ['synchronize_3',['Synchronize',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550deab18b960c57a784907dc1cd97ba8a8065',1,'winapi']]]
+  ['noaccess_0',['NoAccess',['../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a88a12f09800c497f30b98781952b50f2',1,'winapi::memory']]],
+  ['nocache_1',['NoCache',['../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a9c2a36ed94b288fe8f5ce5b6b16d3fdd',1,'winapi::memory']]]
 ];

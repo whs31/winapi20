@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['base_5faddress_0',['base_address',['../d7/de2/structwinapi_1_1th32_1_1ModuleEntry.html#ad87e1d68ae75284611e76bd40d1287f0',1,'winapi::th32::ModuleEntry']]]
+  ['allocation_5fbase_0',['allocation_base',['../de/d9e/namespacewinapi_1_1memory.html#a62c886b73c19cba1f16433260a0b1279',1,'winapi::memory::MemoryBasicInformation']]],
+  ['allocation_5fprotection_1',['allocation_protection',['../de/d9e/namespacewinapi_1_1memory.html#aded4eaaeb5811cc886ccfbdc7c37e26d',1,'winapi::memory::MemoryBasicInformation']]]
 ];

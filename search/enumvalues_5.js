@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['module_0',['Module',['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295fae55f75a29310d7b60f7ac1d390c8ae42',1,'winapi::th32::Snapshot']]],
-  ['module32_1',['Module32',['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295fa88ef6049befa7e3f43ae4e1d8c27df0e',1,'winapi::th32::Snapshot']]]
+  ['guard_0',['Guard',['../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a57cc9b210b0e3ff7b28013cec3d36acf',1,'winapi::memory']]]
 ];

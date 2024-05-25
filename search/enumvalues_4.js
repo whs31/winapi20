@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inherit_0',['Inherit',['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295fac49484faf79e2388b580e49444d6ac11',1,'winapi::th32::Snapshot']]]
+  ['free_0',['Free',['../de/d9e/namespacewinapi_1_1memory.html#aa6f342ec01aac4f1e5b46d8b092309a5ab24ce0cd392a5b0b8dedc66c25213594',1,'winapi::memory']]]
 ];
