@@ -155,6 +155,10 @@ Enumerations</h2></td></tr>
 , <b>EnclaveDecommit</b> = EnclaveMask
 , <b>EnclaveSsFirst</b> = EnclaveMask | 1
 , <b>EnclaveSsRest</b> = EnclaveMask | 2
+, <br />
+&#160;&#160;<a class="el" href="#a2c65fec4eb6f7d1d11b07f7862bfbb09a814aea654deded182376d2b5d42bfc09">AllRead</a> = Readonly | ExecuteRead | ReadWrite | ExecuteReadWrite | WriteCopy | ExecuteWriteCopy
+, <a class="el" href="#a2c65fec4eb6f7d1d11b07f7862bfbb09adddd44f4d0d216c241ce87fe414d13d6">AllWrite</a> = ExecuteReadWrite | ExecuteWriteCopy | ReadWrite | WriteCopy
+, <a class="el" href="#a2c65fec4eb6f7d1d11b07f7862bfbb09af0fdc3cfbabd3a6e71dc71599bad5f81">AllExecute</a> = ExecuteRead | ExecuteReadWrite | ExecuteWriteCopy | Execute
 <br />
  }</td></tr>
 <tr class="separator:a2c65fec4eb6f7d1d11b07f7862bfbb09"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -258,6 +262,12 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a2c65fec4eb6f7d1d11b07f7862bfbb09a123cc6fa43144499490bfbcfe1b9ef98" name="a2c65fec4eb6f7d1d11b07f7862bfbb09a123cc6fa43144499490bfbcfe1b9ef98"></a>TargetsInvalid&#160;</td><td class="fielddoc"><p>Sets all locations in the pages as invalid targets for CFG. </p>
 <p>Used along with any execute page protection like Execute, ExecuteRead, ExecuteReadWrite and ExecuteWriteCopy. Any indirect call to locations in those pages will fail CFG checks and the process will be terminated. The default behavior for executable pages allocated is to be marked valid call targets for CFG. </p><dl class="section note"><dt>Note</dt><dd><b><em>This flag is not supported by the <code>VirtualAlloc</code> or <code>VirtualAllocEx</code> functions in original WinAPI.</em></b> </dd></dl>
 </td></tr>
+<tr><td class="fieldname"><a id="a2c65fec4eb6f7d1d11b07f7862bfbb09a814aea654deded182376d2b5d42bfc09" name="a2c65fec4eb6f7d1d11b07f7862bfbb09a814aea654deded182376d2b5d42bfc09"></a>AllRead&#160;</td><td class="fielddoc"><p>Shortcut for <b>Read | ExecuteRead | ReadWrite | ExecuteReadWrite | WriteCopy | ExecuteWriteCopy</b>. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2c65fec4eb6f7d1d11b07f7862bfbb09adddd44f4d0d216c241ce87fe414d13d6" name="a2c65fec4eb6f7d1d11b07f7862bfbb09adddd44f4d0d216c241ce87fe414d13d6"></a>AllWrite&#160;</td><td class="fielddoc"><p>Shortcut for <b>ExecuteReadWrite | ExecuteWriteCopy | ReadWrite | WriteCopy</b>. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2c65fec4eb6f7d1d11b07f7862bfbb09af0fdc3cfbabd3a6e71dc71599bad5f81" name="a2c65fec4eb6f7d1d11b07f7862bfbb09af0fdc3cfbabd3a6e71dc71599bad5f81"></a>AllExecute&#160;</td><td class="fielddoc"><p>Shortcut for <b>ExecuteRead | ExecuteReadWrite | ExecuteWriteCopy | Execute</b>. </p>
+</td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d9b/memoryapi__impl_8h_source.html#l00022">22</a> of file <a class="el" href="../../d9/d9b/memoryapi__impl_8h_source.html">memoryapi_impl.h</a>.</p>
@@ -308,7 +318,7 @@ Enumerations</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d9b/memoryapi__impl_8h_source.html#l00134">134</a> of file <a class="el" href="../../d9/d9b/memoryapi__impl_8h_source.html">memoryapi_impl.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d9b/memoryapi__impl_8h_source.html#l00149">149</a> of file <a class="el" href="../../d9/d9b/memoryapi__impl_8h_source.html">memoryapi_impl.h</a>.</p>
 
 </div>
 </div>

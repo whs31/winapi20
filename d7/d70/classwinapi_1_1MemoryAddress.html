@@ -318,13 +318,13 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns true if the specified memory protection is valid for the specified address. </p>
-<p>Example values for different operations: <br  />
+<p>Executes query to determine if the specified memory protection is valid for the specified address. Do not invoke this method frequently. Example values for different operations: <br  />
 </p><ul>
-<li>Read: <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a060d84e58c348e44da6637e57e2e9201" title="Enables read-only access to the committed region of pages.">memory::MemoryProtection::Readonly</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09ac26b597863a6aed885013205f3049c58" title="Enables execute or read-only access to the committed region of pages.">memory::MemoryProtection::ExecuteRead</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a70a2a84088d405a2e3f1e3accaa16723" title="Enables read-only or read/write access to the committed region of pages.">memory::MemoryProtection::ReadWrite</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09ab4082047068113d3e76ff32df8842b38" title="Enables execute, read-only, or read/write access to the committed region of pages.">memory::MemoryProtection::ExecuteReadWrite</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a1d1f286d4bcef3fa32fb8be7682c1f35" title="Enables read-only or copy-on-write access to a mapped view of a file mapping object.">memory::MemoryProtection::WriteCopy</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09aeda67591cccf6542fcd62a113dadbf81" title="Enables execute, read-only, or copy-on-write access to a mapped view of a file mapping object.">memory::MemoryProtection::ExecuteWriteCopy</a> <br  />
+<li>Read: Readonly | ExecuteRead | ReadWrite | ExecuteReadWrite | WriteCopy | ExecuteWriteCopy <br  />
 </li>
-<li>Write: <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09ab4082047068113d3e76ff32df8842b38" title="Enables execute, read-only, or read/write access to the committed region of pages.">memory::MemoryProtection::ExecuteReadWrite</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09aeda67591cccf6542fcd62a113dadbf81" title="Enables execute, read-only, or copy-on-write access to a mapped view of a file mapping object.">memory::MemoryProtection::ExecuteWriteCopy</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a70a2a84088d405a2e3f1e3accaa16723" title="Enables read-only or read/write access to the committed region of pages.">memory::MemoryProtection::ReadWrite</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a1d1f286d4bcef3fa32fb8be7682c1f35" title="Enables read-only or copy-on-write access to a mapped view of a file mapping object.">memory::MemoryProtection::WriteCopy</a> <br  />
+<li>Write: ExecuteReadWrite | ExecuteWriteCopy | ReadWrite | WriteCopy <br  />
 </li>
-<li>Execute: <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09ac26b597863a6aed885013205f3049c58" title="Enables execute or read-only access to the committed region of pages.">memory::MemoryProtection::ExecuteRead</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09ab4082047068113d3e76ff32df8842b38" title="Enables execute, read-only, or read/write access to the committed region of pages.">memory::MemoryProtection::ExecuteReadWrite</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09aeda67591cccf6542fcd62a113dadbf81" title="Enables execute, read-only, or copy-on-write access to a mapped view of a file mapping object.">memory::MemoryProtection::ExecuteWriteCopy</a> | <a class="el" href="../../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a40cd014b7b6251e3a22e6a45a73a64e1" title="Enables execute access to the committed region of pages.">memory::MemoryProtection::Execute</a> <br  />
+<li>Execute: ExecuteRead | ExecuteReadWrite | ExecuteWriteCopy | Execute <br  />
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">protection</td><td>Flags specifying the desired memory protection. </td></tr>
@@ -614,7 +614,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00047">47</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00050">50</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
 
 </div>
 </div>

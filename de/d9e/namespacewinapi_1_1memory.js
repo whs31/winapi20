@@ -29,7 +29,10 @@ var namespacewinapi_1_1memory =
       [ "EnclaveMask", "de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a8b2b44054a401af9bfd6a767206d1cfa", null ],
       [ "EnclaveDecommit", "de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09aec5f934921bc621ea4af2cd4945dc34e", null ],
       [ "EnclaveSsFirst", "de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a97f2618372eac80858200e219980a275", null ],
-      [ "EnclaveSsRest", "de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a1ae6b1aab0cf00056b52849ba48ea41f", null ]
+      [ "EnclaveSsRest", "de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a1ae6b1aab0cf00056b52849ba48ea41f", null ],
+      [ "AllRead", "de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a814aea654deded182376d2b5d42bfc09", null ],
+      [ "AllWrite", "de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09adddd44f4d0d216c241ce87fe414d13d6", null ],
+      [ "AllExecute", "de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09af0fdc3cfbabd3a6e71dc71599bad5f81", null ]
     ] ],
     [ "MemoryState", "de/d9e/namespacewinapi_1_1memory.html#aa6f342ec01aac4f1e5b46d8b092309a5", [
       [ "Commit", "de/d9e/namespacewinapi_1_1memory.html#aa6f342ec01aac4f1e5b46d8b092309a5a59d5b10c3a447f036d85cb5ce524c96c", null ],
