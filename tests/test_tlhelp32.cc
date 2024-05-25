@@ -22,8 +22,8 @@ TEST(TLHelp32, FindProcessByName)
   EXPECT_TRUE(pid.has_value());
   EXPECT_TRUE(pid->pid > 0);
 
-  auto failed = snapshot.find_first_by_name<th32::ProcessEntry>("ExPloRer.exe", CaseSensitive);
-  EXPECT_FALSE(failed.has_value());
+  EXPECT_FALSE(snapshot.find_last_by_name<th32::ProcessEntry>("ExPloRer.exe", CaseSensitive).has_value());
+  EXPECT_TRUE(snapshot.find_by_name<th32::ProcessEntry>("ExPloRer.exe", CaseSensitive).empty());
 }
 
 TEST(TLHelp32, FindModuleByName)

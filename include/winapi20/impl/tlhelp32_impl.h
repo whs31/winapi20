@@ -226,6 +226,6 @@ namespace winapi::th32
     for(auto const& entry : vec)
       if(utility::sensitive_compare(name, entry.name, cs))
         res.push_back(entry);
-    return entries;
+    return res;
   }
 }
