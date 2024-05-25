@@ -15,14 +15,10 @@ namespace winapi::utility
     return result;
   }
 
-  inline auto sensitive_compare(std::string const& lhs, std::string const& rhs, CaseSensitivity cs) -> bool {
-    auto lhs_ = std::string(lhs);
-    if(cs == CaseSensitivity::CaseInsensitive)
-      lhs_ = to_lowercase(lhs_);
-    return cs == CaseSensitivity::CaseSensitive ? lhs_ == rhs : lhs_ == to_lowercase(rhs);
-  }
-
-  inline auto sensitive_compare(std::string_view const lhs, std::string const& rhs, CaseSensitivity cs) -> bool {
+  template <typename T, typename U>
+  requires std::is_same_v<std::decay_t<T>, std::string>
+      or std::is_same_v<std::decay_t<T>, std::string_view>
+  inline auto sensitive_compare(T const& lhs, U const& rhs, CaseSensitivity cs) -> bool {
     auto lhs_ = std::string(lhs);
     if(cs == CaseSensitivity::CaseInsensitive)
       lhs_ = to_lowercase(lhs_);
