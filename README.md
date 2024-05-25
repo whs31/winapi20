@@ -34,10 +34,10 @@ auto modules = module_snapshot.modules();
 modules.erase(std::remove_if(
     modules.begin(),
     modules.end(),
-    [](auto& m) { return m.path.find("dota 2 beta") == std::string::npos; }), modules.end()
+    [](auto& m) { return m.path.string().find("dota 2 beta") == std::string::npos; }), modules.end()
 );
 fmt::print("listing game modules:\n");
-fmt::print("{}", fmt::join(modules, "\n\t"));
+fmt::print("\t{}", fmt::join(modules, "\n\t"));
 
 // find module by name in process
 auto client_dll = module_snapshot.find_first_by_name<ModuleEntry>("client.dll");

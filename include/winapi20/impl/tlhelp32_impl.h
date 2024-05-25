@@ -7,6 +7,7 @@
 #include <optional>
 #include <algorithm>
 #include <iosfwd>
+#include <filesystem>
 #include <winapi20/detail/export.h>
 #include <winapi20/detail/definitions.h>
 #include <winapi20/detail/template_util.h>
@@ -70,7 +71,7 @@ namespace winapi::th32
     std::string name;
 
     /// \brief The path of the module.
-    std::string path;
+    std::filesystem::path path;
 
     [[nodiscard]] static auto from_raw(raw_type const& entry) -> ModuleEntry;
 

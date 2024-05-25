@@ -98,7 +98,7 @@ namespace winapi::th32
         .size = entry.modBaseSize,
         .handle = Handle(entry.hModule, Cleanup::Manual),
         .name = detail::into_utf8(entry.szModule),
-        .path = detail::into_utf8(entry.szExePath)
+        .path = std::filesystem::path(detail::into_utf8(entry.szExePath))
     };
   }
 
@@ -111,7 +111,7 @@ namespace winapi::th32
         entry.size,
         entry.handle,
         entry.name,
-        entry.path
+        entry.path.string()
     );
     return stream;
   }
