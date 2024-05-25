@@ -1,5 +1,6 @@
 #include <winapi20/impl/tlhelp32_impl.h>
 
+#include <iostream>
 #include <winapi20/impl/errhandlingapi_impl.h>
 #include <winapi20/detail/exception.h>
 #include <winapi20/detail/windows_headers.h>
@@ -76,6 +77,14 @@ namespace winapi::th32
     };
   }
 
+  std::ostream& operator<<(std::ostream& stream, const ProcessEntry &entry) {
+    stream << "ProcessEntry { pid: " << entry.pid << ", parent_pid: " << entry.parent_pid
+           << ", thread_count: " << entry.thread_count
+           << ", thread_base_priority: " << entry.thread_base_priority
+           << ", name: " << entry.name << " }";
+    return stream;
+  }
+
   auto ModuleEntry::from_raw(MODULEENTRY32W const& entry) -> ModuleEntry {
     return {
         .pid = entry.th32ProcessID,
@@ -84,6 +93,15 @@ namespace winapi::th32
         .name = detail::into_utf8(entry.szModule),
         .path = detail::into_utf8(entry.szExePath)
     };
+  }
+
+  std::ostream& operator<<(std::ostream &stream, const ModuleEntry &entry) {
+    stream << "ModuleEntry { pid: " << entry.pid
+           << ", base_address: " << entry.base_address
+           << ", size: " << entry.size
+           << ", name: " << entry.name
+           << ", path: " << entry.path << " }";
+    return stream;
   }
 
   Snapshot::Snapshot(Snapshot::IncludeFlags flags, uint32_t pid) noexcept(false)

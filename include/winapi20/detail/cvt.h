@@ -76,7 +76,7 @@ namespace winapi
     }
   }
 
-  namespace enums
+  inline namespace enums
   {
     template <typename T>
     requires(std::is_enum_v<T>)

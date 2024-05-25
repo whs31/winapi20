@@ -6,7 +6,10 @@
 #include <vector>
 #include <optional>
 #include <algorithm>
+#include <iosfwd>
 #include <winapi20/detail/export.h>
+#include <winapi20/detail/definitions.h>
+#include <winapi20/detail/template_util.h>
 
 typedef struct tagPROCESSENTRY32W PROCESSENTRY32W;
 typedef struct tagMODULEENTRY32W MODULEENTRY32W;
@@ -47,6 +50,8 @@ namespace winapi::th32
     std::string path;
 
     [[nodiscard]] static auto from_raw(raw_type const& entry) -> ProcessEntry;
+
+    WINAPI20_EXPORT friend std::ostream& operator<<(std::ostream& stream, ProcessEntry const& entry);
   };
 
   /**
@@ -73,6 +78,8 @@ namespace winapi::th32
     std::string path;
 
     [[nodiscard]] static auto from_raw(raw_type const& entry) -> ModuleEntry;
+
+    WINAPI20_EXPORT friend std::ostream& operator<<(std::ostream& stream, ModuleEntry const& entry);
   };
 
   class WINAPI20_EXPORT Snapshot
@@ -107,12 +114,6 @@ namespace winapi::th32
         Inherit  = 0x80000000
       };
 
-      enum class CaseSensitivity
-      {
-        CaseSensitive,
-        CaseInsensitive
-      };
-
       explicit Snapshot(IncludeFlags flags, uint32_t pid) noexcept(false);
       ~Snapshot();
 
@@ -128,10 +129,22 @@ namespace winapi::th32
       [[nodiscard]] auto entries() const noexcept(false) -> std::vector<T>;
 
       template <typename T>
-      [[nodiscard]] auto find_by_name(
+      [[nodiscard]] auto find_first_by_name(
           std::string_view name,
           CaseSensitivity cs = CaseSensitivity::CaseInsensitive
       ) const noexcept(false) -> std::optional<T>;
+
+      template <typename T>
+      [[nodiscard]] auto find_last_by_name(
+          std::string_view name,
+          CaseSensitivity cs = CaseSensitivity::CaseInsensitive
+      ) const noexcept(false) -> std::optional<T>;
+
+      template <typename T>
+      [[nodiscard]] auto find_by_name(
+          std::string_view name,
+          CaseSensitivity cs = CaseSensitivity::CaseInsensitive
+      ) const noexcept(false) -> std::vector<T>;
 
       inline explicit operator bool() const noexcept { return this->valid(); }
 
@@ -161,27 +174,58 @@ namespace winapi::th32
   }
 
   template <typename T>
-  inline auto Snapshot::find_by_name(
+  inline auto Snapshot::find_first_by_name(
     std::string_view name,
-    Snapshot::CaseSensitivity cs
+    CaseSensitivity cs
   ) const noexcept(false) -> std::optional<T>
   {
-    auto to_lowercase = [](std::string_view str) -> std::string {
-      std::string result;
-      result.resize(str.size());
-      std::transform(str.begin(), str.end(), result.begin(), ::tolower);
-      return result;
-    };
-
-    if(not this->m_flags_valid.contains(IncludeFlags::Process))
-      std::ignore = this->processes();
-
-    auto name_cs = std::string(name);
-    if(cs == CaseSensitivity::CaseInsensitive)
-      name_cs = to_lowercase(name_cs);
-    for(auto const& entry : this->entries<T>())
-      if(cs == CaseSensitivity::CaseSensitive ? name_cs == entry.name : name_cs == to_lowercase(entry.name))
-        return entry;
+    auto vec = this->entries<T>();
+    if(vec.empty())
+      return std::nullopt;
+    auto entry = std::find_if(
+        vec.begin(),
+        vec.end(),
+        [&](auto const& entry) -> bool {
+          return utility::sensitive_compare(name, entry.name, cs);
+        });
+    if(entry != vec.end())
+      return *entry;
     return std::nullopt;
+  }
+
+  template <typename T>
+  inline auto Snapshot::find_last_by_name(
+    std::string_view name,
+    CaseSensitivity cs
+  ) const noexcept(false) -> std::optional<T>
+  {
+    auto vec = this->entries<T>();
+    if(vec.empty())
+      return std::nullopt;
+    auto entry = std::find_if(
+        vec.rbegin(),
+        vec.rend(),
+        [&](auto const& entry) -> bool {
+          return utility::sensitive_compare(name, entry.name, cs);
+        });
+    if(entry != vec.rend())
+      return *entry;
+    return std::nullopt;
+  }
+
+  template <typename T>
+  inline auto Snapshot::find_by_name(
+    std::string_view name,
+    CaseSensitivity cs
+  ) const noexcept(false) -> std::vector<T>
+  {
+    auto res = std::vector<T>();
+    auto vec = this->entries<T>();
+    if(vec.empty())
+      return res;
+    for(auto const& entry : vec)
+      if(utility::sensitive_compare(name, entry.name, cs))
+        res.push_back(entry);
+    return entries;
   }
 }
