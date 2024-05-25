@@ -51,4 +51,16 @@ fmt::print("client.dll base address: {}\n", client_dll->base_address);
 return 0;
 ```
 
+Possible output:
+```shell
+found dota2.exe: ProcessEntry { pid: 346156, parent_pid: 517408, thread_count: 82, thread_base_priority: 8, name: dota2.exe }
+listing game modules:
+    ModuleEntry { pid: 346156, base_address: 140699576827904, size: 2416640, handle: Handle(0x7ff72c4c0000), name: dota2.exe, path: C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\bin\win64\dota2.exe }
+    ... 
+    ModuleEntry { pid: 346156, base_address: ...
+    
+found client.dll: ModuleEntry { pid: 346156, base_address: 140722899255296, size: 85884928, handle: Handle(0x7ffc9a6c0000), name: client.dll, path: C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\dota\bin\win64\client.dll }
+client.dll handle: Handle(0x7ffc9a6c0000)
+client.dll base address: 140722899255296
+```
 [Source Code](./examples/read_process_memory.cc)
