@@ -17,10 +17,12 @@ class WinAPI20Recipe(ConanFile):
     options = {
         "shared": [True, False],
         "test": [True, False],
+        "examples": [True, False],
     }
     default_options = {
         "shared": True,
-        "test": False
+        "test": False,
+        "examples": False,
     }
 
     exports_sources = "*"
@@ -50,6 +52,9 @@ class WinAPI20Recipe(ConanFile):
         tc = CMakeToolchain(self)
         tc.cache_variables["BUILD_SHARED_LIBS"] = self.options.shared
         tc.cache_variables["TESTS"] = self.options.test
+        tc.cache_variables["EXAMPLES"] = self.options.examples
+        print("<> tests: ", self.options.test)
+        print("<> examples: ", self.options.examples)
         tc.generate()
 
     def build(self):

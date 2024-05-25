@@ -11,6 +11,7 @@ project(winapi20
 set(PROJECT_NAMESPACE windows::)
 
 option(TESTS "Enable tests" OFF)
+option(EXAMPLES "Enable examples" OFF)
 option(BUILD_SHARED_LIBS "Build shared library" ON)
 
 if("${CMAKE_GENERATOR}" MATCHES "^Visual Studio")
@@ -95,6 +96,14 @@ if(TESTS)
   endif()
 endif()
 
+if(EXAMPLES)
+  if(WIN32)
+    add_subdirectory(examples)
+  else()
+    message(STATUS "[${PROJECT_NAME}] examples are not supported on non-windows platform")
+  endif()
+endif()
+
 message(STATUS "[${PROJECT_NAME}] installing ${PROJECT_NAME} in namespace ${PROJECT_NAMESPACE}")
 include(GNUInstallDirs)
 include(GenerateExportHeader)
@@ -142,4 +151,5 @@ install(DIRECTORY $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20
 message(STATUS "[${PROJECT_NAME}] configuring ${PROJECT_NAME} done!")
 
 unset(TESTS CACHE)
+unset(EXAMPLES CACHE)
 unset(BUILD_SHARED_LIBS CACHE)
