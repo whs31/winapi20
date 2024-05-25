@@ -25,12 +25,19 @@
 var NAVTREE =
 [
   [ "winapi20", "index.html", [
-    [ "Classes", "annotated.html", [
+    [ "Namespaces", "namespaces.html", [
       [ "Description", "index.html#autotoc_md1", null ],
       [ "Installation", "index.html#autotoc_md2", null ],
       [ "Examples", "index.html#autotoc_md3", [
         [ "Get modules from process", "index.html#autotoc_md4", null ]
       ] ],
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
+      ] ]
+    ] ],
+    [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],

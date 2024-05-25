@@ -1,13 +1,15 @@
 <map id="basic_ostream_formatter&lt; C &gt;" name="basic_ostream_formatter&lt; C &gt;">
-<area shape="rect" id="Node000001" title=" " alt="" coords="224,112,441,137"/>
-<area shape="rect" id="Node000003" href="$dd/daa/structfmt_1_1formatter_3_01winapi_1_1Handle_01_4.html" title=" " alt="" coords="497,5,638,46"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="378,103,516,44,518,49,380,108"/>
-<area shape="rect" id="Node000004" href="$d3/df8/structfmt_1_1formatter_3_01winapi_1_1MemoryAddress_01_4.html" title=" " alt="" coords="497,71,638,111"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="442,106,496,98,496,104,443,111"/>
-<area shape="rect" id="Node000005" href="$dc/d79/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ModuleEntry_01_4.html" title=" " alt="" coords="492,136,643,177"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="447,137,491,143,491,149,446,143"/>
-<area shape="rect" id="Node000006" href="$d1/d78/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ProcessEntry_01_4.html" title=" " alt="" coords="489,201,645,242"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="380,141,517,198,515,203,378,146"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,104,176,145"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,122,223,122,223,127,191,127"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="224,144,441,169"/>
+<area shape="rect" id="Node000003" href="$d2/dac/structfmt_1_1formatter_3_01winapi_1_1Function_01_4.html" title=" " alt="" coords="497,5,638,46"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="364,132,421,96,488,57,513,44,516,49,490,61,423,100,367,137"/>
+<area shape="rect" id="Node000004" href="$dd/daa/structfmt_1_1formatter_3_01winapi_1_1Handle_01_4.html" title=" " alt="" coords="497,71,638,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="395,136,495,108,497,113,396,141"/>
+<area shape="rect" id="Node000005" href="$d3/df8/structfmt_1_1formatter_3_01winapi_1_1MemoryAddress_01_4.html" title=" " alt="" coords="497,136,638,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="457,154,496,154,496,159,457,159"/>
+<area shape="rect" id="Node000006" href="$dc/d79/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ModuleEntry_01_4.html" title=" " alt="" coords="492,201,643,242"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="397,171,492,198,491,203,395,176"/>
+<area shape="rect" id="Node000007" href="$d1/d78/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ProcessEntry_01_4.html" title=" " alt="" coords="489,267,645,307"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="367,176,423,213,490,251,516,264,513,268,488,256,421,217,364,180"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,136,176,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,154,223,154,223,159,191,159"/>
 </map>

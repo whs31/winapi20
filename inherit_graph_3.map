@@ -1,13 +1,15 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,112,85,137"/>
-<area shape="rect" id="Node000001" href="$db/d58/structwinapi_1_1utility_1_1basic__ostream__formatter.html" title=" " alt="" coords="133,112,350,137"/>
-<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="100,122,132,122,132,127,100,127"/>
-<area shape="rect" id="Node000002" href="$dd/daa/structfmt_1_1formatter_3_01winapi_1_1Handle_01_4.html" title=" " alt="" coords="406,5,547,46"/>
-<area shape="poly" id="edge5_Node000001_Node000002" title=" " alt="" coords="287,103,425,44,427,49,289,108"/>
-<area shape="rect" id="Node000003" href="$d3/df8/structfmt_1_1formatter_3_01winapi_1_1MemoryAddress_01_4.html" title=" " alt="" coords="406,71,547,111"/>
-<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="351,106,405,98,405,104,352,111"/>
-<area shape="rect" id="Node000004" href="$dc/d79/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ModuleEntry_01_4.html" title=" " alt="" coords="401,136,552,177"/>
-<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="356,137,400,143,400,149,355,143"/>
-<area shape="rect" id="Node000005" href="$d1/d78/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ProcessEntry_01_4.html" title=" " alt="" coords="398,201,554,242"/>
-<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="289,141,426,198,424,203,287,146"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,144,85,169"/>
+<area shape="rect" id="Node000001" href="$db/d58/structwinapi_1_1utility_1_1basic__ostream__formatter.html" title=" " alt="" coords="133,144,350,169"/>
+<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="100,154,132,154,132,159,100,159"/>
+<area shape="rect" id="Node000002" href="$d2/dac/structfmt_1_1formatter_3_01winapi_1_1Function_01_4.html" title=" " alt="" coords="406,5,547,46"/>
+<area shape="poly" id="edge5_Node000001_Node000002" title=" " alt="" coords="273,132,330,96,397,57,422,44,425,49,399,61,332,100,276,137"/>
+<area shape="rect" id="Node000003" href="$dd/daa/structfmt_1_1formatter_3_01winapi_1_1Handle_01_4.html" title=" " alt="" coords="406,71,547,111"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="304,136,404,108,406,113,305,141"/>
+<area shape="rect" id="Node000004" href="$d3/df8/structfmt_1_1formatter_3_01winapi_1_1MemoryAddress_01_4.html" title=" " alt="" coords="406,136,547,177"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="366,154,405,154,405,159,366,159"/>
+<area shape="rect" id="Node000005" href="$dc/d79/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ModuleEntry_01_4.html" title=" " alt="" coords="401,201,552,242"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="306,171,401,198,400,203,304,176"/>
+<area shape="rect" id="Node000006" href="$d1/d78/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ProcessEntry_01_4.html" title=" " alt="" coords="398,267,554,307"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="276,176,332,213,399,251,425,264,422,268,397,256,330,217,273,180"/>
 </map>

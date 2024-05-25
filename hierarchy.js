@@ -8,6 +8,7 @@ var hierarchy =
     ] ],
     [ "formatter", null, [
       [ "basic_ostream_formatter< C >", "db/d58/structwinapi_1_1utility_1_1basic__ostream__formatter.html", [
+        [ "formatter< winapi::Function >", "d2/dac/structfmt_1_1formatter_3_01winapi_1_1Function_01_4.html", null ],
         [ "formatter< winapi::Handle >", "dd/daa/structfmt_1_1formatter_3_01winapi_1_1Handle_01_4.html", null ],
         [ "formatter< winapi::MemoryAddress >", "d3/df8/structfmt_1_1formatter_3_01winapi_1_1MemoryAddress_01_4.html", null ],
         [ "formatter< winapi::th32::ModuleEntry >", "dc/d79/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ModuleEntry_01_4.html", null ],
@@ -17,6 +18,7 @@ var hierarchy =
     [ "HWProfileInfo", "d3/d01/structwinapi_1_1HWProfileInfo.html", null ],
     [ "ModuleEntry", "d7/de2/structwinapi_1_1th32_1_1ModuleEntry.html", null ],
     [ "PointerLike", "db/d87/structwinapi_1_1detail_1_1PointerLike.html", [
+      [ "Function", "dd/de8/classwinapi_1_1Function.html", null ],
       [ "Handle", "dd/d5e/structwinapi_1_1Handle.html", null ],
       [ "MemoryAddress", "d7/d70/classwinapi_1_1MemoryAddress.html", null ]
     ] ],

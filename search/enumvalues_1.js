@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['docked_0',['Docked',['../d3/d01/structwinapi_1_1HWProfileInfo.html#ab889383fd0b72f0f35346e4e1cdc9ff4a30af82f59906891776f27df49f690e82',1,'winapi::HWProfileInfo']]]
+  ['createprocess_0',['CreateProcess',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550deac6b59bdabc4d10b6cd98e97dbd071549',1,'winapi']]],
+  ['createthread_1',['CreateThread',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550dead4b9bd5e20476116593b8b68fb08bf57',1,'winapi']]]
 ];

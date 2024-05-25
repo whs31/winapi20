@@ -112,7 +112,7 @@ $(function(){initNavTree('d7/d70/classwinapi_1_1MemoryAddress.html','../../'); i
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="../../d8/da2/classwinapi_1_1MemoryAddress-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">MemoryAddress Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">MemoryAddress Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
@@ -128,6 +128,8 @@ Collaboration diagram for MemoryAddress:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:ad7a6aab5225c3c703a6fc33ee87c4f59" id="r_ad7a6aab5225c3c703a6fc33ee87c4f59"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7a6aab5225c3c703a6fc33ee87c4f59">offset_type</a> = std::ptrdiff_t</td></tr>
+<tr class="separator:ad7a6aab5225c3c703a6fc33ee87c4f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9b0e420166d372569ae2b7b23b64b6b" id="r_ab9b0e420166d372569ae2b7b23b64b6b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d87/structwinapi_1_1detail_1_1PointerLike.html#ab9b0e420166d372569ae2b7b23b64b6b">pointer_type</a> = void*</td></tr>
 <tr class="separator:ab9b0e420166d372569ae2b7b23b64b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6ef82cf339b615efd055a18072e4c6a" id="r_ac6ef82cf339b615efd055a18072e4c6a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d87/structwinapi_1_1detail_1_1PointerLike.html#ac6ef82cf339b615efd055a18072e4c6a">integer_type</a> = uintptr_t</td></tr>
@@ -135,9 +137,12 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaf5d7b13679f1fbe3d05804d98e411e4" id="r_aaf5d7b13679f1fbe3d05804d98e411e4"><td class="memItemLeft" align="right" valign="top"><a id="aaf5d7b13679f1fbe3d05804d98e411e4" name="aaf5d7b13679f1fbe3d05804d98e411e4"></a>
-virtual constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>valid</b> () const noexcept -&gt; bool=0</td></tr>
-<tr class="separator:aaf5d7b13679f1fbe3d05804d98e411e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad127189b09646156f029d2c6ba83a5ec" id="r_ad127189b09646156f029d2c6ba83a5ec"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad127189b09646156f029d2c6ba83a5ec">offset</a> (offset_type const v) const noexcept -&gt; <a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a></td></tr>
+<tr class="separator:ad127189b09646156f029d2c6ba83a5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1be61f0f4ee1b5720e746dacaa8447b" id="r_ab1be61f0f4ee1b5720e746dacaa8447b"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1be61f0f4ee1b5720e746dacaa8447b">absolute_address</a> (offset_type address_offset, std::optional&lt; size_t &gt; opcode_size=std::nullopt) const noexcept -&gt; <a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a></td></tr>
+<tr class="separator:ab1be61f0f4ee1b5720e746dacaa8447b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8280b151fd475298dc51a561278bc6d" id="r_ab8280b151fd475298dc51a561278bc6d"><td class="memItemLeft" align="right" valign="top">virtual constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d87/structwinapi_1_1detail_1_1PointerLike.html#ab8280b151fd475298dc51a561278bc6d">valid</a> () const noexcept -&gt; bool</td></tr>
+<tr class="separator:ab8280b151fd475298dc51a561278bc6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08b3840dc7eccd94b533f411b0b49b61" id="r_a08b3840dc7eccd94b533f411b0b49b61"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
 requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</td></tr>
 <tr class="memitem:a08b3840dc7eccd94b533f411b0b49b61"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/d87/structwinapi_1_1detail_1_1PointerLike.html#a08b3840dc7eccd94b533f411b0b49b61">as</a> () const noexcept -&gt; T</td></tr>
@@ -164,13 +169,29 @@ Protected Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a819be7756771f401512a3ab2c1665303" id="r_a819be7756771f401512a3ab2c1665303"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a819be7756771f401512a3ab2c1665303">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a> const &amp;handle)</td></tr>
-<tr class="separator:a819be7756771f401512a3ab2c1665303"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5ed12bf17e841c2dfa0dd77526ae140" id="r_aa5ed12bf17e841c2dfa0dd77526ae140"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5ed12bf17e841c2dfa0dd77526ae140">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a> const &amp;addr)</td></tr>
+<tr class="separator:aa5ed12bf17e841c2dfa0dd77526ae140"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00009">9</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00010">10</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ad7a6aab5225c3c703a6fc33ee87c4f59" name="ad7a6aab5225c3c703a6fc33ee87c4f59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7a6aab5225c3c703a6fc33ee87c4f59">&#9670;&#160;</a></span>offset_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using offset_type = std::ptrdiff_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00013">13</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+
+</div>
+</div>
 <a id="ab9b0e420166d372569ae2b7b23b64b6b" name="ab9b0e420166d372569ae2b7b23b64b6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab9b0e420166d372569ae2b7b23b64b6b">&#9670;&#160;</a></span>pointer_type</h2>
 
@@ -220,6 +241,92 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad127189b09646156f029d2c6ba83a5ec" name="ad127189b09646156f029d2c6ba83a5ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad127189b09646156f029d2c6ba83a5ec">&#9670;&#160;</a></span>offset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto offset </td>
+          <td>(</td>
+          <td class="paramtype">offset_type const</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td> const -&gt; <a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a> </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00016">16</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+
+</div>
+</div>
+<a id="ab1be61f0f4ee1b5720e746dacaa8447b" name="ab1be61f0f4ee1b5720e746dacaa8447b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1be61f0f4ee1b5720e746dacaa8447b">&#9670;&#160;</a></span>absolute_address()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto absolute_address </td>
+          <td>(</td>
+          <td class="paramtype">offset_type</td>          <td class="paramname"><span class="paramname"><em>address_offset</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::optional&lt; size_t &gt;</td>          <td class="paramname"><span class="paramname"><em>opcode_size</em><span class="paramdefsep"> = </span><span class="paramdefval">std::nullopt</span></span>&#160;) const -&gt; <a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a>
+      </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00020">20</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+
+</div>
+</div>
+<a id="ab8280b151fd475298dc51a561278bc6d" name="ab8280b151fd475298dc51a561278bc6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8280b151fd475298dc51a561278bc6d">&#9670;&#160;</a></span>valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual constexpr auto valid </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const -&gt; bool </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00019">19</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
+
+</div>
+</div>
 <a id="a08b3840dc7eccd94b533f411b0b49b61" name="a08b3840dc7eccd94b533f411b0b49b61"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a08b3840dc7eccd94b533f411b0b49b61">&#9670;&#160;</a></span>as()</h2>
 
@@ -246,7 +353,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00023">23</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00025">25</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
 
 </div>
 </div>
@@ -273,7 +380,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00032">32</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00034">34</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
 
 </div>
 </div>
@@ -300,7 +407,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00033">33</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00035">35</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
 
 </div>
 </div>
@@ -327,7 +434,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00035">35</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00037">37</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
 
 </div>
 </div>
@@ -354,7 +461,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00036">36</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00038">38</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
 
 </div>
 </div>
@@ -381,7 +488,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00037">37</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00039">39</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
 
 </div>
 </div>
@@ -408,7 +515,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00038">38</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00040">40</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
 
 </div>
 </div>
@@ -435,13 +542,13 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00039">39</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00041">41</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Symbol Documentation</h2>
-<a id="a819be7756771f401512a3ab2c1665303" name="a819be7756771f401512a3ab2c1665303"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a819be7756771f401512a3ab2c1665303">&#9670;&#160;</a></span>operator&lt;&lt;</h2>
+<a id="aa5ed12bf17e841c2dfa0dd77526ae140" name="aa5ed12bf17e841c2dfa0dd77526ae140"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5ed12bf17e841c2dfa0dd77526ae140">&#9670;&#160;</a></span>operator&lt;&lt;</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -457,7 +564,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>addr</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -467,7 +574,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00017">17</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memaddr_8h_source.html#l00034">34</a> of file <a class="el" href="../../dc/dee/memaddr_8h_source.html">memaddr.h</a>.</p>
 
 </div>
 </div>
@@ -492,7 +599,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00042">42</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d88/pointerlike_8h_source.html#l00044">44</a> of file <a class="el" href="../../d5/d88/pointerlike_8h_source.html">pointerlike.h</a>.</p>
 
 </div>
 </div>
@@ -504,7 +611,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>winapi</b></li><li class="navelem"><a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a></li>
+    <li class="navelem"><a class="el" href="../../dd/d39/namespacewinapi.html">winapi</a></li><li class="navelem"><a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['includeflags_0',['IncludeFlags',['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295f',1,'winapi::th32::Snapshot']]]
+  ['dockinfo_0',['DockInfo',['../d3/d01/structwinapi_1_1HWProfileInfo.html#ab889383fd0b72f0f35346e4e1cdc9ff4',1,'winapi::HWProfileInfo']]]
 ];
