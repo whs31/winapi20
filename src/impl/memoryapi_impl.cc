@@ -6,6 +6,9 @@
 #include <winapi20/detail/windows_headers.h>
 #include <winapi20/impl/errhandlingapi_impl.h>
 
+using std::optional;
+using std::nullopt;
+
 namespace winapi::checks
 {
   using namespace memory;
@@ -95,5 +98,21 @@ namespace winapi::memory
       .protection = static_cast<MemoryProtection>(buf.Protect),
       .type = static_cast<MemoryState>(buf.Type),
     };
+  }
+
+  auto MemoryBasicInformation::try_query(uintptr_t address) -> optional<MemoryBasicInformation> {
+    try {
+      return MemoryBasicInformation::query(address);
+    } catch(...) {
+      return nullopt;
+    }
+  }
+
+  auto MemoryBasicInformation::try_query(Process const& process, uintptr_t address) -> optional<MemoryBasicInformation> {
+    try {
+      return MemoryBasicInformation::query(process, address);
+    } catch(...) {
+      return nullopt;
+    }
   }
 } // namespace winapi::memory

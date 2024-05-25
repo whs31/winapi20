@@ -255,5 +255,27 @@ namespace winapi::memory
      * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualqueryex
      */
     [[nodiscard]] static auto query(Process const& process, uintptr_t address) -> MemoryBasicInformation;
+
+    /**
+     * \brief Queries the memory state at the specified address in the address space of the calling process.
+     * \details This function uses <tt>VirtualQuery</tt> to query the memory state at the specified address.
+     * If you need to query memory state at an address that is not in the address space of the calling process, use <tt>MemoryBasicInformation::query(Process const&, uintptr_t)</tt>.
+     * If the query fails, the function returns an empty <tt>std::optional</tt>.
+     * \param address The address to query.
+     * \return The memory state at the specified address.
+     * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualquery
+     */
+    [[nodiscard]] static auto try_query(uintptr_t address) -> std::optional<MemoryBasicInformation>;
+
+    /**
+     * \brief Queries the memory state at the specified address in the address space of the specified process.
+     * \details This function uses <tt>VirtualQueryEx</tt> to query the memory state at the specified address.
+     * If the query fails, the function returns an empty <tt>std::optional</tt>.
+     * \param process The process to query.
+     * \param address The address to query.
+     * \return The memory state at the specified address.
+     * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualqueryex
+     */
+    [[nodiscard]] static auto try_query(Process const& process, uintptr_t address) -> std::optional<MemoryBasicInformation>;
   };
 }
