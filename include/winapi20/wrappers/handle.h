@@ -14,15 +14,15 @@ namespace winapi
     using integer_type = uintptr_t;
 
     Handle() = default;
-    constexpr explicit Handle(pointer_type handle, Cleanup cleanup = Cleanup::Manual);
-    explicit Handle(integer_type handle, Cleanup cleanup = Cleanup::Manual);
+    constexpr explicit Handle(pointer_type handle, Cleanup cleanup);
+    explicit Handle(integer_type handle, Cleanup cleanup);
 
     virtual ~Handle();
     Handle(Handle const&) = default;
-    Handle(Handle&&) = default;
+    Handle(Handle&&) noexcept = default;
 
     Handle& operator=(Handle const&) = default;
-    Handle& operator=(Handle&&) = default;
+    Handle& operator=(Handle&&) noexcept = default;
 
     [[nodiscard]] constexpr inline auto valid() const noexcept -> bool;
 

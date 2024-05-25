@@ -45,7 +45,7 @@ struct SnapshotIterator
       if constexpr(option)
         return std::nullopt;
       else
-        throw winapi::windows_exception(winapi::last_error_string());
+        throw winapi::windows_exception(fmt::format("error `{}` while enumerating processes", winapi::last_error_string()));
     }
     return T::from_raw(entry);
   }
@@ -96,7 +96,7 @@ namespace winapi::th32
         .pid = entry.th32ProcessID,
         .base_address = reinterpret_cast<uintptr_t>(entry.modBaseAddr),
         .size = entry.modBaseSize,
-        .handle = Handle(entry.hModule),
+        .handle = Handle(entry.hModule, Cleanup::Manual),
         .name = detail::into_utf8(entry.szModule),
         .path = detail::into_utf8(entry.szExePath)
     };
@@ -119,18 +119,14 @@ namespace winapi::th32
   Snapshot::Snapshot(Snapshot::IncludeFlags flags, uint32_t pid) noexcept(false)
     : m_flags(flags)
     , m_pid(pid)
-    , m_handle(::CreateToolhelp32Snapshot(static_cast<DWORD>(flags), static_cast<DWORD>(pid)))
+    , m_handle(::CreateToolhelp32Snapshot(static_cast<DWORD>(flags), static_cast<DWORD>(pid)), Cleanup::Auto)
     , m_flags_valid(std::set<Snapshot::IncludeFlags>())
   {
-    if(not this->m_handle) {
-      ::CloseHandle(*this->m_handle);
+    if(not this->m_handle)
       throw winapi::windows_exception(winapi::last_error_string());
-    }
   }
 
-  Snapshot::~Snapshot() {
-    ::CloseHandle(*this->m_handle);
-  }
+  Snapshot::~Snapshot() = default;
 
   auto Snapshot::valid() const noexcept -> bool {
     return this->m_handle.valid();

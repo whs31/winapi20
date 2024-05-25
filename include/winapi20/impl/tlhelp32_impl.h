@@ -114,7 +114,7 @@ namespace winapi::th32
 
       [[nodiscard]] inline auto flags() const noexcept -> IncludeFlags { return this->m_flags; }
       [[nodiscard]] inline auto pid() const noexcept -> uint32_t { return this->m_pid; }
-      [[nodiscard]] inline auto handle() const noexcept -> Handle { return this->m_handle; }
+      [[nodiscard]] inline auto handle() const noexcept -> Handle const& { return this->m_handle; }
 
       [[nodiscard]] auto valid() const noexcept -> bool;
       [[nodiscard]] auto processes() const noexcept(false) -> std::vector<ProcessEntry>;
