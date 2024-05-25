@@ -7,7 +7,7 @@
 #include <winapi20/detail/export.h>
 #include <winapi20/detail/definitions.h>
 #include <winapi20/detail/template_util.h>
-#include <winapi20/wrappers/memaddr.h>
+#include <winapi20/impl/processthreadsapi_impl.h>
 
 /// \brief Namespace for memory-related operations in the Windows API.
 namespace winapi::memory
@@ -191,13 +191,13 @@ namespace winapi::memory
     Image                     = 0x1000000
   };
 
-  struct MemoryBasicInformation
+  struct WINAPI20_EXPORT MemoryBasicInformation
   {
     /// \brief A pointer to the base address of the region of pages.
-    MemoryAddress base_address;
+    uintptr_t base_address;
 
     /// \brief A pointer to the base address of a range of pages allocated by the <tt>VirtualAlloc</tt> function.
-    MemoryAddress allocation_base;
+    uintptr_t allocation_base;
 
     /**
      * \brief The memory protection option when the region was initially allocated.
@@ -231,5 +231,29 @@ namespace winapi::memory
      * - <tt>MemoryState::Private</tt> <br>
      */
     MemoryState type;
+
+    /**
+     * \brief Queries the memory state at the specified address in the address space of the calling process.
+     * \details This function uses <tt>VirtualQuery</tt> to query the memory state at the specified address.
+     * If you need to query memory state at an address that is not in the address space of the calling process, use <tt>MemoryBasicInformation::query(Process const&, uintptr_t)</tt>.
+     * \warning If the query fails, the function throws a <tt>winapi::windows_exception</tt>.
+     * \param address The address to query.
+     * \throws winapi::windows_exception If the query fails.
+     * \return The memory state at the specified address.
+     * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualquery
+     */
+    [[nodiscard]] static auto query(uintptr_t address) -> MemoryBasicInformation;
+
+    /**
+     * \brief Queries the memory state at the specified address in the address space of the specified process.
+     * \details This function uses <tt>VirtualQueryEx</tt> to query the memory state at the specified address.
+     * \warning If the query fails, the function throws a <tt>winapi::windows_exception</tt>.
+     * \param process The process to query.
+     * \param address The address to query.
+     * \throws winapi::windows_exception If the query fails.
+     * \return The memory state at the specified address.
+     * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualqueryex
+     */
+    [[nodiscard]] static auto query(Process const& process, uintptr_t address) -> MemoryBasicInformation;
   };
 }

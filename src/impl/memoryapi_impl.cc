@@ -1,5 +1,6 @@
 #include <winapi20/impl/memoryapi_impl.h>
 
+#include <fmt/format.h>
 #include <winapi20/detail/cvt.h>
 #include <winapi20/detail/exception.h>
 #include <winapi20/detail/windows_headers.h>
@@ -59,3 +60,40 @@ namespace winapi::checks
   static_assert(static_cast<uint32_t>(MemoryState::PreservePlaceholders) == MEM_PRESERVE_PLACEHOLDER, "MemoryState::PreservePlaceholders != MEM_PRESERVE_PLACEHOLDER");
   static_assert(static_cast<uint32_t>(MemoryState::Image) == MEM_IMAGE, "MemoryState::Image != MEM_IMAGE");
 }
+
+namespace winapi::memory
+{
+  auto MemoryBasicInformation::query(uintptr_t address) noexcept(false) -> winapi::memory::MemoryBasicInformation
+  {
+    MEMORY_BASIC_INFORMATION buf;
+    ::memset(&buf, 0, sizeof(buf));
+    if(not ::VirtualQuery(reinterpret_cast<LPCVOID>(address), &buf, sizeof(buf)))
+      throw windows_exception(fmt::format("virtual query failed, reason: {}", last_error_string()));
+    return MemoryBasicInformation {
+      .base_address = reinterpret_cast<uintptr_t>(buf.BaseAddress),
+      .allocation_base = reinterpret_cast<uintptr_t>(buf.AllocationBase),
+      .allocation_protection = static_cast<MemoryProtection>(buf.AllocationProtect),
+      .region_size = buf.RegionSize,
+      .state = static_cast<MemoryState>(buf.State),
+      .protection = static_cast<MemoryProtection>(buf.Protect),
+      .type = static_cast<MemoryState>(buf.Type),
+    };
+  }
+
+  auto MemoryBasicInformation::query(Process const& process, uintptr_t address) -> MemoryBasicInformation
+  {
+    MEMORY_BASIC_INFORMATION buf;
+    ::memset(&buf, 0, sizeof(buf));
+    if(not ::VirtualQueryEx(*process.handle(), reinterpret_cast<LPCVOID>(address), &buf, sizeof(buf)))
+      throw windows_exception(fmt::format("virtual query failed, reason: {}", last_error_string()));
+    return MemoryBasicInformation {
+      .base_address = reinterpret_cast<uintptr_t>(buf.BaseAddress),
+      .allocation_base = reinterpret_cast<uintptr_t>(buf.AllocationBase),
+      .allocation_protection = static_cast<MemoryProtection>(buf.AllocationProtect),
+      .region_size = buf.RegionSize,
+      .state = static_cast<MemoryState>(buf.State),
+      .protection = static_cast<MemoryProtection>(buf.Protect),
+      .type = static_cast<MemoryState>(buf.Type),
+    };
+  }
+} // namespace winapi::memory
