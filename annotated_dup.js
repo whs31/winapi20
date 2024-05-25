@@ -15,7 +15,7 @@ var annotated_dup =
         [ "PointerLike", "db/d87/structwinapi_1_1detail_1_1PointerLike.html", null ]
       ] ],
       [ "memory", "de/d9e/namespacewinapi_1_1memory.html", [
-        [ "MemoryBasicInformation", "de/d9e/namespacewinapi_1_1memory.html#d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation", "de/d9e/namespacewinapi_1_1memory_d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation_dup" ]
+        [ "MemoryBasicInformation", "d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html", "d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation" ]
       ] ],
       [ "th32", "de/d82/namespacewinapi_1_1th32.html", [
         [ "ModuleEntry", "d7/de2/structwinapi_1_1th32_1_1ModuleEntry.html", "d7/de2/structwinapi_1_1th32_1_1ModuleEntry" ],

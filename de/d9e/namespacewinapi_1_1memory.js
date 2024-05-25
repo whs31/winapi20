@@ -1,6 +1,6 @@
 var namespacewinapi_1_1memory =
 [
-    [ "MemoryBasicInformation", "de/d9e/namespacewinapi_1_1memory.html#d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation", "de/d9e/namespacewinapi_1_1memory_d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation_dup" ],
+    [ "MemoryBasicInformation", "d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html", "d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation" ],
     [ "MemoryProtection", "de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09", [
       [ "Readonly", "de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a060d84e58c348e44da6637e57e2e9201", null ],
       [ "ReadWrite", "de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a70a2a84088d405a2e3f1e3accaa16723", null ],
