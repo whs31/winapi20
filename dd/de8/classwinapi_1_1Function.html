@@ -139,9 +139,12 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:accc3d73d33c69fde17b19d8ed3fda1fd" id="r_accc3d73d33c69fde17b19d8ed3fda1fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accc3d73d33c69fde17b19d8ed3fda1fd">Function</a> (func_type func)</td></tr>
 <tr class="separator:accc3d73d33c69fde17b19d8ed3fda1fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad39a873344e650cf039364ffb85f3d3f" id="r_ad39a873344e650cf039364ffb85f3d3f"><td class="memTemplParams" colspan="2">template&lt;typename R  = pointer_type, typename... T&gt; </td></tr>
+<tr class="memitem:ad39a873344e650cf039364ffb85f3d3f" id="r_ad39a873344e650cf039364ffb85f3d3f"><td class="memTemplParams" colspan="2">template&lt;typename R  = void, typename... T&gt; </td></tr>
 <tr class="memitem:ad39a873344e650cf039364ffb85f3d3f"><td class="memTemplItemLeft" align="right" valign="top">auto __fastcall&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad39a873344e650cf039364ffb85f3d3f">operator()</a> (T &amp;&amp;... args) const noexcept -&gt; R</td></tr>
 <tr class="separator:ad39a873344e650cf039364ffb85f3d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93baa9310d93164c550b207c2d33b13d" id="r_a93baa9310d93164c550b207c2d33b13d"><td class="memTemplParams" colspan="2">template&lt;typename R  = void, typename... T&gt; </td></tr>
+<tr class="memitem:a93baa9310d93164c550b207c2d33b13d"><td class="memTemplItemLeft" align="right" valign="top">auto __fastcall&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a93baa9310d93164c550b207c2d33b13d">call</a> (T &amp;&amp;... args) const noexcept -&gt; R</td></tr>
+<tr class="separator:a93baa9310d93164c550b207c2d33b13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8280b151fd475298dc51a561278bc6d" id="r_ab8280b151fd475298dc51a561278bc6d"><td class="memItemLeft" align="right" valign="top">virtual constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d87/structwinapi_1_1detail_1_1PointerLike.html#ab8280b151fd475298dc51a561278bc6d">valid</a> () const noexcept -&gt; bool</td></tr>
 <tr class="separator:ab8280b151fd475298dc51a561278bc6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08b3840dc7eccd94b533f411b0b49b61" id="r_a08b3840dc7eccd94b533f411b0b49b61"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
@@ -276,7 +279,7 @@ Friends</h2></td></tr>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename R  = pointer_type, typename... T&gt; </div>
+template&lt;typename R  = void, typename... T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -296,6 +299,35 @@ template&lt;typename R  = pointer_type, typename... T&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../dd/d67/function_8h_source.html#l00020">20</a> of file <a class="el" href="../../dd/d67/function_8h_source.html">function.h</a>.</p>
+
+</div>
+</div>
+<a id="a93baa9310d93164c550b207c2d33b13d" name="a93baa9310d93164c550b207c2d33b13d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93baa9310d93164c550b207c2d33b13d">&#9670;&#160;</a></span>call()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R  = void, typename... T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto __fastcall call </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&amp;...</td>          <td class="paramname"><span class="paramname"><em>args</em></span></td><td>)</td>
+          <td> const -&gt; R </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d67/function_8h_source.html#l00025">25</a> of file <a class="el" href="../../dd/d67/function_8h_source.html">function.h</a>.</p>
 
 </div>
 </div>
@@ -573,7 +605,7 @@ requires std::is_integral_v&lt;T&gt; or std::is_pointer_v&lt;T&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d67/function_8h_source.html#l00027">27</a> of file <a class="el" href="../../dd/d67/function_8h_source.html">function.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d67/function_8h_source.html#l00032">32</a> of file <a class="el" href="../../dd/d67/function_8h_source.html">function.h</a>.</p>
 
 </div>
 </div>

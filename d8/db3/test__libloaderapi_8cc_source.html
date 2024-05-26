@@ -141,9 +141,11 @@ $(function(){initNavTree('d8/db3/test__libloaderapi_8cc_source.html','../../'); 
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  EXPECT_TRUE(lib.has_value());</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <span class="keyword">auto</span> fn = (*lib)[<span class="stringliteral">&quot;MulDiv&quot;</span>];</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  EXPECT_TRUE(fn.has_value());</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keyword">auto</span> res = fn-&gt;operator()&lt;<span class="keywordtype">int</span>&gt;(10, 2, 5);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  EXPECT_EQ(res, ::MulDiv(10, 2, 5));</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keyword">auto</span> res = fn-&gt;call&lt;<span class="keywordtype">int</span>&gt;(10, 2, 5);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keywordtype">int</span> res2 = (*fn).operator()&lt;<span class="keywordtype">int</span>&gt;(10, 2, 5);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  EXPECT_EQ(res, ::MulDiv(10, 2, 5));</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  EXPECT_EQ(res2, res);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
 <div class="ttc" id="aclasswinapi_1_1th32_1_1Snapshot_html"><div class="ttname"><a href="../../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html">winapi::th32::Snapshot</a></div><div class="ttdef"><b>Definition</b> <a href="../../da/d17/tlhelp32__impl_8h_source.html#l00083">tlhelp32_impl.h:84</a></div></div>
 <div class="ttc" id="aclasswinapi_1_1th32_1_1Snapshot_html_ac1d17275ba895df72284cfb750cc295f"><div class="ttname"><a href="../../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295f">winapi::th32::Snapshot::IncludeFlags</a></div><div class="ttdeci">IncludeFlags</div><div class="ttdoc">The portions of the system to be included in the snapshot.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d17/tlhelp32__impl_8h_source.html#l00091">tlhelp32_impl.h:92</a></div></div>
 <div class="ttc" id="anamespacewinapi_1_1th32_html"><div class="ttname"><a href="../../de/d82/namespacewinapi_1_1th32.html">winapi::th32</a></div><div class="ttdoc">Namespace for functions and types originating from tlhelp32.h header file in the Windows API.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d17/tlhelp32__impl_8h_source.html#l00022">tlhelp32_impl.h:23</a></div></div>
