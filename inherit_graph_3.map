@@ -1,17 +1,19 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,177,85,203"/>
-<area shape="rect" id="Node000001" href="$db/d58/structwinapi_1_1utility_1_1basic__ostream__formatter.html" title=" " alt="" coords="133,177,350,203"/>
-<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="100,187,132,187,132,192,100,192"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,209,85,235"/>
+<area shape="rect" id="Node000001" href="$db/d58/structwinapi_1_1utility_1_1basic__ostream__formatter.html" title=" " alt="" coords="133,209,350,235"/>
+<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="100,219,132,219,132,224,100,224"/>
 <area shape="rect" id="Node000002" href="$d2/dac/structfmt_1_1formatter_3_01winapi_1_1Function_01_4.html" title=" " alt="" coords="406,5,547,46"/>
-<area shape="poly" id="edge5_Node000001_Node000002" title=" " alt="" coords="265,164,322,112,397,57,420,44,423,49,399,61,326,116,268,168"/>
+<area shape="poly" id="edge5_Node000001_Node000002" title=" " alt="" coords="259,195,316,128,355,90,396,57,418,44,421,49,400,61,358,94,320,132,263,199"/>
 <area shape="rect" id="Node000003" href="$dd/daa/structfmt_1_1formatter_3_01winapi_1_1Handle_01_4.html" title=" " alt="" coords="406,71,547,111"/>
-<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="287,168,425,109,427,114,289,173"/>
-<area shape="rect" id="Node000004" href="$d3/df8/structfmt_1_1formatter_3_01winapi_1_1MemoryAddress_01_4.html" title=" " alt="" coords="406,136,547,177"/>
-<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="351,171,405,164,405,169,352,177"/>
-<area shape="rect" id="Node000005" href="$d4/dd3/structfmt_1_1formatter_3_01winapi_1_1PID_01_4.html" title="Custom formatter for PID type (fmt library)." alt="" coords="406,201,547,242"/>
-<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="356,203,405,209,405,215,355,208"/>
-<area shape="rect" id="Node000006" href="$dc/d79/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ModuleEntry_01_4.html" title=" " alt="" coords="401,267,552,307"/>
-<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="289,206,426,264,424,269,287,211"/>
-<area shape="rect" id="Node000007" href="$d1/d78/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ProcessEntry_01_4.html" title=" " alt="" coords="398,332,554,373"/>
-<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="268,211,326,263,399,317,423,329,420,334,397,321,322,267,265,215"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="273,198,330,161,397,122,422,110,425,114,399,127,332,165,276,202"/>
+<area shape="rect" id="Node000004" href="$df/d4b/structfmt_1_1formatter_3_01winapi_1_1HandleView_01_4.html" title=" " alt="" coords="406,136,547,177"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="304,202,404,173,406,179,305,207"/>
+<area shape="rect" id="Node000005" href="$d3/df8/structfmt_1_1formatter_3_01winapi_1_1MemoryAddress_01_4.html" title=" " alt="" coords="406,201,547,242"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="366,219,405,219,405,224,366,224"/>
+<area shape="rect" id="Node000006" href="$d4/dd3/structfmt_1_1formatter_3_01winapi_1_1PID_01_4.html" title="Custom formatter for PID type (fmt library)." alt="" coords="406,267,547,307"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="305,237,406,265,404,270,304,242"/>
+<area shape="rect" id="Node000007" href="$dc/d79/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ModuleEntry_01_4.html" title=" " alt="" coords="401,332,552,373"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="276,241,332,278,399,317,425,329,422,334,397,321,330,282,273,246"/>
+<area shape="rect" id="Node000008" href="$d1/d78/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ProcessEntry_01_4.html" title=" " alt="" coords="398,397,554,438"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="263,245,320,312,358,349,400,382,421,394,418,399,396,387,355,353,316,315,259,248"/>
 </map>

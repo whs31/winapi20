@@ -6,6 +6,7 @@ var namespacewinapi =
     [ "ConsoleHost", "d3/d0f/classwinapi_1_1ConsoleHost.html", null ],
     [ "Function", "dd/de8/classwinapi_1_1Function.html", null ],
     [ "Handle", "dd/d5e/structwinapi_1_1Handle.html", null ],
+    [ "HandleView", "d5/d02/structwinapi_1_1HandleView.html", null ],
     [ "HWProfileInfo", "d3/d01/structwinapi_1_1HWProfileInfo.html", "d3/d01/structwinapi_1_1HWProfileInfo" ],
     [ "MemoryAddress", "d7/d70/classwinapi_1_1MemoryAddress.html", "d7/d70/classwinapi_1_1MemoryAddress" ],
     [ "PID", "df/d9b/structwinapi_1_1PID.html", "df/d9b/structwinapi_1_1PID" ],

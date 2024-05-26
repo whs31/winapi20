@@ -132,6 +132,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d5e/structwinapi_1_1Handle.html">Handle</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d02/structwinapi_1_1HandleView.html">HandleView</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d01/structwinapi_1_1HWProfileInfo.html">HWProfileInfo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a></td></tr>
@@ -153,6 +155,10 @@ Enumerations</h2></td></tr>
 , <b>Manual</b>
  }</td></tr>
 <tr class="separator:a38b8c0d20be3ae1b67a55c4731227428"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcbb82fd0550b0dab98b558523bfb377" id="r_adcbb82fd0550b0dab98b558523bfb377"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><b>OwnershipMode</b> { <b>Own</b>
+, <b>View</b>
+ }</td></tr>
+<tr class="separator:adcbb82fd0550b0dab98b558523bfb377"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49af13f35a904a4753f73eb17f9550de" id="r_a49af13f35a904a4753f73eb17f9550de"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49af13f35a904a4753f73eb17f9550de">AccessRights</a> : uint64_t { <br />
 &#160;&#160;<a class="el" href="#a49af13f35a904a4753f73eb17f9550deaf2a6c498fb90ee345d997f888fce3b18">Delete</a> = 0x00010000L
 , <a class="el" href="#a49af13f35a904a4753f73eb17f9550dea63c8057a0734e068c56b90cd7a21811d">ReadControl</a> = 0x00020000L
@@ -203,6 +209,8 @@ WINAPI20_EXPORT auto&#160;</td><td class="memItemRight" valign="bottom"><b>last_
 <tr class="separator:a2a98ef62b56923f876d9eb8c2f57aa67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab6e60390499238b74e671d0206a7c64" id="r_aab6e60390499238b74e671d0206a7c64"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab6e60390499238b74e671d0206a7c64">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="../../dd/d5e/structwinapi_1_1Handle.html">Handle</a> const &amp;handle)</td></tr>
 <tr class="separator:aab6e60390499238b74e671d0206a7c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bb7bf4a89d44f02967e10344613f5d3" id="r_a7bb7bf4a89d44f02967e10344613f5d3"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bb7bf4a89d44f02967e10344613f5d3">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="../../d5/d02/structwinapi_1_1HandleView.html">HandleView</a> const &amp;handle)</td></tr>
+<tr class="separator:a7bb7bf4a89d44f02967e10344613f5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5ed12bf17e841c2dfa0dd77526ae140" id="r_aa5ed12bf17e841c2dfa0dd77526ae140"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5ed12bf17e841c2dfa0dd77526ae140">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="../../d7/d70/classwinapi_1_1MemoryAddress.html">MemoryAddress</a> const &amp;addr)</td></tr>
 <tr class="separator:aa5ed12bf17e841c2dfa0dd77526ae140"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -254,6 +262,30 @@ WINAPI20_EXPORT auto&#160;</td><td class="memItemRight" valign="bottom"><b>last_
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d6/dc2/definitions_8h_source.html#l00013">13</a> of file <a class="el" href="../../d6/dc2/definitions_8h_source.html">definitions.h</a>.</p>
+
+</div>
+</div>
+<a id="adcbb82fd0550b0dab98b558523bfb377" name="adcbb82fd0550b0dab98b558523bfb377"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcbb82fd0550b0dab98b558523bfb377">&#9670;&#160;</a></span>OwnershipMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class OwnershipMode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d6/dc2/definitions_8h_source.html#l00019">19</a> of file <a class="el" href="../../d6/dc2/definitions_8h_source.html">definitions.h</a>.</p>
 
 </div>
 </div>
@@ -321,7 +353,7 @@ WINAPI20_EXPORT auto&#160;</td><td class="memItemRight" valign="bottom"><b>last_
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d4d/processthreadsapi__impl_8h_source.html#l00028">28</a> of file <a class="el" href="../../d6/d4d/processthreadsapi__impl_8h_source.html">processthreadsapi_impl.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d4d/processthreadsapi__impl_8h_source.html#l00029">29</a> of file <a class="el" href="../../d6/d4d/processthreadsapi__impl_8h_source.html">processthreadsapi_impl.h</a>.</p>
 
 </div>
 </div>
@@ -395,7 +427,7 @@ requires (std::is_enum_v&lt;T&gt;)</div>
 </div>
 </div>
 <a id="a2a98ef62b56923f876d9eb8c2f57aa67" name="a2a98ef62b56923f876d9eb8c2f57aa67"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a98ef62b56923f876d9eb8c2f57aa67">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a98ef62b56923f876d9eb8c2f57aa67">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -426,7 +458,7 @@ requires (std::is_enum_v&lt;T&gt;)</div>
 </div>
 </div>
 <a id="aab6e60390499238b74e671d0206a7c64" name="aab6e60390499238b74e671d0206a7c64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab6e60390499238b74e671d0206a7c64">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aab6e60390499238b74e671d0206a7c64">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -452,12 +484,43 @@ requires (std::is_enum_v&lt;T&gt;)</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d78/handle_8h_source.html#l00048">48</a> of file <a class="el" href="../../d3/d78/handle_8h_source.html">handle.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d78/handle_8h_source.html#l00060">60</a> of file <a class="el" href="../../d3/d78/handle_8h_source.html">handle.h</a>.</p>
+
+</div>
+</div>
+<a id="a7bb7bf4a89d44f02967e10344613f5d3" name="a7bb7bf4a89d44f02967e10344613f5d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bb7bf4a89d44f02967e10344613f5d3">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d5/d02/structwinapi_1_1HandleView.html">HandleView</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>handle</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d78/handle_8h_source.html#l00071">71</a> of file <a class="el" href="../../d3/d78/handle_8h_source.html">handle.h</a>.</p>
 
 </div>
 </div>
 <a id="aa5ed12bf17e841c2dfa0dd77526ae140" name="aa5ed12bf17e841c2dfa0dd77526ae140"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5ed12bf17e841c2dfa0dd77526ae140">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5ed12bf17e841c2dfa0dd77526ae140">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

@@ -6,6 +6,7 @@ var annotated_dup =
     [ "fmt", null, [
       [ "formatter< winapi::Function >", "d2/dac/structfmt_1_1formatter_3_01winapi_1_1Function_01_4.html", null ],
       [ "formatter< winapi::Handle >", "dd/daa/structfmt_1_1formatter_3_01winapi_1_1Handle_01_4.html", null ],
+      [ "formatter< winapi::HandleView >", "df/d4b/structfmt_1_1formatter_3_01winapi_1_1HandleView_01_4.html", null ],
       [ "formatter< winapi::MemoryAddress >", "d3/df8/structfmt_1_1formatter_3_01winapi_1_1MemoryAddress_01_4.html", null ],
       [ "formatter< winapi::PID >", "d4/dd3/structfmt_1_1formatter_3_01winapi_1_1PID_01_4.html", null ],
       [ "formatter< winapi::th32::ModuleEntry >", "dc/d79/structfmt_1_1formatter_3_01winapi_1_1th32_1_1ModuleEntry_01_4.html", null ],
@@ -32,6 +33,7 @@ var annotated_dup =
       [ "ConsoleHost", "d3/d0f/classwinapi_1_1ConsoleHost.html", null ],
       [ "Function", "dd/de8/classwinapi_1_1Function.html", null ],
       [ "Handle", "dd/d5e/structwinapi_1_1Handle.html", null ],
+      [ "HandleView", "d5/d02/structwinapi_1_1HandleView.html", null ],
       [ "HWProfileInfo", "d3/d01/structwinapi_1_1HWProfileInfo.html", "d3/d01/structwinapi_1_1HWProfileInfo" ],
       [ "MemoryAddress", "d7/d70/classwinapi_1_1MemoryAddress.html", "d7/d70/classwinapi_1_1MemoryAddress" ],
       [ "PID", "df/d9b/structwinapi_1_1PID.html", "df/d9b/structwinapi_1_1PID" ],

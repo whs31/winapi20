@@ -1,11 +1,13 @@
 <map id="Library" name="Library">
-<area shape="rect" id="Node000001" title=" " alt="" coords="128,169,193,195"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="83,80,139,106"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,120,133,144,151,167,147,170,129,146,117,122"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="182,169,248,195"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="75,80,131,106"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,116,150,143,188,166,186,171,147,147,119,120"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,5,161,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="96,45,109,79,104,81,91,47"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="93,45,102,79,97,81,88,47"/>
 <area shape="rect" id="Node000004" href="$dd/d5e/structwinapi_1_1Handle.html" title=" " alt="" coords="191,80,258,106"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="211,121,193,147,174,170,169,167,189,143,207,118"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="220,122,219,130,217,169,212,168,213,130,215,121"/>
 <area shape="rect" id="Node000005" href="$db/d87/structwinapi_1_1detail_1_1PointerLike.html" title=" " alt="" coords="185,5,277,31"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="231,47,228,80,223,80,226,46"/>
+<area shape="rect" id="Node000006" href="$df/d9b/structwinapi_1_1PID.html" title="Wrapper for process ID (PID) integer." alt="" coords="290,80,335,106"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="303,122,285,147,248,171,245,166,281,143,299,119"/>
 </map>
