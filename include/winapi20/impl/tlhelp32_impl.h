@@ -12,6 +12,7 @@
 #include <winapi20/detail/definitions.h>
 #include <winapi20/detail/template_util.h>
 #include <winapi20/wrappers/handle.h>
+#include <winapi20/wrappers/pid.h>
 
 typedef struct tagPROCESSENTRY32W PROCESSENTRY32W;
 typedef struct tagMODULEENTRY32W MODULEENTRY32W;
@@ -29,10 +30,10 @@ namespace winapi::th32
     using raw_type = PROCESSENTRY32W;
 
     /// \brief The process ID.
-    uint32_t pid;
+    PID pid;
 
     /// \brief The parent process ID.
-    uint32_t parent_pid;
+    PID parent_pid;
 
     /// \brief The number of execution threads started by this process.
     size_t thread_count;
@@ -57,7 +58,7 @@ namespace winapi::th32
     using raw_type = MODULEENTRY32W;
 
     /// \brief The identifier of the process whose modules are to be examined.
-    uint32_t pid;
+    PID pid;
 
     /// \brief The base address of the module in the context of the owning process.
     uintptr_t base_address;
@@ -111,11 +112,11 @@ namespace winapi::th32
         Inherit  = 0x80000000
       };
 
-      explicit Snapshot(IncludeFlags flags, uint32_t pid = PID::CurrentProcess) noexcept(false);
+      explicit Snapshot(IncludeFlags flags, PID pid) noexcept(false);
       ~Snapshot();
 
       [[nodiscard]] inline auto flags() const noexcept -> IncludeFlags { return this->m_flags; }
-      [[nodiscard]] inline auto pid() const noexcept -> uint32_t { return this->m_pid; }
+      [[nodiscard]] inline auto pid() const noexcept -> PID { return this->m_pid; }
       [[nodiscard]] inline auto handle() const noexcept -> Handle const& { return this->m_handle; }
 
       [[nodiscard]] auto valid() const noexcept -> bool;
@@ -149,7 +150,7 @@ namespace winapi::th32
 
     private:
       IncludeFlags m_flags;
-      uint32_t m_pid;
+      PID m_pid;
       Handle m_handle;
       std::set<IncludeFlags> mutable m_flags_valid;
   };

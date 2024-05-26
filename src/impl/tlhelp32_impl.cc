@@ -70,8 +70,8 @@ namespace winapi::th32
 {
   auto ProcessEntry::from_raw(PROCESSENTRY32W const& entry) -> ProcessEntry {
     return {
-        .pid = entry.th32ProcessID,
-        .parent_pid = entry.th32ParentProcessID,
+        .pid = PID(entry.th32ProcessID),
+        .parent_pid = PID(entry.th32ParentProcessID),
         .thread_count = entry.cntThreads,
         .thread_base_priority = entry.pcPriClassBase,
         .name = winapi::detail::into_utf8(entry.szExeFile)
@@ -93,7 +93,7 @@ namespace winapi::th32
 
   auto ModuleEntry::from_raw(MODULEENTRY32W const& entry) -> ModuleEntry {
     return {
-        .pid = entry.th32ProcessID,
+        .pid = PID(entry.th32ProcessID),
         .base_address = reinterpret_cast<uintptr_t>(entry.modBaseAddr),
         .size = entry.modBaseSize,
         .handle = Handle(entry.hModule, Cleanup::Manual),
@@ -116,10 +116,10 @@ namespace winapi::th32
     return stream;
   }
 
-  Snapshot::Snapshot(Snapshot::IncludeFlags flags, uint32_t pid) noexcept(false)
+  Snapshot::Snapshot(Snapshot::IncludeFlags flags, PID pid) noexcept(false)
     : m_flags(flags)
     , m_pid(pid)
-    , m_handle(::CreateToolhelp32Snapshot(static_cast<DWORD>(flags), static_cast<DWORD>(pid)), Cleanup::Auto)
+    , m_handle(::CreateToolhelp32Snapshot(static_cast<DWORD>(flags), static_cast<DWORD>(*pid)), Cleanup::Auto)
     , m_flags_valid(std::set<Snapshot::IncludeFlags>())
   {
     if(not this->m_handle)

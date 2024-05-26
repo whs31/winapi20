@@ -9,9 +9,14 @@ namespace winapi
   class Function : public detail::PointerLike
   {
     public:
+      using func_type = long long int(__stdcall*)();
       using detail::PointerLike::PointerLike;
 
-      template <typename R = void*, typename... T>
+      explicit Function(func_type func)
+        : detail::PointerLike(reinterpret_cast<pointer_type>(func))
+      {}
+
+      template <typename R = pointer_type, typename... T>
       inline auto __fastcall operator()(T&&... args) const noexcept -> pointer_type {
         return ((R (__fastcall*) (T...)) this->m_)(args...);
       }

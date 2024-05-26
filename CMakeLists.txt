@@ -64,6 +64,7 @@ target_sources(${PROJECT_NAME}
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/wrappers/handle.h> $<INSTALL_INTERFACE:include/winapi20/wrappers/handle.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/wrappers/memaddr.h> $<INSTALL_INTERFACE:include/winapi20/wrappers/memaddr.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/wrappers/function.h> $<INSTALL_INTERFACE:include/winapi20/wrappers/function.h>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/winapi20/wrappers/pid.h> $<INSTALL_INTERFACE:include/winapi20/wrappers/pid.h>
   PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/winbase_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/errhandlingapi_impl.cc
@@ -72,6 +73,7 @@ target_sources(${PROJECT_NAME}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/tlhelp32_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/processthreadsapi_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/memoryapi_impl.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/libloaderapi_impl.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/detail/wrappers.cc
 )
 

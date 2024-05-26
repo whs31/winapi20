@@ -10,17 +10,17 @@ using enum th32::Snapshot::IncludeFlags;
 
 TEST(TLHelp32, Snapshot)
 {
-  auto snapshot = th32::Snapshot(winapi::th32::Snapshot::IncludeFlags::Process, PID::CurrentProcess);
+  auto snapshot = th32::Snapshot(winapi::th32::Snapshot::IncludeFlags::Process, PID::current());
   EXPECT_TRUE(snapshot.valid());
 }
 
 TEST(TLHelp32, FindProcessByName)
 {
-  auto snapshot = th32::Snapshot(Process, PID::CurrentProcess);
+  auto snapshot = th32::Snapshot(Process, PID::current());
   auto pid = snapshot.find_first_by_name<th32::ProcessEntry>("ExPloRer.exe");
   EXPECT_TRUE(snapshot.valid());
   EXPECT_TRUE(pid.has_value());
-  EXPECT_TRUE(pid->pid > 0);
+  EXPECT_FALSE(pid->pid.is_current());
 
   EXPECT_FALSE(snapshot.find_last_by_name<th32::ProcessEntry>("ExPloRer.exe", CaseSensitive).has_value());
   EXPECT_TRUE(snapshot.find_by_name<th32::ProcessEntry>("ExPloRer.exe", CaseSensitive).empty());
@@ -28,11 +28,11 @@ TEST(TLHelp32, FindProcessByName)
 
 TEST(TLHelp32, FindModuleByName)
 {
-  auto snapshot = th32::Snapshot(Process, PID::CurrentProcess);
+  auto snapshot = th32::Snapshot(Process, PID::current());
   auto pid = snapshot.find_first_by_name<th32::ProcessEntry>("explorer.exe");
   EXPECT_TRUE(snapshot.valid());
   EXPECT_TRUE(pid.has_value());
-  EXPECT_TRUE(pid->pid > 0);
+  EXPECT_FALSE(pid->pid.is_current());
 
   auto snapshot2 = th32::Snapshot(Module | Process, pid->pid);
   auto module = snapshot2.find_first_by_name<th32::ModuleEntry>("kernel32.dll");
