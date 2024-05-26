@@ -7,6 +7,7 @@
 #include <winapi20/detail/export.h>
 #include <winapi20/detail/definitions.h>
 #include <winapi20/detail/template_util.h>
+#include <winapi20/detail/cvt.h>
 #include <winapi20/wrappers/handle.h>
 #include <winapi20/wrappers/pid.h>
 #include <winapi20/wrappers/memaddr.h>
@@ -64,6 +65,6 @@ namespace winapi::dll
     private:
       std::string m_name;
       Handle m_handle;
-      bool m_cleanup;
+      bool m_cleanup = false;
   };
 }

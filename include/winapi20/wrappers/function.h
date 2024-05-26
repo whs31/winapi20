@@ -17,7 +17,7 @@ namespace winapi
       {}
 
       template <typename R = pointer_type, typename... T>
-      inline auto __fastcall operator()(T&&... args) const noexcept -> pointer_type {
+      inline auto __fastcall operator()(T&&... args) const noexcept -> R {
         return ((R (__fastcall*) (T...)) this->m_)(args...);
       }
 
