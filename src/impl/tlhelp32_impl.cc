@@ -96,7 +96,7 @@ namespace winapi::th32
         .pid = PID(entry.th32ProcessID),
         .base_address = reinterpret_cast<uintptr_t>(entry.modBaseAddr),
         .size = entry.modBaseSize,
-        .handle = Handle(entry.hModule, Cleanup::Manual),
+        .handle = HandleView(entry.hModule),
         .name = detail::into_utf8(entry.szModule),
         .path = std::filesystem::path(detail::into_utf8(entry.szExePath))
     };

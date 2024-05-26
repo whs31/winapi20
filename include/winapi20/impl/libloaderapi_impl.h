@@ -4,6 +4,7 @@
 #include <string>
 #include <optional>
 #include <iosfwd>
+#include <filesystem>
 #include <winapi20/detail/export.h>
 #include <winapi20/detail/definitions.h>
 #include <winapi20/detail/template_util.h>
@@ -19,6 +20,8 @@ namespace winapi::dll
   class WINAPI20_EXPORT Library
   {
     public:
+      using enum OwnershipMode;
+
       /**
        * \brief
        * \see https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandleexa
@@ -29,6 +32,21 @@ namespace winapi::dll
         Pin           = 0x00000001,
         WeakReference = 0x00000002
       };
+
+      explicit Library(
+          OwnershipMode mode,
+          std::string name,
+          PID pid,
+          HandleFlags flags = HandleFlags::None
+      ) noexcept(false);
+
+      explicit Library(
+          OwnershipMode mode,
+          MemoryAddress const& address,
+          PID pid,
+          HandleFlags flags = HandleFlags::None
+      ) noexcept(false);
+
 
       virtual ~Library();
 
@@ -44,27 +62,28 @@ namespace winapi::dll
         return this->m_handle;
       }
 
+      /**
+       * \brief Retrieves the fully qualified path for the file that contains the specified module.
+       * \note Querying the path of module that belongs to another process is expensive. Do not call this method frequently.
+       * \throws winapi::windows_exception If the operation fails.
+       * \return The fully qualified path for the file that contains the specified module.
+       * \see https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulefilenamea
+       */
+      [[nodiscard]] auto file_path() const noexcept(false) -> std::filesystem::path;
       [[nodiscard]] auto exported_function_address(std::string_view name) const -> std::optional<Function>;
 
       [[nodiscard]] inline auto operator[](std::string_view name) const -> std::optional<Function> {
         return this->exported_function_address(name);
       }
 
-    public:
-      [[nodiscard("do not discard result of factory function call")]]
-      static auto view(std::string name, PID pid, HandleFlags flags = HandleFlags::None) -> std::optional<Library>;
-
-      [[nodiscard("do not discard result of factory function call")]]
-      static auto view(MemoryAddress const& address, PID pid, HandleFlags flags = HandleFlags::None) -> std::optional<Library>;
-
-      // load library
-
     private:
       Library() = default;
+      Library(std::string name, Handle&& handle, PID pid, bool cleanup);
 
     private:
       std::string m_name;
       Handle m_handle;
+      PID m_pid;
       bool m_cleanup = false;
   };
 }

@@ -31,19 +31,20 @@ namespace winapi::checks
 
 namespace winapi
 {
-  Process::Process(uint32_t pid, winapi::AccessRights rights, bool inherit_handle) noexcept(false)
+  Process::Process(PID pid, winapi::AccessRights rights, bool inherit_handle) noexcept(false)
+   : m_handle(::OpenProcess(static_cast<decltype(PROCESS_ALL_ACCESS)>(rights), inherit_handle, *pid), Cleanup::Auto)
   {
-    if(auto const h = ::OpenProcess(static_cast<decltype(PROCESS_ALL_ACCESS)>(rights), inherit_handle, pid); not h)
+    if(not this->m_handle)
       throw winapi::windows_exception(winapi::last_error_string());
-    else
-      this->m_handle = Handle(h, Cleanup::Auto);
   }
 
   auto Process::current() noexcept -> Process {
-    auto self = Process();
-    self.m_handle = Handle(::GetCurrentProcess(), Cleanup::Auto);
-    return self;
+    return Process(Handle(::GetCurrentProcess(), Cleanup::Auto));
   }
 
   Process::~Process() = default;
+
+  Process::Process(Handle&& handle) noexcept
+      : m_handle(std::move(handle))
+  {}
 } // namespace winapi

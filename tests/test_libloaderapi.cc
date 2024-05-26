@@ -21,9 +21,12 @@ TEST(Library, View)
   EXPECT_TRUE(pid.has_value());
   EXPECT_FALSE(pid->pid.is_current());
 
-  auto lib = dll::Library::view("kernel32.dll", pid->pid);
-  EXPECT_TRUE(lib.has_value());
-  auto fn = (*lib)["MulDiv"];
+  auto lib = dll::Library(dll::Library::View, "kernel32.dll", pid->pid);
+
+  EXPECT_EQ(lib.file_path().filename().string(), "KERNEL32.DLL");
+  fmt::print("{}\n", lib.file_path().string());
+
+  auto fn = lib["MulDiv"];
   EXPECT_TRUE(fn.has_value());
   auto res = fn->call<int>(10, 2, 5);
   int res2 = (*fn).operator()<int>(10, 2, 5);

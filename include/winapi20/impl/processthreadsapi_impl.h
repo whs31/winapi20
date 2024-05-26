@@ -8,6 +8,7 @@
 #include <winapi20/detail/definitions.h>
 #include <winapi20/detail/template_util.h>
 #include <winapi20/wrappers/handle.h>
+#include <winapi20/wrappers/pid.h>
 
 namespace winapi
 {
@@ -92,16 +93,17 @@ namespace winapi
   class WINAPI20_EXPORT Process
   {
     public:
-      explicit Process(uint32_t pid, AccessRights rights, bool inherit_handle = false) noexcept(false);
+      explicit Process(PID pid, AccessRights rights, bool inherit_handle = false) noexcept(false);
       virtual ~Process();
 
-      [[nodiscard]] inline auto handle() const noexcept -> Handle { return this->m_handle; }
+      [[nodiscard]] inline auto handle() const noexcept -> Handle const& { return this->m_handle; }
 
     public:
       [[nodiscard]] static auto current() noexcept -> Process;
 
     private:
       Process() = default;
+      explicit Process(Handle&& handle) noexcept;
 
     private:
       Handle m_handle;

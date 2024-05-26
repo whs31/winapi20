@@ -15,4 +15,10 @@ namespace winapi
     Auto,
     Manual
   };
+
+  enum class OwnershipMode
+  {
+    Own,
+    View
+  };
 }

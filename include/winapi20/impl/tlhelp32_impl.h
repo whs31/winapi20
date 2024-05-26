@@ -67,7 +67,7 @@ namespace winapi::th32
     size_t size;
 
     /// \brief A handle to the module in the context of the owning process.
-    Handle handle;
+    HandleView handle;
 
     /// \brief The name of the module.
     std::string name;

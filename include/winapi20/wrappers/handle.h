@@ -6,6 +6,17 @@
 
 namespace winapi
 {
+  struct HandleView : public detail::PointerLike
+  {
+    using detail::PointerLike::PointerLike;
+    [[nodiscard]] constexpr inline auto valid() const noexcept -> bool override;
+
+    friend std::ostream& operator<<(std::ostream& os, HandleView const& handle);
+
+    private:
+      static inline auto invalid_handle_ptr = reinterpret_cast<pointer_type>(-1);
+  };
+
   struct WINAPI20_EXPORT Handle : public detail::PointerLike
   {
     constexpr inline Handle();
@@ -13,13 +24,14 @@ namespace winapi
     explicit Handle(integer_type handle, Cleanup cleanup);
 
     virtual ~Handle() override;
-    Handle(Handle const&) = default;
+    Handle(Handle const&) = delete;
     Handle(Handle&&) noexcept = default;
 
-    Handle& operator=(Handle const&) = default;
+    Handle& operator=(Handle const&) = delete;
     Handle& operator=(Handle&&) noexcept = default;
 
     [[nodiscard]] constexpr inline auto valid() const noexcept -> bool override;
+    [[nodiscard]] constexpr inline auto view() const noexcept -> HandleView;
 
     friend std::ostream& operator<<(std::ostream& os, Handle const& handle);
 
@@ -49,6 +61,18 @@ namespace winapi
     os << fmt::format("Handle(0x{:x})", handle.as_integer());
     return os;
   }
+
+  constexpr auto Handle::view() const noexcept -> HandleView { return HandleView(this->m_); } // NOLINT(*-return-braced-init-list)
+
+  constexpr inline auto HandleView::valid() const noexcept -> bool {
+    return this->m_ != nullptr and this->m_ != invalid_handle_ptr;
+  }
+
+  inline std::ostream& operator<<(std::ostream& os, HandleView const& handle) {
+    os << fmt::format("HandleView(0x{:x})", handle.as_integer());
+    return os;
+  }
 }
 
 template <> struct fmt::formatter<winapi::Handle> : winapi::utility::ostream_formatter {};
+template <> struct fmt::formatter<winapi::HandleView> : winapi::utility::ostream_formatter {};
