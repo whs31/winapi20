@@ -25,6 +25,8 @@ TEST(Library, View)
   EXPECT_TRUE(lib.has_value());
   auto fn = (*lib)["MulDiv"];
   EXPECT_TRUE(fn.has_value());
-  auto res = fn->operator()<int>(10, 2, 5);
+  auto res = fn->call<int>(10, 2, 5);
+  int res2 = (*fn).operator()<int>(10, 2, 5);
   EXPECT_EQ(res, ::MulDiv(10, 2, 5));
+  EXPECT_EQ(res2, res);
 }

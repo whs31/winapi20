@@ -31,14 +31,14 @@ namespace winapi::detail
         return reinterpret_cast<T>(this->m_);
     }
 
-      [[nodiscard]] constexpr inline auto as_pointer() const noexcept -> pointer_type { return this->as<pointer_type>(); }
-      [[nodiscard]] inline auto as_integer() const noexcept -> integer_type { return this->as<integer_type>(); }
+    [[nodiscard]] constexpr inline auto as_pointer() const noexcept -> pointer_type { return this->as<pointer_type>(); }
+    [[nodiscard]] inline auto as_integer() const noexcept -> integer_type { return this->as<integer_type>(); }
 
-      constexpr inline explicit operator bool() const noexcept { return this->valid(); }
-      constexpr inline explicit operator pointer_type() const noexcept { return this->as_pointer(); }
-      inline explicit operator integer_type() const noexcept { return this->as_integer(); }
-      constexpr inline auto operator->() const noexcept -> pointer_type { return this->as_pointer(); }
-      constexpr inline auto operator*() const noexcept -> pointer_type { return this->as_pointer(); }
+    constexpr inline explicit operator bool() const noexcept { return this->valid(); }
+    constexpr inline explicit operator pointer_type() const noexcept { return this->as_pointer(); }
+    inline explicit operator integer_type() const noexcept { return this->as_integer(); }
+    constexpr inline auto operator->() const noexcept -> pointer_type { return this->as_pointer(); }
+    constexpr inline auto operator*() const noexcept -> pointer_type { return this->as_pointer(); }
 
     protected:
       pointer_type m_ = nullptr;

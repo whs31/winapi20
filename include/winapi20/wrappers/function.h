@@ -16,16 +16,21 @@ namespace winapi
         : detail::PointerLike(reinterpret_cast<pointer_type>(func))
       {}
 
-      template <typename R = pointer_type, typename... T>
+      template <typename R = void, typename... T>
       inline auto __fastcall operator()(T&&... args) const noexcept -> R {
         return ((R (__fastcall*) (T...)) this->m_)(args...);
+      }
+
+      template <typename R = void, typename... T>
+      inline auto __fastcall call(T&&... args) const noexcept -> R {
+        return this->operator()<R, T...>(std::forward<T>(args)...);
       }
 
       friend std::ostream& operator<<(std::ostream& os, Function const& fn);
   };
 
   inline std::ostream& operator<<(std::ostream& os, Function const& fn) {
-    os << fmt::format("MemoryAddress(0x{:x})", fn.as_integer());
+    os << fmt::format("Function(0x{:x})", fn.as_integer());
     return os;
   }
 } // namespace winapi
