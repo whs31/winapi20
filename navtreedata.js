@@ -27,10 +27,10 @@ var NAVTREE =
   [ "winapi20", "index.html", [
     [ "Namespaces", "namespaces.html", [
       [ "Description", "index.html#autotoc_md1", null ],
-      [ "Installation", "index.html#autotoc_md2", null ],
-      [ "Examples", "index.html#autotoc_md3", [
-        [ "Get modules from process", "index.html#autotoc_md4", null ]
-      ] ],
+      [ "Features", "index.html#autotoc_md2", null ],
+      [ "Dependencies", "index.html#autotoc_md3", null ],
+      [ "Contributing", "index.html#autotoc_md4", null ],
+      [ "Installation/building", "index.html#autotoc_md5", null ],
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
@@ -59,7 +59,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"df/d9b/structwinapi_1_1PID.html#a0484bd68d85305a7e516ffa767a39958"
+"df/d9b/structwinapi_1_1PID.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

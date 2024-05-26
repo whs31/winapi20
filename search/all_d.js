@@ -8,7 +8,7 @@ var searchData=
   ['pid_5',['PID',['../df/d9b/structwinapi_1_1PID.html#aefb2ee768c56a9512c982a90203c8468',1,'winapi::PID::PID()=default'],['../df/d9b/structwinapi_1_1PID.html#a0484bd68d85305a7e516ffa767a39958',1,'winapi::PID::PID(integer_type pid) noexcept']]],
   ['pointerlike_6',['PointerLike',['../db/d87/structwinapi_1_1detail_1_1PointerLike.html',1,'winapi::detail']]],
   ['private_7',['Private',['../de/d9e/namespacewinapi_1_1memory.html#aa6f342ec01aac4f1e5b46d8b092309a5a47f9082fc380ca62d531096aa1d110f1',1,'winapi::memory']]],
-  ['process_8',['Process',['../index.html#autotoc_md4',1,'Get modules from process'],['../dc/d41/classwinapi_1_1Process.html',1,'Process'],['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295fab6ec7abeb6ae29cc35a4b47475e12afe',1,'winapi::th32::Snapshot::Process']]],
+  ['process_8',['Process',['../dc/d41/classwinapi_1_1Process.html',1,'Process'],['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295fab6ec7abeb6ae29cc35a4b47475e12afe',1,'winapi::th32::Snapshot::Process']]],
   ['processentry_9',['ProcessEntry',['../dc/d6c/structwinapi_1_1th32_1_1ProcessEntry.html',1,'winapi::th32']]],
   ['protection_10',['protection',['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a6b9e2aa789c5411c37cd86c921b5acf2',1,'winapi::memory::MemoryBasicInformation']]]
 ];

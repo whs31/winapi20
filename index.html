@@ -115,55 +115,66 @@ $(function(){initNavTree('index.html',''); initResizable(); });
  <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&amp;logo=c%2B%2B&amp;logoColor=white" alt="cpp_badge" class="inline"/><img src="https://img.shields.io/badge/CMake-064F8C?style=for-the-badge&amp;logo=cmake&amp;logoColor=white" alt="cmake_badge" class="inline"/> </h3>
 <h2><a class="anchor" id="autotoc_md1"></a>
 Description</h2>
+<p>I was tired of using outdated raw C Windows API in my modern projects, so I decided to write my own C++20 API wrapper, which is focusing on safety and extensive use of modern C++20 features such as templates, constexpr and operator overloading. Also, flooding the global namespace with Windows API types, functions and especially <b>macros</b> (which breaks existing STL code btw) is not a good practice for me.</p>
+<p>This library provides <em>partial</em> wrapper for Windows API functions and types. Feel free to extend it and submit PRs.</p>
+<p>Remark: <code>UNICODE</code> macro is automatically defined when compiling this library. Idk if this is a good idea, but docs said ANSI versions are deprecated, so it's not a big deal.</p>
 <h2><a class="anchor" id="autotoc_md2"></a>
-Installation</h2>
+Features</h2>
+<ul>
+<li>Wraps some Win32API functions and types into nice classes.</li>
+<li>Replaces <code>GetLastError()</code>-based error handling with <code><a class="el" href="d1/dd0/classwinapi_1_1windows__exception.html">winapi::windows_exception</a></code>, which provides string error message out-of-the-box and can be used in <code>try</code> blocks.</li>
+<li>No more <code>void*</code> or <code>wchar_t*</code>-ptr based type erasing. All fields and arguments are wrapped into STL (if possible) or my own newtypes (so paths becomes <code>std::filesystem::path</code> instead of <code>LPCWSTR</code>).</li>
+<li>All Win32API headers are hidden in implementation. No more polluting global namespace with strange stuff.</li>
+<li>Also, working with <code>wchar_t</code> strings is a pain, so all strings in this library is good old <code>std::string</code>, which is internally converted to correct <code>wchar_t</code> representation if needed.</li>
+<li>See <a class="el" href="dir_d28a4824dc47e487b107a5db32ef43c4.html">Examples</a> below for other cool features!</li>
+</ul>
 <h2><a class="anchor" id="autotoc_md3"></a>
-Examples</h2>
-<h3><a class="anchor" id="autotoc_md4"></a>
-Get modules from process</h3>
-<p>Finds process by name and retrieve module with given name from it.</p>
-<div class="fragment"><div class="line"><span class="keyword">auto</span> snapshot = Snapshot(Snapshot::IncludeFlags::Process, PID::CurrentProcess);</div>
+Dependencies</h2>
+<ul>
+<li><b>C++20 compiler</b>. I tested it with MinGW, feel free to sumbit issues if you want for me to add support for other compilers.</li>
+<li><b>CMake 3.16</b> at least.</li>
+<li><a href="https://github.com/fmtlib/fmt"><b>fmt</b></a>. You can install it via <code>conan</code>, <code>vcpkg</code> or <code>msys2</code> (see Installation).</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Contributing</h2>
+<p>If you want to contribute, please see CONTRIBUTING.md.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Installation/building</h2>
+<p>I recommend using <a href="https://github.com/conan-io/conan"><b>conan</b></a> to build this library. Run: </p><div class="fragment"><div class="line">conan install . -b &quot;missing&quot; -s &quot;build_type=Release&quot;</div>
+<div class="line">cmake --preset &quot;conan-release&quot; .</div>
+<div class="line">cmake --build build/Release</div>
+<div class="line">cmake --install build/Release --prefix &quot;where-you-want-the-library-to-be-installed&quot;</div>
+</div><!-- fragment --><p>Alternatively, you can build it yourself with CMake, passing prefix path: </p><div class="fragment"><div class="line">cmake -S . -B target -DCMAKE_PREFIX_PATH=&quot;path-to-fmt&quot; -DCMAKE_BUILD_TYPE=Release</div>
+<div class="line">cmake --build target</div>
+<div class="line">cmake --install target --prefix &quot;&lt;where-you-want-the-library-to-be-installed&gt;&quot;</div>
+</div><!-- fragment --><p>If you want to build tests and examples, use following commands:</p>
+<p>For <b>conan</b>: </p><div class="fragment"><div class="line">conan install . -b missing -s &quot;build_type=Release&quot; -o &quot;winapi20/*:test=True&quot; -o &quot;winapi20/*:examples=True&quot;</div>
+<div class="line">cmake --preset &quot;conan-release&quot; .</div>
+<div class="line">cmake --build build/Release</div>
+</div><!-- fragment --><p>For <b>cmake</b>: </p><div class="fragment"><div class="line">cmake -S . -B target -DCMAKE_PREFIX_PATH=&quot;&lt;path-to-fmt&gt;&quot; -DCMAKE_BUILD_TYPE=Release -DTESTS=ON -DEXAMPLES=ON</div>
+<div class="line">cmake --build target --target all</div>
+<div class="line">````</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// find process by name</span></div>
-<div class="line"><span class="keyword">auto</span> game = snapshot.find_first_by_name&lt;ProcessEntry&gt;(<span class="stringliteral">&quot;dota2.exe&quot;</span>);</div>
-<div class="line"><span class="keywordflow">if</span>(not game)</div>
-<div class="line">  <span class="keywordflow">return</span> 1;</div>
-<div class="line">fmt::print(<span class="stringliteral">&quot;found dota2.exe: {}\n&quot;</span>, *game);</div>
+<div class="line">### Examples</div>
+<div class="line">#### Call function from loaded library in any process</div>
+<div class="line">Finds process by name, retrieves dll with given name from it and calls function with given name in it, returning result.</div>
+</div><!-- fragment --><p> cpp // wrap this in try block if you want to handle errors properly.</p>
+<p>// make snapshot of system processes auto snapshot = Snapshot(Snapshot::IncludeFlags::Process, PID::current());</p>
+<p>// find process by name auto process = snapshot.find_first_by_name&lt;ProcessEntry&gt;("explorer.exe"); if(not process) return 1; fmt::print("found explorer.exe: {}\n", *process);</p>
+<p>// open view-only handle to library auto lib = dll::Library(View, "kernel32.dll", process-&gt;pid); fmt::print("library path: {}\n", lib.file_path().string()); auto fn = lib["MulDiv"]; // aka <code>lib.exported_function_address("MulDiv")</code>;</p>
+<p>if(not fn) return 1; auto const res = fn-&gt;call&lt;int&gt;(10, 2, 5); fmt::print("calling function MulDiv(10, 2, 5) = {}\n", *fn); fmt::print("10 * 2 / 5 = {}\n", res); </p><div class="fragment"><div class="line">Possible output:</div>
+</div><!-- fragment --><p> shell found explorer.exe: ProcessEntry { pid: PID(585656), parent_pid: PID(76060), thread_count: 182... library path: C:\Windows\System32\KERNEL32.DLL calling function MulDiv(10, 2, 5) = Function(0x7ffd429e0930) 10 * 2 / 5 = 4 </p><div class="fragment"><div class="line">[Source Code](./examples/call_external_function.cc)</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// make snapshot of modules of the process</span></div>
-<div class="line"><span class="keyword">auto</span> module_snapshot = Snapshot(Snapshot::IncludeFlags::Module | Snapshot::IncludeFlags::Process, game-&gt;pid);</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">// get vector of all modules</span></div>
-<div class="line"><span class="keyword">auto</span> modules = module_snapshot.modules();</div>
-<div class="line"><span class="comment">// exclude all non-game modules (not containing &quot;dota 2 beta&quot; in path)</span></div>
-<div class="line">modules.erase(std::remove_if(</div>
-<div class="line">    modules.begin(),</div>
-<div class="line">    modules.end(),</div>
-<div class="line">    [](<span class="keyword">auto</span>&amp; m) { return m.path.string().find(<span class="stringliteral">&quot;dota 2 beta&quot;</span>) == std::string::npos; }), modules.end()</div>
-<div class="line">);</div>
-<div class="line">fmt::print(<span class="stringliteral">&quot;listing game modules:\n&quot;</span>);</div>
-<div class="line">fmt::print(<span class="stringliteral">&quot;\t{}&quot;</span>, fmt::join(modules, <span class="stringliteral">&quot;\n\t&quot;</span>));</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">// find module by name in process</span></div>
-<div class="line"><span class="keyword">auto</span> client_dll = module_snapshot.find_first_by_name&lt;ModuleEntry&gt;(<span class="stringliteral">&quot;client.dll&quot;</span>);</div>
-<div class="line"><span class="keywordflow">if</span>(not client_dll)</div>
-<div class="line">  <span class="keywordflow">return</span> 1;</div>
-<div class="line">fmt::print(<span class="stringliteral">&quot;\nfound client.dll: {}\n&quot;</span>, *client_dll);</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">// get handle to module</span></div>
-<div class="line">fmt::print(<span class="stringliteral">&quot;client.dll handle: {}\n&quot;</span>, client_dll-&gt;handle);</div>
-<div class="line">fmt::print(<span class="stringliteral">&quot;client.dll base address: {}\n&quot;</span>, client_dll-&gt;base_address);</div>
-<div class="line"><span class="keywordflow">return</span> 0;</div>
-</div><!-- fragment --><p>Possible output: </p><div class="fragment"><div class="line">found dota2.exe: ProcessEntry { pid: 346156, parent_pid: 517408, thread_count: 82, thread_base_priority: 8, name: dota2.exe }</div>
-<div class="line">listing game modules:</div>
-<div class="line">    ModuleEntry { pid: 346156, base_address: 140699576827904, size: 2416640, handle: Handle(0x7ff72c4c0000), name: dota2.exe, path: C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\bin\win64\dota2.exe }</div>
-<div class="line">    ... </div>
-<div class="line">    ModuleEntry { pid: 346156, base_address: ...</div>
-<div class="line">    </div>
-<div class="line">found client.dll: ModuleEntry { pid: 346156, base_address: 140722899255296, size: 85884928, handle: Handle(0x7ffc9a6c0000), name: client.dll, path: C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\dota\bin\win64\client.dll }</div>
-<div class="line">client.dll handle: Handle(0x7ffc9a6c0000)</div>
-<div class="line">client.dll base address: 140722899255296</div>
-</div><!-- fragment --><p> <a href="./examples/read_process_memory.cc">Source Code</a> </p>
+<div class="line">#### Get modules from process</div>
+<div class="line">Finds process by name and retrieve module with given name from it.</div>
+</div><!-- fragment --><p> cpp auto snapshot = Snapshot(Snapshot::IncludeFlags::Process, PID::current());</p>
+<p>// find process by name auto game = snapshot.find_first_by_name&lt;ProcessEntry&gt;("dota2.exe"); if(not game) return 1; fmt::print("found dota2.exe: {}\n", *game);</p>
+<p>// make snapshot of modules of the process auto module_snapshot = Snapshot(Snapshot::IncludeFlags::Module | Snapshot::IncludeFlags::Process, game-&gt;pid);</p>
+<p>// get vector of all modules auto modules = module_snapshot.modules(); // exclude all non-game modules (not containing "dota 2 beta" in path) modules.erase(std::remove_if( modules.begin(), modules.end(), [](auto&amp; m) { return m.path.string().find("dota 2 beta") == std::string::npos; }), modules.end() ); fmt::print("listing game modules:\n"); fmt::print("\t{}", fmt::join(modules, "\n\t"));</p>
+<p>// find module by name in process auto client_dll = module_snapshot.find_first_by_name&lt;ModuleEntry&gt;("client.dll"); if(not client_dll) return 1; fmt::print("\nfound client.dll: {}\n", *client_dll);</p>
+<p>// get handle to module fmt::print("client.dll handle: {}\n", client_dll-&gt;handle); fmt::print("client.dll base address: {}\n", client_dll-&gt;base_address); </p><div class="fragment"><div class="line">Possible output:</div>
+</div><!-- fragment --><p> shell found dota2.exe: ProcessEntry { pid: 346156, parent_pid: 517408, thread_count: 82, thread_base_priority: 8, name: dota2.exe } listing game modules: ModuleEntry { pid: 346156, base_address: 140699576827904, size: 2416640, handle: Handle(0x7ff72c4c0000), name: dota2.exe, path: C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\bin\win64\dota2.exe } ... ModuleEntry { pid: 346156, base_address: ...</p>
+<p>found client.dll: ModuleEntry { pid: 346156, base_address: 140722899255296, size: 85884928, handle: Handle(0x7ffc9a6c0000), name: client.dll, path: C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\dota\bin\win64\client.dll } client.dll handle: Handle(0x7ffc9a6c0000) client.dll base address: 140722899255296 ``` <a href="./examples/read_process_memory.cc">Source Code</a> </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"/>
 </div><!-- contents -->
