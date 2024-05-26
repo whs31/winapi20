@@ -123,70 +123,71 @@ $(function(){initNavTree('d0/dfd/libloaderapi__impl_8h_source.html','../../'); i
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;winapi20/detail/export.h&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;winapi20/detail/definitions.h&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;winapi20/detail/template_util.h&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;winapi20/wrappers/handle.h&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;winapi20/wrappers/pid.h&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;winapi20/wrappers/memaddr.h&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;winapi20/wrappers/function.h&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../d6/de4/namespacewinapi_1_1dll.html">   16</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d6/de4/namespacewinapi_1_1dll.html">winapi::dll</a></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../d5/db0/classwinapi_1_1dll_1_1Library.html">   18</a></span>  <span class="keyword">class </span>WINAPI20_EXPORT <a class="code hl_class" href="../../d5/db0/classwinapi_1_1dll_1_1Library.html">Library</a></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../d5/db0/classwinapi_1_1dll_1_1Library.html#a83e40420728a502e3826dcb3914c986c">   25</a></span>      <span class="keyword">enum class</span> <a class="code hl_enumeration" href="../../d5/db0/classwinapi_1_1dll_1_1Library.html#a83e40420728a502e3826dcb3914c986c">HandleFlags</a></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>      {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        None          = 0x00000000,</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        Pin           = 0x00000001,</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        WeakReference = 0x00000002</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>      };</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;winapi20/detail/cvt.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;winapi20/wrappers/handle.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;winapi20/wrappers/pid.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;winapi20/wrappers/memaddr.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;winapi20/wrappers/function.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../d6/de4/namespacewinapi_1_1dll.html">   17</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d6/de4/namespacewinapi_1_1dll.html">winapi::dll</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../d5/db0/classwinapi_1_1dll_1_1Library.html">   19</a></span>  <span class="keyword">class </span>WINAPI20_EXPORT <a class="code hl_class" href="../../d5/db0/classwinapi_1_1dll_1_1Library.html">Library</a></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../d5/db0/classwinapi_1_1dll_1_1Library.html#a83e40420728a502e3826dcb3914c986c">   26</a></span>      <span class="keyword">enum class</span> <a class="code hl_enumeration" href="../../d5/db0/classwinapi_1_1dll_1_1Library.html#a83e40420728a502e3826dcb3914c986c">HandleFlags</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>      {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        None          = 0x00000000,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        Pin           = 0x00000001,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        WeakReference = 0x00000002</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>      };</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>      <span class="keyword">virtual</span> <a class="code hl_class" href="../../d5/db0/classwinapi_1_1dll_1_1Library.html">~Library</a>();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>      [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> name() const noexcept -&gt; std::<span class="keywordtype">string</span> const&amp; {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">return</span> this-&gt;m_name;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>      }</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>      [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> handle() const noexcept -&gt; <a class="code hl_struct" href="../../dd/d5e/structwinapi_1_1Handle.html">Handle</a> const&amp; {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">return</span> this-&gt;m_handle;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>      }</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>      [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> handle_mut() noexcept -&gt; Handle&amp; {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">return</span> this-&gt;m_handle;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>      [[nodiscard]] <span class="keyword">auto</span> exported_function_address(std::string_view name) <span class="keyword">const</span> -&gt; std::optional&lt;Function&gt;;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>      [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> operator[](std::string_view name) <span class="keyword">const</span> -&gt; std::optional&lt;Function&gt; {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">return</span> this-&gt;exported_function_address(name);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>      }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      [[nodiscard(<span class="stringliteral">&quot;do not discard result of factory function call&quot;</span>)]]</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>      <span class="keyword">static</span> <span class="keyword">auto</span> view(std::string name, PID pid, HandleFlags flags = HandleFlags::None) -&gt; std::optional&lt;Library&gt;;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>      [[nodiscard(<span class="stringliteral">&quot;do not discard result of factory function call&quot;</span>)]]</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>      <span class="keyword">static</span> <span class="keyword">auto</span> view(MemoryAddress <span class="keyword">const</span>&amp; address, PID pid, HandleFlags flags = HandleFlags::None) -&gt; std::optional&lt;Library&gt;;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>      <span class="comment">// load library</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>      Library() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>      std::string m_name;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>      Handle m_handle;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      <span class="keywordtype">bool</span> m_cleanup;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  };</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>      <span class="keyword">virtual</span> <a class="code hl_class" href="../../d5/db0/classwinapi_1_1dll_1_1Library.html">~Library</a>();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>      [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> name() const noexcept -&gt; std::<span class="keywordtype">string</span> const&amp; {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">return</span> this-&gt;m_name;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>      }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>      [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> handle() const noexcept -&gt; <a class="code hl_struct" href="../../dd/d5e/structwinapi_1_1Handle.html">Handle</a> const&amp; {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">return</span> this-&gt;m_handle;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>      }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>      [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> handle_mut() noexcept -&gt; Handle&amp; {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">return</span> this-&gt;m_handle;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>      [[nodiscard]] <span class="keyword">auto</span> exported_function_address(std::string_view name) <span class="keyword">const</span> -&gt; std::optional&lt;Function&gt;;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>      [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> operator[](std::string_view name) <span class="keyword">const</span> -&gt; std::optional&lt;Function&gt; {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">return</span> this-&gt;exported_function_address(name);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>      }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>      [[nodiscard(<span class="stringliteral">&quot;do not discard result of factory function call&quot;</span>)]]</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>      <span class="keyword">static</span> <span class="keyword">auto</span> view(std::string name, PID pid, HandleFlags flags = HandleFlags::None) -&gt; std::optional&lt;Library&gt;;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>      [[nodiscard(<span class="stringliteral">&quot;do not discard result of factory function call&quot;</span>)]]</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>      <span class="keyword">static</span> <span class="keyword">auto</span> view(MemoryAddress <span class="keyword">const</span>&amp; address, PID pid, HandleFlags flags = HandleFlags::None) -&gt; std::optional&lt;Library&gt;;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>      <span class="comment">// load library</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      Library() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>      std::string m_name;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      Handle m_handle;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      <span class="keywordtype">bool</span> m_cleanup = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  };</div>
 </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}</div>
 </div>
-<div class="ttc" id="aclasswinapi_1_1dll_1_1Library_html"><div class="ttname"><a href="../../d5/db0/classwinapi_1_1dll_1_1Library.html">winapi::dll::Library</a></div><div class="ttdef"><b>Definition</b> <a href="#l00018">libloaderapi_impl.h:19</a></div></div>
-<div class="ttc" id="aclasswinapi_1_1dll_1_1Library_html_a83e40420728a502e3826dcb3914c986c"><div class="ttname"><a href="../../d5/db0/classwinapi_1_1dll_1_1Library.html#a83e40420728a502e3826dcb3914c986c">winapi::dll::Library::HandleFlags</a></div><div class="ttdeci">HandleFlags</div><div class="ttdef"><b>Definition</b> <a href="#l00025">libloaderapi_impl.h:26</a></div></div>
-<div class="ttc" id="anamespacewinapi_1_1dll_html"><div class="ttname"><a href="../../d6/de4/namespacewinapi_1_1dll.html">winapi::dll</a></div><div class="ttdoc">Namespace for functions and types originating from libloaderapi.h header file in the Windows API.</div><div class="ttdef"><b>Definition</b> <a href="#l00016">libloaderapi_impl.h:17</a></div></div>
+<div class="ttc" id="aclasswinapi_1_1dll_1_1Library_html"><div class="ttname"><a href="../../d5/db0/classwinapi_1_1dll_1_1Library.html">winapi::dll::Library</a></div><div class="ttdef"><b>Definition</b> <a href="#l00019">libloaderapi_impl.h:20</a></div></div>
+<div class="ttc" id="aclasswinapi_1_1dll_1_1Library_html_a83e40420728a502e3826dcb3914c986c"><div class="ttname"><a href="../../d5/db0/classwinapi_1_1dll_1_1Library.html#a83e40420728a502e3826dcb3914c986c">winapi::dll::Library::HandleFlags</a></div><div class="ttdeci">HandleFlags</div><div class="ttdef"><b>Definition</b> <a href="#l00026">libloaderapi_impl.h:27</a></div></div>
+<div class="ttc" id="anamespacewinapi_1_1dll_html"><div class="ttname"><a href="../../d6/de4/namespacewinapi_1_1dll.html">winapi::dll</a></div><div class="ttdoc">Namespace for functions and types originating from libloaderapi.h header file in the Windows API.</div><div class="ttdef"><b>Definition</b> <a href="#l00017">libloaderapi_impl.h:18</a></div></div>
 <div class="ttc" id="astructwinapi_1_1Handle_html"><div class="ttname"><a href="../../dd/d5e/structwinapi_1_1Handle.html">winapi::Handle</a></div><div class="ttdef"><b>Definition</b> <a href="../../d3/d78/handle_8h_source.html#l00009">handle.h:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
