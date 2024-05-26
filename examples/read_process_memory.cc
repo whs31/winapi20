@@ -6,7 +6,7 @@ using namespace winapi::th32;
 auto main() -> int
 {
   // make snapshot of system processes
-  auto snapshot = Snapshot(Snapshot::IncludeFlags::Process, PID::CurrentProcess);
+  auto snapshot = Snapshot(Snapshot::IncludeFlags::Process, PID::current());
 
   // find process by name
   auto game = snapshot.find_first_by_name<ProcessEntry>("dota2.exe");

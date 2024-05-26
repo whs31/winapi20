@@ -47,7 +47,6 @@ namespace winapi::dll
           HandleFlags flags = HandleFlags::None
       ) noexcept(false);
 
-
       virtual ~Library();
 
       [[nodiscard]] inline auto name() const noexcept -> std::string const& {
@@ -76,7 +75,7 @@ namespace winapi::dll
         return this->exported_function_address(name);
       }
 
-    private:
+    protected:
       Library() = default;
       Library(std::string name, Handle&& handle, PID pid, bool cleanup);
 

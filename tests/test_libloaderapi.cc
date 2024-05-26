@@ -32,4 +32,8 @@ TEST(Library, View)
   int res2 = (*fn).operator()<int>(10, 2, 5);
   EXPECT_EQ(res, ::MulDiv(10, 2, 5));
   EXPECT_EQ(res2, res);
+
+  auto ntdll = dll::Library(dll::Library::View, "ntdll.dll", PID::current());
+  auto ntdll_fn = ntdll["NtProtectVirtualMemory"];
+  EXPECT_TRUE(ntdll_fn.has_value());
 }
