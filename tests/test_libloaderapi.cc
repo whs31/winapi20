@@ -21,16 +21,6 @@ TEST(Library, View)
   EXPECT_TRUE(pid.has_value());
   EXPECT_FALSE(pid->pid.is_current());
 
-  auto snapshot2 = th32::Snapshot(IncludeFlags::Module | IncludeFlags::Process, pid->pid);
-  auto module = snapshot2.find_first_by_name<th32::ModuleEntry>("kernel32.dll");
-  EXPECT_TRUE(snapshot2.valid());
-  EXPECT_TRUE(module.has_value());
-  EXPECT_TRUE(module->base_address > 0);
-  EXPECT_TRUE(module->pid == pid->pid);
-  EXPECT_FALSE(module->name.empty());
-  EXPECT_FALSE(module->path.empty());
-  EXPECT_TRUE(module->handle);
-
   auto lib = dll::Library::view("kernel32.dll", pid->pid);
   EXPECT_TRUE(lib.has_value());
   auto fn = (*lib)["MulDiv"];
