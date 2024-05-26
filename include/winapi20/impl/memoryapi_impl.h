@@ -206,7 +206,7 @@ namespace winapi::memory
     Image                     = 0x1000000
   };
 
-  struct WINAPI20_EXPORT MemoryBasicInformation
+  struct MemoryBasicInformation
   {
     /// \brief A pointer to the base address of the region of pages.
     uintptr_t base_address;
@@ -257,7 +257,7 @@ namespace winapi::memory
      * \return The memory state at the specified address.
      * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualquery
      */
-    [[nodiscard]] static auto query(uintptr_t address) -> MemoryBasicInformation;
+    [[nodiscard]] WINAPI20_EXPORT static auto query(uintptr_t address) -> MemoryBasicInformation;
 
     /**
      * \brief Queries the memory state at the specified address in the address space of the specified process.
@@ -269,7 +269,7 @@ namespace winapi::memory
      * \return The memory state at the specified address.
      * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualqueryex
      */
-    [[nodiscard]] static auto query(Process const& process, uintptr_t address) -> MemoryBasicInformation;
+    [[nodiscard]] WINAPI20_EXPORT static auto query(Process const& process, uintptr_t address) -> MemoryBasicInformation;
 
     /**
      * \brief Queries the memory state at the specified address in the address space of the calling process.
@@ -280,7 +280,7 @@ namespace winapi::memory
      * \return The memory state at the specified address.
      * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualquery
      */
-    [[nodiscard]] static auto try_query(uintptr_t address) -> std::optional<MemoryBasicInformation>;
+    [[nodiscard]] WINAPI20_EXPORT static auto try_query(uintptr_t address) -> std::optional<MemoryBasicInformation>;
 
     /**
      * \brief Queries the memory state at the specified address in the address space of the specified process.
@@ -291,6 +291,6 @@ namespace winapi::memory
      * \return The memory state at the specified address.
      * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualqueryex
      */
-    [[nodiscard]] static auto try_query(Process const& process, uintptr_t address) -> std::optional<MemoryBasicInformation>;
+    [[nodiscard]] WINAPI20_EXPORT static auto try_query(Process const& process, uintptr_t address) -> std::optional<MemoryBasicInformation>;
   };
 }

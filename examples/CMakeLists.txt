@@ -27,10 +27,12 @@ if(WIN32)
   )
 
   # copy lib${PROJECT_NAME}.dll folder with ${PROJECT_NAME}-test.exe
-  message(STATUS "copying ${CMAKE_BINARY_DIR}/lib${PROJECT_NAME}.dll to ${CMAKE_CURRENT_BINARY_DIR}/lib${PROJECT_NAME}.dll")
-  add_custom_command(TARGET ${EXAMPLE_NAME_1}
-    POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_BINARY_DIR}/lib${PROJECT_NAME}.dll" "${CMAKE_CURRENT_BINARY_DIR}/lib${PROJECT_NAME}.dll"
-    COMMAND_EXPAND_LISTS
-  )
+  if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+    message(STATUS "copying ${CMAKE_BINARY_DIR}/lib${PROJECT_NAME}.dll to ${CMAKE_CURRENT_BINARY_DIR}/lib${PROJECT_NAME}.dll")
+    add_custom_command(TARGET ${EXAMPLE_NAME_1}
+      POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_BINARY_DIR}/lib${PROJECT_NAME}.dll" "${CMAKE_CURRENT_BINARY_DIR}/lib${PROJECT_NAME}.dll"
+      COMMAND_EXPAND_LISTS
+    )
+  endif()
 endif()

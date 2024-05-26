@@ -87,23 +87,27 @@ namespace winapi
     /// \brief Required to read or write virtual memory in a process using ReadProcessMemory and WriteProcessMemory.
     VirtualMemoryWrite      = 0x0020,
 
-    All                     = 0x000F0000L | Synchronize | 0xFFFF
+    #if defined(_MSC_VER)
+    All                     = 0x000F0000L | Synchronize | 0xFFF
+    #else
+    All                     = 0x000F0000 | Synchronize | 0xFFFF
+    #endif
   };
 
-  class WINAPI20_EXPORT Process
+  class Process
   {
     public:
-      explicit Process(PID pid, AccessRights rights, bool inherit_handle = false) noexcept(false);
-      virtual ~Process();
+      WINAPI20_EXPORT explicit Process(PID pid, AccessRights rights, bool inherit_handle = false) noexcept(false);
+      WINAPI20_EXPORT virtual ~Process();
 
       [[nodiscard]] inline auto handle() const noexcept -> Handle const& { return this->m_handle; }
 
     public:
-      [[nodiscard]] static auto current() noexcept -> Process;
+      [[nodiscard]] WINAPI20_EXPORT static auto current() noexcept -> Process;
 
     private:
       Process() = default;
-      explicit Process(Handle&& handle) noexcept;
+      WINAPI20_EXPORT explicit Process(Handle&& handle) noexcept;
 
     private:
       Handle m_handle;

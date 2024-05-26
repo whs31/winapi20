@@ -13,7 +13,7 @@ namespace winapi
    * \details Method <tt>HWProfileInfo::get</tt> retrieves the current hardware profile for the local computer.
    * \see https://learn.microsoft.com/en-us/windows/win32/api/winbase/ns-winbase-hw_profile_infoa
    */
-  struct WINAPI20_EXPORT HWProfileInfo
+  struct HWProfileInfo
   {
     /// \brief The reported docking state of the computer.
     enum class DockInfo
@@ -69,7 +69,7 @@ namespace winapi
      * \throws winapi::windows_exception if it failed to retrieve the hardware profile.
      * \return The current hardware profile struct.
      */
-    [[nodiscard]] static auto get() noexcept(false) -> HWProfileInfo;
+    [[nodiscard]] WINAPI20_EXPORT static auto get() noexcept(false) -> HWProfileInfo;
 
     /// \brief The reported docking state of the computer
     DockInfo dock_info{};
