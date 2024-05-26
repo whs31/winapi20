@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['permissions_0',['permissions',['../d7/d70/classwinapi_1_1MemoryAddress.html#afb7030ca14ad592c32ab502a7cc76929',1,'winapi::MemoryAddress']]]
+  ['get_0',['get',['../d3/d01/structwinapi_1_1HWProfileInfo.html#a9145646c20bb220bfac3562eed882e53',1,'winapi::HWProfileInfo']]]
 ];

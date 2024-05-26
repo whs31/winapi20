@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['memoryaddress_0',['MemoryAddress',['../d7/d70/classwinapi_1_1MemoryAddress.html',1,'winapi']]],
-  ['memorybasicinformation_1',['MemoryBasicInformation',['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html',1,'winapi::memory']]],
-  ['moduleentry_2',['ModuleEntry',['../d7/de2/structwinapi_1_1th32_1_1ModuleEntry.html',1,'winapi::th32']]]
+  ['library_0',['Library',['../d5/db0/classwinapi_1_1dll_1_1Library.html',1,'winapi::dll']]]
 ];

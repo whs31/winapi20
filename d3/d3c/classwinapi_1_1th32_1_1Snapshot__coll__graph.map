@@ -1,11 +1,13 @@
 <map id="Snapshot" name="Snapshot">
-<area shape="rect" id="Node000001" title=" " alt="" coords="74,183,157,208"/>
-<area shape="rect" id="Node000002" href="$dd/d5e/structwinapi_1_1Handle.html" title=" " alt="" coords="18,94,85,120"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,132,79,157,102,180,98,184,74,160,60,135"/>
-<area shape="rect" id="Node000003" href="$db/d87/structwinapi_1_1detail_1_1PointerLike.html" title=" " alt="" coords="5,5,98,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="54,47,54,94,49,94,49,47"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="109,94,256,120"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="166,134,146,160,127,184,123,181,141,157,162,131"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="131,5,233,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="185,47,185,94,180,94,180,47"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="67,183,149,208"/>
+<area shape="rect" id="Node000002" href="$df/d9b/structwinapi_1_1PID.html" title="Wrapper for process ID (PID) integer." alt="" coords="5,94,51,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="43,132,62,157,90,180,87,184,58,160,39,135"/>
+<area shape="rect" id="Node000003" href="$dd/d5e/structwinapi_1_1Handle.html" title=" " alt="" coords="75,94,141,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="111,135,111,182,105,182,105,135"/>
+<area shape="rect" id="Node000004" href="$db/d87/structwinapi_1_1detail_1_1PointerLike.html" title=" " alt="" coords="62,5,154,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="111,47,111,94,105,94,105,47"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="165,94,312,120"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="217,132,181,161,138,184,135,180,179,156,214,128"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="188,5,290,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="241,47,241,94,236,94,236,47"/>
 </map>

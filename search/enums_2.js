@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['includeflags_0',['IncludeFlags',['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295f',1,'winapi::th32::Snapshot']]]
+  ['handleflags_0',['HandleFlags',['../d5/db0/classwinapi_1_1dll_1_1Library.html#a83e40420728a502e3826dcb3914c986c',1,'winapi::dll::Library']]]
 ];

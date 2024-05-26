@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['query_0',['query',['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a168f13763f5000632852034476ffc955',1,'winapi::memory::MemoryBasicInformation::query(uintptr_t address) -&gt; MemoryBasicInformation'],['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a0b8d62844937dabfbf91ddc16643788f',1,'winapi::memory::MemoryBasicInformation::query(Process const &amp;process, uintptr_t address) -&gt; MemoryBasicInformation']]],
-  ['queryinformation_1',['QueryInformation',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550dea37e8a064723ac3f5eec1e7482f5037f7',1,'winapi']]],
-  ['querylimitedinformation_2',['QueryLimitedInformation',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550dea2bb5376eb8926e511abaa1f99fed558c',1,'winapi']]]
+  ['operator_2a_0',['operator*',['../df/d9b/structwinapi_1_1PID.html#a0c5ddcb31144d8f0a0a0d81c7a1c7bba',1,'winapi::PID']]],
+  ['operator_3c_3c_1',['operator&lt;&lt;',['../df/d9b/structwinapi_1_1PID.html#a1ed648bfc01dc475ade9fb75e94a988c',1,'winapi::PID']]],
+  ['operator_3c_3d_3e_2',['operator&lt;=&gt;',['../df/d9b/structwinapi_1_1PID.html#a1b8da04b3073b1919595b3e4eca85bfa',1,'winapi::PID']]]
 ];

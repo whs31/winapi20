@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['query_0',['query',['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a168f13763f5000632852034476ffc955',1,'winapi::memory::MemoryBasicInformation::query(uintptr_t address) -&gt; MemoryBasicInformation'],['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a0b8d62844937dabfbf91ddc16643788f',1,'winapi::memory::MemoryBasicInformation::query(Process const &amp;process, uintptr_t address) -&gt; MemoryBasicInformation']]]
+  ['is_5fcurrent_0',['is_current',['../df/d9b/structwinapi_1_1PID.html#a5ea31e4fc1718a9e506d9dbb7b7680f7',1,'winapi::PID']]]
 ];

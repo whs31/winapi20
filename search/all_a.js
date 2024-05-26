@@ -1,6 +1,12 @@
 var searchData=
 [
-  ['name_0',['name',['../dc/d6c/structwinapi_1_1th32_1_1ProcessEntry.html#a9b45b3e13bd9167aab02e17e08916231',1,'winapi::th32::ProcessEntry::name'],['../d7/de2/structwinapi_1_1th32_1_1ModuleEntry.html#a9b45b3e13bd9167aab02e17e08916231',1,'winapi::th32::ModuleEntry::name'],['../d3/d01/structwinapi_1_1HWProfileInfo.html#a9b45b3e13bd9167aab02e17e08916231',1,'winapi::HWProfileInfo::name']]],
-  ['noaccess_1',['NoAccess',['../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a88a12f09800c497f30b98781952b50f2',1,'winapi::memory']]],
-  ['nocache_2',['NoCache',['../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a9c2a36ed94b288fe8f5ce5b6b16d3fdd',1,'winapi::memory']]]
+  ['mapped_0',['Mapped',['../de/d9e/namespacewinapi_1_1memory.html#aa6f342ec01aac4f1e5b46d8b092309a5a7f672a44d15d9c358a8e9d106d20ac22',1,'winapi::memory']]],
+  ['memoryaddress_1',['MemoryAddress',['../d7/d70/classwinapi_1_1MemoryAddress.html',1,'winapi']]],
+  ['memorybasicinformation_2',['MemoryBasicInformation',['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html',1,'winapi::memory']]],
+  ['memoryprotection_3',['MemoryProtection',['../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09',1,'winapi::memory']]],
+  ['memorystate_4',['MemoryState',['../de/d9e/namespacewinapi_1_1memory.html#aa6f342ec01aac4f1e5b46d8b092309a5',1,'winapi::memory']]],
+  ['module_5',['Module',['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295fae55f75a29310d7b60f7ac1d390c8ae42',1,'winapi::th32::Snapshot']]],
+  ['module32_6',['Module32',['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295fa88ef6049befa7e3f43ae4e1d8c27df0e',1,'winapi::th32::Snapshot']]],
+  ['moduleentry_7',['ModuleEntry',['../d7/de2/structwinapi_1_1th32_1_1ModuleEntry.html',1,'winapi::th32']]],
+  ['modules_20from_20process_8',['Get modules from process',['../index.html#autotoc_md4',1,'']]]
 ];

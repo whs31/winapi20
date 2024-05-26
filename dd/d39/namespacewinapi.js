@@ -1,6 +1,6 @@
 var namespacewinapi =
 [
-    [ "dll", "d6/de4/namespacewinapi_1_1dll.html", null ],
+    [ "dll", "d6/de4/namespacewinapi_1_1dll.html", "d6/de4/namespacewinapi_1_1dll" ],
     [ "memory", "de/d9e/namespacewinapi_1_1memory.html", "de/d9e/namespacewinapi_1_1memory" ],
     [ "th32", "de/d82/namespacewinapi_1_1th32.html", "de/d82/namespacewinapi_1_1th32" ],
     [ "ConsoleHost", "d3/d0f/classwinapi_1_1ConsoleHost.html", null ],
@@ -8,11 +8,9 @@ var namespacewinapi =
     [ "Handle", "dd/d5e/structwinapi_1_1Handle.html", null ],
     [ "HWProfileInfo", "d3/d01/structwinapi_1_1HWProfileInfo.html", "d3/d01/structwinapi_1_1HWProfileInfo" ],
     [ "MemoryAddress", "d7/d70/classwinapi_1_1MemoryAddress.html", "d7/d70/classwinapi_1_1MemoryAddress" ],
+    [ "PID", "df/d9b/structwinapi_1_1PID.html", "df/d9b/structwinapi_1_1PID" ],
     [ "Process", "dc/d41/classwinapi_1_1Process.html", null ],
     [ "windows_exception", "d1/dd0/classwinapi_1_1windows__exception.html", null ],
-    [ "PID", "dd/d39/namespacewinapi.html#aa285c4ca0beede18379633260b6cd3f8", [
-      [ "CurrentProcess", "dd/d39/namespacewinapi.html#aa285c4ca0beede18379633260b6cd3f8a1c14afd6fb35ef6fe8ede9586bcc6ce2", null ]
-    ] ],
     [ "AccessRights", "dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550de", [
       [ "Delete", "dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550deaf2a6c498fb90ee345d997f888fce3b18", null ],
       [ "ReadControl", "dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550dea63c8057a0734e068c56b90cd7a21811d", null ],

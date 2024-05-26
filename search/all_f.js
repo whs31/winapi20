@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['targetsinvalid_0',['TargetsInvalid',['../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a123cc6fa43144499490bfbcfe1b9ef98',1,'winapi::memory']]],
-  ['terminate_1',['Terminate',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550dea056fa3d840f48b7bfbbd68c19a4797b3',1,'winapi']]],
-  ['thread_2',['Thread',['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html#ac1d17275ba895df72284cfb750cc295fad97477d6d8a838ead9348185bb5b6742',1,'winapi::th32::Snapshot']]],
-  ['thread_5fbase_5fpriority_3',['thread_base_priority',['../dc/d6c/structwinapi_1_1th32_1_1ProcessEntry.html#a442fa275243274cfd9ada6b747e93a6b',1,'winapi::th32::ProcessEntry']]],
-  ['thread_5fcount_4',['thread_count',['../dc/d6c/structwinapi_1_1th32_1_1ProcessEntry.html#a5c106e0816fd7534cf350f800fdb52e0',1,'winapi::th32::ProcessEntry']]],
-  ['try_5fquery_5',['try_query',['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a76ecf3820c5dbe610900e320b64691bf',1,'winapi::memory::MemoryBasicInformation::try_query(uintptr_t address) -&gt; std::optional&lt; MemoryBasicInformation &gt;'],['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#acb1b2dd637e25c089582c5d038dbc931',1,'winapi::memory::MemoryBasicInformation::try_query(Process const &amp;process, uintptr_t address) -&gt; std::optional&lt; MemoryBasicInformation &gt;']]],
-  ['type_6',['type',['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a62c8e22dd33aefaa148ee78d0d2c4b2a',1,'winapi::memory::MemoryBasicInformation']]]
+  ['readcontrol_0',['ReadControl',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550dea63c8057a0734e068c56b90cd7a21811d',1,'winapi']]],
+  ['readonly_1',['Readonly',['../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a060d84e58c348e44da6637e57e2e9201',1,'winapi::memory']]],
+  ['readwrite_2',['ReadWrite',['../de/d9e/namespacewinapi_1_1memory.html#a2c65fec4eb6f7d1d11b07f7862bfbb09a70a2a84088d405a2e3f1e3accaa16723',1,'winapi::memory']]],
+  ['region_5fsize_3',['region_size',['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a8ac70ce695e61e12ceffb644faa55a1b',1,'winapi::memory::MemoryBasicInformation']]],
+  ['replaceplaceholder_4',['ReplacePlaceholder',['../de/d9e/namespacewinapi_1_1memory.html#aa6f342ec01aac4f1e5b46d8b092309a5a0d0d2793ce0115eb807ba2f8c2b2416e',1,'winapi::memory']]],
+  ['reserve_5',['Reserve',['../de/d9e/namespacewinapi_1_1memory.html#aa6f342ec01aac4f1e5b46d8b092309a5a66f9c6c5b672ee16deeef6e4503cb4bc',1,'winapi::memory']]],
+  ['reserveplaceholder_6',['ReservePlaceholder',['../de/d9e/namespacewinapi_1_1memory.html#aa6f342ec01aac4f1e5b46d8b092309a5a9ccbffd051b3a9746ff8554095c0a6f6',1,'winapi::memory']]]
 ];

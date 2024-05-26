@@ -45,7 +45,9 @@ var NAVTREE =
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
-        [ "Enumerations", "functions_enum.html", null ]
+        [ "Typedefs", "functions_type.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -57,7 +59,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"index.html"
+"df/d9b/structwinapi_1_1PID.html#a1ed648bfc01dc475ade9fb75e94a988c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['setinformation_0',['SetInformation',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550deafd76c8a174c8459590eb48380c4edc40',1,'winapi']]],
-  ['setquota_1',['SetQuota',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550deacd7befb4aef8f46bbb823af1d99cde83',1,'winapi']]],
-  ['size_2',['size',['../d7/de2/structwinapi_1_1th32_1_1ModuleEntry.html#a854352f53b148adc24983a58a1866d66',1,'winapi::th32::ModuleEntry']]],
-  ['snapshot_3',['Snapshot',['../d8/dc4/classwinapi_1_1th32_1_1Snapshot.html',1,'winapi::th32']]],
-  ['state_4',['state',['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#aff28b84faae549dbbd44c89d63c3ebf8',1,'winapi::memory::MemoryBasicInformation']]],
-  ['suspendresume_5',['SuspendResume',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550dea225c7a85340534236811e3cae22e885e',1,'winapi']]],
-  ['synchronize_6',['Synchronize',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550deab18b960c57a784907dc1cd97ba8a8065',1,'winapi']]]
+  ['query_0',['query',['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a168f13763f5000632852034476ffc955',1,'winapi::memory::MemoryBasicInformation::query(uintptr_t address) -&gt; MemoryBasicInformation'],['../d3/d0b/structwinapi_1_1memory_1_1MemoryBasicInformation.html#a0b8d62844937dabfbf91ddc16643788f',1,'winapi::memory::MemoryBasicInformation::query(Process const &amp;process, uintptr_t address) -&gt; MemoryBasicInformation']]],
+  ['queryinformation_1',['QueryInformation',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550dea37e8a064723ac3f5eec1e7482f5037f7',1,'winapi']]],
+  ['querylimitedinformation_2',['QueryLimitedInformation',['../dd/d39/namespacewinapi.html#a49af13f35a904a4753f73eb17f9550dea2bb5376eb8926e511abaa1f99fed558c',1,'winapi']]]
 ];
