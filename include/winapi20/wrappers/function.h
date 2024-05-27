@@ -18,7 +18,7 @@ namespace winapi
 
       template <typename R = void, typename... T>
       inline auto __fastcall operator()(T&&... args) const noexcept -> R {
-        return ((R (__fastcall*) (T...)) this->m_)(args...);
+        return (reinterpret_cast<R(__fastcall*)(T...)>(this->m_))(args...);
       }
 
       template <typename R = void, typename... T>

@@ -16,7 +16,7 @@ namespace winapi
   {}
 
   Handle::~Handle() {
-    if(this->valid() and this->m_cleanup == Cleanup::Auto)
+    if(this->Handle::valid() and this->m_cleanup == Cleanup::Auto)
       ::CloseHandle(this->m_);
   }
 

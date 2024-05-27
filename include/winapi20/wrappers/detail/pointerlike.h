@@ -23,12 +23,14 @@ namespace winapi::detail
     template <typename T>
     requires std::is_integral_v<T> or std::is_pointer_v<T>
     [[nodiscard]] constexpr inline auto as() const noexcept -> T {
-      if constexpr (std::is_same_v<T, pointer_type>)
+      if constexpr(std::is_same_v<T, pointer_type>)
         return this->m_;
-      if constexpr (std::is_pointer_v<T>)
+      if constexpr(std::is_pointer_v<T>)
         return static_cast<T>(this->m_);
-      if constexpr (std::is_integral_v<T>)
+      if constexpr(std::is_integral_v<T>)
         return reinterpret_cast<T>(this->m_);
+      else
+        std::terminate();
     }
 
     [[nodiscard]] constexpr inline auto as_pointer() const noexcept -> pointer_type { return this->as<pointer_type>(); }
