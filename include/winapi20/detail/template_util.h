@@ -11,7 +11,7 @@ namespace winapi::utility
   inline auto to_lowercase(std::string_view str) -> std::string {
     auto result = std::string();
     result.resize(str.size());
-    std::transform(str.begin(), str.end(), result.begin(), ::tolower);
+    std::ranges::transform(str, result.begin(), ::tolower);
     return result;
   }
 

@@ -55,7 +55,7 @@ namespace {
       throw winapi::windows_exception(winapi::last_error_string());
   }
 
-  auto try_attach(uint32_t pid) noexcept(false) -> void {
+  auto try_attach(const uint32_t pid) noexcept(false) -> void {
     if(not AttachConsole(pid))
       throw winapi::windows_exception(winapi::last_error_string());
   }
@@ -69,7 +69,7 @@ namespace {
 
 namespace winapi
 {
-  ConsoleHost::ConsoleHost(Mode mode) noexcept(false)
+  ConsoleHost::ConsoleHost(const Mode mode) noexcept(false)
     : m_attached(false)
     , m_handles({nullptr, nullptr, nullptr})
   {
@@ -79,8 +79,8 @@ namespace winapi
       try {
         ::try_free();
         ::try_alloc();
-      } catch(windows_exception const& e) {
-        throw e;
+      } catch(...) {
+        throw ;
       }
     }
 
@@ -117,8 +117,8 @@ namespace winapi
       try {
         ::try_free();
         ::try_attach(*pid);
-      } catch(windows_exception const& e) {
-        throw e;
+      } catch(...) {
+        throw;
       }
     }
 

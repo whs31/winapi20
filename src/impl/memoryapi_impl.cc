@@ -68,8 +68,7 @@ namespace winapi::memory
 {
   auto MemoryBasicInformation::query(uintptr_t address) noexcept(false) -> winapi::memory::MemoryBasicInformation
   {
-    MEMORY_BASIC_INFORMATION buf;
-    ::memset(&buf, 0, sizeof(buf));
+    MEMORY_BASIC_INFORMATION buf = {};
     if(not ::VirtualQuery(reinterpret_cast<LPCVOID>(address), &buf, sizeof(buf)))
       throw windows_exception(fmt::format("virtual query failed, reason: {}", last_error_string()));
     return MemoryBasicInformation {
@@ -85,8 +84,7 @@ namespace winapi::memory
 
   auto MemoryBasicInformation::query(Process const& process, uintptr_t address) -> MemoryBasicInformation
   {
-    MEMORY_BASIC_INFORMATION buf;
-    ::memset(&buf, 0, sizeof(buf));
+    MEMORY_BASIC_INFORMATION buf = {};
     if(not ::VirtualQueryEx(*process.handle(), reinterpret_cast<LPCVOID>(address), &buf, sizeof(buf)))
       throw windows_exception(fmt::format("virtual query failed, reason: {}", last_error_string()));
     return MemoryBasicInformation {
