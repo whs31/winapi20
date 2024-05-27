@@ -20,11 +20,11 @@ auto main() -> int
   // get vector of all modules
   auto modules = module_snapshot.modules();
   // exclude all non-game modules (not containing "dota 2 beta" in path)
-  modules.erase(std::remove_if(
-      modules.begin(),
-      modules.end(),
-      [](auto& m) { return m.path.string().find("dota 2 beta") == std::string::npos; }), modules.end()
-  );
+//  modules.erase(std::remove_if(
+//      modules.begin(),
+//      modules.end(),
+//      [](auto& m) { return m.path.string().find("dota 2 beta") == std::string::npos; }), modules.end()
+//  );
   fmt::print("listing game modules:\n");
   fmt::print("\t{}", fmt::join(modules, "\n\t"));
 

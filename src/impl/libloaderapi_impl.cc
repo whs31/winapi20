@@ -13,6 +13,14 @@ using std::optional;
 using std::nullopt;
 using std::string_view;
 
+namespace {
+  [[nodiscard]] auto current_module_handle() -> HMODULE {
+    auto h = HMODULE();
+    ::GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT, reinterpret_cast<LPCSTR>(current_module_handle), &h);
+    return h;
+  }
+}
+
 namespace winapi::dll
 {
   Library::~Library() {
@@ -20,10 +28,15 @@ namespace winapi::dll
       ::FreeLibrary(this->handle().as<HMODULE>());
   }
 
-  Library::Library(std::string name, Library::HandleFlags flags) noexcept(false)
+  Library::Library(OwnershipMode mode, Library::HandleFlags flags) noexcept(false)
+    : m_pid(PID::current())
+    , m_cleanup(mode == OwnershipMode::Own)
   {
-    // get this library handle
-
+    if(auto const h = ::current_module_handle(); h == nullptr)
+      throw windows_exception("failed to get current module handle");
+    else
+      this->m_handle = Handle(h, Cleanup::Manual);
+    this->m_name = this->file_path().filename().string();
   }
 
   Library::Library(std::string name, Handle&& handle, PID pid, bool cleanup)

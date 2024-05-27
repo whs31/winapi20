@@ -33,10 +33,7 @@ namespace winapi::dll
         WeakReference = 0x00000002
       };
 
-      WINAPI20_EXPORT explicit Library(
-          std::string name,
-          HandleFlags flags = HandleFlags::None
-      ) noexcept(false);
+      WINAPI20_EXPORT explicit Library(OwnershipMode mode, HandleFlags flags = HandleFlags::None) noexcept(false);
       
       WINAPI20_EXPORT explicit Library(
           OwnershipMode mode,
