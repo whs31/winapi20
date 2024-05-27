@@ -59,14 +59,14 @@ namespace winapi
     }
 
     if(not not(mode & Mode::Stdout))
-      if(not ::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout))
-        throw windows_exception("failed to create console handles (stdout)");
+      if(::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout))
+        fatal_application_exit("failed to create console handles (stdout)");
     if(not not(mode & Mode::Stderr))
-      if(not ::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr))
-        throw windows_exception("failed to create console handles (stderr)");
+      if(::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr))
+        fatal_application_exit("failed to create console handles (stderr)");
     if(not not(mode & Mode::Stdin))
-      if(not ::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin))
-        throw windows_exception("failed to create console handles (stdin)");
+      if(::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin))
+        fatal_application_exit("failed to create console handles (stdin)");
 
     if(not this->m_handles[0] or not this->m_handles[1] or not this->m_handles[2])
       throw windows_exception("Failed to create console handles");

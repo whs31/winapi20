@@ -8,18 +8,17 @@ namespace wd = winapi::detail;
 
 TEST(ConsoleAPI, ConsoleHost)
 {
-  // todo: this test doesn't work
-  #if 1
-  {
-  auto host = winapi::ConsoleHost(winapi::ConsoleHost::Mode::All);
+  try {
+    auto host = winapi::ConsoleHost(winapi::ConsoleHost::Mode::All);
 
-  EXPECT_TRUE(host.is_attached());
-  EXPECT_NO_THROW(host.set_title("winapi20 test console host"));
-  EXPECT_EQ(host.title(), "winapi20 test console host");
+    EXPECT_TRUE(host.is_attached());
+    EXPECT_NO_THROW(host.set_title("winapi20 test console host"));
+    EXPECT_EQ(host.title(), "winapi20 test console host");
 
-  cout << "Test is ok" << endl;
-  cin.get();
+    cout << "Test is ok" << endl;
+    cin.get();
+  } catch(winapi::windows_exception const& e) {
+    GTEST_FATAL_FAILURE_(e.what());
   }
-  #endif
   GTEST_SUCCEED();
 }
