@@ -20,6 +20,12 @@ namespace winapi::dll
       ::FreeLibrary(this->handle().as<HMODULE>());
   }
 
+  Library::Library(std::string name, Library::HandleFlags flags) noexcept(false)
+  {
+    // get this library handle
+
+  }
+
   Library::Library(std::string name, Handle&& handle, PID pid, bool cleanup)
     : m_name(std::move(name))
     , m_handle(std::move(handle))
