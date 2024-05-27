@@ -37,3 +37,11 @@ TEST(Library, View)
   auto ntdll_fn = ntdll["NtProtectVirtualMemory"];
   EXPECT_TRUE(ntdll_fn.has_value());
 }
+
+TEST(Library, Self)
+{
+  auto lib = dll::Library(dll::Library::View);
+
+  EXPECT_EQ(lib.file_path().filename().string(), "libwinapi20.dll");
+  fmt::print("{}\n", lib.file_path().string());
+}
