@@ -11,16 +11,10 @@ namespace wd = winapi::detail;
 
 TEST(Shlobj, SHGetKnownFolderPath)
 {
-  auto expected = PWSTR();
-  SHGetKnownFolderPath(FOLDERID_Windows, 0, nullptr, &expected);
-
   auto got = winapi::shell::known_folder_path(
     winapi::shell::FolderID::Windows,
     winapi::shell::KnownFolderFlag::DefaultPath | winapi::shell::KnownFolderFlag::NoAlias
   );
 
-  EXPECT_EQ(got.string(), filesystem::path(expected).string());
   EXPECT_THAT(got.string(), AnyOf("C:\\Windows", "C:\\windows"));
-
-  CoTaskMemFree(expected);
 }

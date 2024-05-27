@@ -17,7 +17,7 @@
 /// \brief Namespace for functions and types originating from <tt>libloaderapi.h</tt> header file in the Windows API.
 namespace winapi::dll
 {
-  class WINAPI20_EXPORT Library
+  class Library
   {
     public:
       using enum OwnershipMode;
@@ -33,21 +33,21 @@ namespace winapi::dll
         WeakReference = 0x00000002
       };
 
-      explicit Library(
+      WINAPI20_EXPORT explicit Library(
           OwnershipMode mode,
           std::string name,
           PID pid,
           HandleFlags flags = HandleFlags::None
       ) noexcept(false);
 
-      explicit Library(
+      WINAPI20_EXPORT explicit Library(
           OwnershipMode mode,
           MemoryAddress const& address,
           PID pid,
           HandleFlags flags = HandleFlags::None
       ) noexcept(false);
 
-      virtual ~Library();
+      WINAPI20_EXPORT virtual ~Library();
 
       [[nodiscard]] inline auto name() const noexcept -> std::string const& {
         return this->m_name;
@@ -68,8 +68,8 @@ namespace winapi::dll
        * \return The fully qualified path for the file that contains the specified module.
        * \see https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulefilenamea
        */
-      [[nodiscard]] auto file_path() const noexcept(false) -> std::filesystem::path;
-      [[nodiscard]] auto exported_function_address(std::string_view name) const -> std::optional<Function>;
+      [[nodiscard]] WINAPI20_EXPORT auto file_path() const noexcept(false) -> std::filesystem::path;
+      [[nodiscard]] WINAPI20_EXPORT auto exported_function_address(std::string_view name) const -> std::optional<Function>;
 
       [[nodiscard]] inline auto operator[](std::string_view name) const -> std::optional<Function> {
         return this->exported_function_address(name);
@@ -77,7 +77,7 @@ namespace winapi::dll
 
     protected:
       Library() = default;
-      Library(std::string name, Handle&& handle, PID pid, bool cleanup);
+      WINAPI20_EXPORT Library(std::string name, Handle&& handle, PID pid, bool cleanup);
 
     private:
       std::string m_name;

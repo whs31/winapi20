@@ -1,17 +1,27 @@
 #pragma once
 
+#include <array>
 #include <cstdint>
 #include <winapi20/detail/export.h>
 #include <winapi20/detail/cvt.h>
 #include <winapi20/detail/exception.h>
+#include <winapi20/wrappers/pid.h>
 
 namespace winapi
 {
   class WINAPI20_EXPORT ConsoleHost
   {
    public:
-    explicit ConsoleHost() noexcept(false);
-    explicit ConsoleHost(uint32_t pid) noexcept(false);
+    enum class Mode
+    {
+      Stdout = 1 << 0,
+      Stderr = 1 << 1,
+      Stdin  = 1 << 2,
+      All    = Stdout | Stderr | Stdin
+    };
+
+    explicit ConsoleHost(Mode mode) noexcept(false);
+    explicit ConsoleHost(Mode mode, PID pid) noexcept(false);
     ~ConsoleHost() noexcept;
 
     ConsoleHost(ConsoleHost const&) = delete;
@@ -26,11 +36,10 @@ namespace winapi
     auto set_title(std::string_view title) const noexcept(false) -> void;
 
    public:
-    static auto free() noexcept(false) -> void;
+    static auto free() noexcept -> void;
 
    private:
     bool m_attached;
-    std::FILE* m_stdout;
-    std::FILE* m_stdin;
+    std::array<std::FILE*, 3> m_handles;
   };
 } // namespace winapi

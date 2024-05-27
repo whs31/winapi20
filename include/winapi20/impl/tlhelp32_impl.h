@@ -25,7 +25,7 @@ namespace winapi::th32
    * \brief Describes an entry from a list of the processes residing in the system address space when a snapshot was taken.
    * \see https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32
    */
-  struct WINAPI20_EXPORT ProcessEntry
+  struct ProcessEntry
   {
     using raw_type = PROCESSENTRY32W;
 
@@ -44,7 +44,7 @@ namespace winapi::th32
     /// \brief The name of the executable file for the process.
     std::string name;
 
-    [[nodiscard]] static auto from_raw(raw_type const& entry) -> ProcessEntry;
+    [[nodiscard]] WINAPI20_EXPORT static auto from_raw(raw_type const& entry) -> ProcessEntry;
 
     WINAPI20_EXPORT friend std::ostream& operator<<(std::ostream& stream, ProcessEntry const& entry);
   };
@@ -53,7 +53,7 @@ namespace winapi::th32
    * \brief Describes an entry from a list of the modules belonging to the specified process.
    * \see https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-moduleentry32w
    */
-  struct WINAPI20_EXPORT ModuleEntry
+  struct ModuleEntry
   {
     using raw_type = MODULEENTRY32W;
 
@@ -75,12 +75,12 @@ namespace winapi::th32
     /// \brief The path of the module.
     std::filesystem::path path;
 
-    [[nodiscard]] static auto from_raw(raw_type const& entry) -> ModuleEntry;
+    [[nodiscard]] WINAPI20_EXPORT static auto from_raw(raw_type const& entry) -> ModuleEntry;
 
     WINAPI20_EXPORT friend std::ostream& operator<<(std::ostream& stream, ModuleEntry const& entry);
   };
 
-  class WINAPI20_EXPORT Snapshot
+  class Snapshot
   {
     public:
       /**
@@ -112,16 +112,16 @@ namespace winapi::th32
         Inherit  = 0x80000000
       };
 
-      explicit Snapshot(IncludeFlags flags, PID pid) noexcept(false);
-      ~Snapshot();
+      WINAPI20_EXPORT explicit Snapshot(IncludeFlags flags, PID pid) noexcept(false);
+      WINAPI20_EXPORT ~Snapshot();
 
       [[nodiscard]] inline auto flags() const noexcept -> IncludeFlags { return this->m_flags; }
       [[nodiscard]] inline auto pid() const noexcept -> PID { return this->m_pid; }
       [[nodiscard]] inline auto handle() const noexcept -> Handle const& { return this->m_handle; }
 
-      [[nodiscard]] auto valid() const noexcept -> bool;
-      [[nodiscard]] auto processes() const noexcept(false) -> std::vector<ProcessEntry>;
-      [[nodiscard]] auto modules() const noexcept(false) -> std::vector<ModuleEntry>;
+      [[nodiscard]] WINAPI20_EXPORT auto valid() const noexcept -> bool;
+      [[nodiscard]] WINAPI20_EXPORT auto processes() const noexcept(false) -> std::vector<ProcessEntry>;
+      [[nodiscard]] WINAPI20_EXPORT auto modules() const noexcept(false) -> std::vector<ModuleEntry>;
 
       template <typename T>
       [[nodiscard]] auto entries() const noexcept(false) -> std::vector<T>;

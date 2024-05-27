@@ -17,13 +17,13 @@ namespace winapi
       static inline auto invalid_handle_ptr = reinterpret_cast<pointer_type>(-1);
   };
 
-  struct WINAPI20_EXPORT Handle : public detail::PointerLike
+  struct Handle : public detail::PointerLike
   {
     constexpr inline Handle();
     constexpr explicit Handle(pointer_type handle, Cleanup cleanup);
-    explicit Handle(integer_type handle, Cleanup cleanup);
+    WINAPI20_EXPORT explicit Handle(integer_type handle, Cleanup cleanup);
 
-    virtual ~Handle() override;
+    WINAPI20_EXPORT virtual ~Handle() override;
     Handle(Handle const&) = delete;
     Handle(Handle&&) noexcept = default;
 

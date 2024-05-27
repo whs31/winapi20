@@ -8,7 +8,7 @@
 
 namespace winapi
 {
-  class WINAPI20_EXPORT MemoryAddress : public detail::PointerLike
+  class MemoryAddress : public detail::PointerLike
   {
     public:
       using offset_type = std::ptrdiff_t;
@@ -42,7 +42,7 @@ namespace winapi
        * \return True if the specified memory protection is valid for the specified address.
        * \see https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-readprocessmemory
        */
-      [[nodiscard]] auto permissions(memory::MemoryProtection protection) const -> bool;
+      [[nodiscard]] WINAPI20_EXPORT auto permissions(memory::MemoryProtection protection) const -> bool;
 
       friend std::ostream& operator<<(std::ostream& os, MemoryAddress const& addr);
   };

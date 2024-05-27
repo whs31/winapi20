@@ -7,7 +7,7 @@ from conan.tools.files import rmdir
 
 class WinAPI20Recipe(ConanFile):
     name = "winapi20"
-    version = "dev"
+    version = "0.0.2"
     description = "Windows API wrapper in modern C++20"
     license = "MIT"
     author = "whs31 <whs31@github.io>"

@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.15)
 include_guard(GLOBAL)
 
 project(winapi20
-  VERSION 0.0.1
+  VERSION 0.0.2
   DESCRIPTION "Windows API wrapper in modern C++20"
   HOMEPAGE_URL "https://github.com/whs31/winapi20"
   LANGUAGES C CXX
@@ -78,6 +78,15 @@ target_sources(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
+
+message(STATUS "[${PROJECT_NAME}] compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+  message(STATUS "[${PROJECT_NAME}] linking with additional libraries for msvc")
+  find_library(PSAPI Psapi)
+  # shell32
+  find_library(SHELL32 shell32)
+  target_link_libraries(${PROJECT_NAME} PUBLIC psapi shell32)
+endif()
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
   $<$<BOOL:${BUILD_SHARED_LIBS}>:-DWINAPI20_LIBRARY=1>

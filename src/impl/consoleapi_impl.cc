@@ -1,5 +1,17 @@
 #include <winapi20/impl/consoleapi_impl.h>
 
+#if defined(_MSC_VER)
+# if defined(__amd64__) || defined(__amd64) || defined(__x86_64__) || defined(__x86_64) || defined(_M_X64) || defined(_M_AMD64)
+#   define _AMD64_
+# elif defined(i386) || defined(__i386) || defined(__i386__) || defined(__i386__) || defined(_M_IX86)
+#   define _X86_
+# elif defined(__arm__) || defined(_M_ARM) || defined(_M_ARMT)
+#   define _ARM_
+# endif
+# include <consoleapi.h>
+#endif // _MSC_VER
+
+#include <io.h>
 #include <array>
 #include <iostream>
 #include <winapi20/impl/errhandlingapi_impl.h>
@@ -21,50 +33,68 @@ namespace {
     if(not AttachConsole(pid))
       throw winapi::windows_exception(winapi::last_error_string());
   }
+
+  auto try_free() noexcept -> bool {
+    if(not ::FreeConsole())
+      return false;
+    return true;
+  }
 }
 
 namespace winapi
 {
-  ConsoleHost::ConsoleHost() noexcept(false)
+  ConsoleHost::ConsoleHost(Mode mode) noexcept(false)
     : m_attached(false)
-    , m_stdout(nullptr)
-    , m_stdin(nullptr)
+    , m_handles({nullptr, nullptr, nullptr})
   {
     try {
       ::try_alloc();
     } catch(windows_exception const&) {
       try {
-        ConsoleHost::free();
+        ::try_free();
         ::try_alloc();
       } catch(windows_exception const& e) {
         throw e;
       }
     }
 
-    ::freopen_s(&this->m_stdout, "CONOUT$", "w", stdout);
-    ::freopen_s(&this->m_stdout, "CONOUT$", "w", stderr);
-    ::freopen_s(&this->m_stdin, "CONIN$", "r", stdin);
+    if(bool(mode & Mode::Stdout))
+      ::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout);
+    if(bool(mode & Mode::Stderr))
+      ::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr);
+    if(bool(mode & Mode::Stdin))
+      ::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin);
+
+    if(not this->m_handles[0] or not this->m_handles[1] or not this->m_handles[2])
+      throw windows_exception("Failed to create console handles");
+
+    std::cout.clear();
+    std::clog.clear();
+    std::cerr.clear();
+    std::cin.clear();
     this->m_attached = true;
   }
 
-  ConsoleHost::ConsoleHost(uint32_t pid) noexcept(false)
-      : m_attached(false)
-      , m_stdout(nullptr)
-      , m_stdin(nullptr)
+  ConsoleHost::ConsoleHost(Mode mode, PID pid) noexcept(false)
+    : m_attached(false)
+    , m_handles({nullptr, nullptr, nullptr})
   {
     try {
-      ::try_attach(pid);
+      ::try_attach(*pid);
     } catch(windows_exception const&) {
       try {
-        ConsoleHost::free();
-        ::try_attach(pid);
+        ::try_free();
+        ::try_attach(*pid);
       } catch(windows_exception const& e) {
         throw e;
       }
     }
-    ::freopen_s(&this->m_stdout, "CONOUT$", "w", stdout);
-    ::freopen_s(&this->m_stdout, "CONOUT$", "w", stderr);
-    ::freopen_s(&this->m_stdin, "CONIN$", "r", stdin);
+//    if(bool(mode & Mode::Stdout))
+//      ::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout);
+//    if(bool(mode & Mode::Stderr))
+//      ::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr);
+//    if(bool(mode & Mode::Stdin))
+//      ::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin);
     std::cout.clear();
     std::clog.clear();
     std::cerr.clear();
@@ -72,19 +102,16 @@ namespace winapi
     this->m_attached = true;
   }
 
-  auto ConsoleHost::free() noexcept(false) -> void {
-    if(not FreeConsole())
-      throw windows_exception(winapi::last_error_string());
+  auto ConsoleHost::free() noexcept -> void {
+    if(not ::try_free())
+      ::MessageBoxW(nullptr, L"Failed to free the console!", nullptr, MB_ICONEXCLAMATION);
   }
 
   ConsoleHost::~ConsoleHost() noexcept {
+    for(auto& h : this->m_handles)
+      if(h)
+        ::fclose(h);
     ConsoleHost::free();
-    ::fclose(this->m_stdout);
-    ::fclose(this->m_stdin);
-    std::cout.clear();
-    std::clog.clear();
-    std::cerr.clear();
-    std::cin.clear();
   }
 
   auto ConsoleHost::is_attached() const noexcept -> bool { return this->m_attached; }
