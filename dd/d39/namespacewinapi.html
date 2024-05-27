@@ -196,6 +196,18 @@ requires (std::is_enum_v&lt;T&gt;)</td></tr>
 requires (std::is_enum_v&lt;T&gt;)</td></tr>
 <tr class="memitem:aaf87a1225ae91a1a94bae1887afe9997"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aaf87a1225ae91a1a94bae1887afe9997">operator&amp;</a> (T const lhs, T const rhs) noexcept</td></tr>
 <tr class="separator:aaf87a1225ae91a1a94bae1887afe9997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39e19546383a39bdbb5fc33f2c6c18c9" id="r_a39e19546383a39bdbb5fc33f2c6c18c9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_enum_v&lt;T&gt;)</td></tr>
+<tr class="memitem:a39e19546383a39bdbb5fc33f2c6c18c9"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a39e19546383a39bdbb5fc33f2c6c18c9">operator^</a> (T const lhs, T const rhs) noexcept</td></tr>
+<tr class="separator:a39e19546383a39bdbb5fc33f2c6c18c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97a4022e2c127c1487f031ee0376ade1" id="r_a97a4022e2c127c1487f031ee0376ade1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_enum_v&lt;T&gt;)</td></tr>
+<tr class="memitem:a97a4022e2c127c1487f031ee0376ade1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a97a4022e2c127c1487f031ee0376ade1">operator~</a> (T const value) noexcept</td></tr>
+<tr class="separator:a97a4022e2c127c1487f031ee0376ade1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f69f418fc3b83e09040e6371ce83e58" id="r_a0f69f418fc3b83e09040e6371ce83e58"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires (std::is_enum_v&lt;T&gt;)</td></tr>
+<tr class="memitem:a0f69f418fc3b83e09040e6371ce83e58"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0f69f418fc3b83e09040e6371ce83e58">operator!</a> (T const value) noexcept -&gt; bool</td></tr>
+<tr class="separator:a0f69f418fc3b83e09040e6371ce83e58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af04878a84d6a1273861fd51a53a4c0a6" id="r_af04878a84d6a1273861fd51a53a4c0a6"><td class="memItemLeft" align="right" valign="top"><a id="af04878a84d6a1273861fd51a53a4c0a6" name="af04878a84d6a1273861fd51a53a4c0a6"></a>
 WINAPI20_EXPORT auto&#160;</td><td class="memItemRight" valign="bottom"><b>fatal_application_exit</b> (std::string_view message) noexcept -&gt; void</td></tr>
 <tr class="separator:af04878a84d6a1273861fd51a53a4c0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -423,6 +435,100 @@ requires (std::is_enum_v&lt;T&gt;)</div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d2/ddb/cvt_8h_source.html#l00090">90</a> of file <a class="el" href="../../d2/ddb/cvt_8h_source.html">cvt.h</a>.</p>
+
+</div>
+</div>
+<a id="a39e19546383a39bdbb5fc33f2c6c18c9" name="a39e19546383a39bdbb5fc33f2c6c18c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39e19546383a39bdbb5fc33f2c6c18c9">&#9670;&#160;</a></span>operator^()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; <br />
+requires (std::is_enum_v&lt;T&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto operator^ </td>
+          <td>(</td>
+          <td class="paramtype">T const</td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T const</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/ddb/cvt_8h_source.html#l00097">97</a> of file <a class="el" href="../../d2/ddb/cvt_8h_source.html">cvt.h</a>.</p>
+
+</div>
+</div>
+<a id="a97a4022e2c127c1487f031ee0376ade1" name="a97a4022e2c127c1487f031ee0376ade1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97a4022e2c127c1487f031ee0376ade1">&#9670;&#160;</a></span>operator~()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; <br />
+requires (std::is_enum_v&lt;T&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto operator~ </td>
+          <td>(</td>
+          <td class="paramtype">T const</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/ddb/cvt_8h_source.html#l00104">104</a> of file <a class="el" href="../../d2/ddb/cvt_8h_source.html">cvt.h</a>.</p>
+
+</div>
+</div>
+<a id="a0f69f418fc3b83e09040e6371ce83e58" name="a0f69f418fc3b83e09040e6371ce83e58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f69f418fc3b83e09040e6371ce83e58">&#9670;&#160;</a></span>operator!()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; <br />
+requires (std::is_enum_v&lt;T&gt;)</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto operator! </td>
+          <td>(</td>
+          <td class="paramtype">T const</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td> -&gt; bool </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/ddb/cvt_8h_source.html#l00111">111</a> of file <a class="el" href="../../d2/ddb/cvt_8h_source.html">cvt.h</a>.</p>
 
 </div>
 </div>
