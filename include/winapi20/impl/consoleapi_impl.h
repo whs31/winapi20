@@ -41,6 +41,5 @@ namespace winapi
    private:
     bool m_attached;
     std::array<std::FILE*, 3> m_handles;
-    std::array<void*, 3> m_original_handles;
   };
 } // namespace winapi

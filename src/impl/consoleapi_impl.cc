@@ -11,6 +11,7 @@
 # include <consoleapi.h>
 #endif // _MSC_VER
 
+#include <io.h>
 #include <array>
 #include <iostream>
 #include <winapi20/impl/errhandlingapi_impl.h>
@@ -38,26 +39,6 @@ namespace {
       return false;
     return true;
   }
-
-  auto get_handles() noexcept(false) -> array<void*, 3> {
-    auto handles = array<void*, 3>();
-    handles[0] = reinterpret_cast<void*>(::GetStdHandle(STD_OUTPUT_HANDLE));
-    handles[1] = reinterpret_cast<void*>(::GetStdHandle(STD_ERROR_HANDLE));
-    handles[2] = reinterpret_cast<void*>(::GetStdHandle(STD_INPUT_HANDLE));
-    return handles;
-  }
-
-  auto set_handles(array<void*, 3> const& handles) noexcept -> void {
-    ::SetStdHandle(STD_OUTPUT_HANDLE, handles[0]);
-    ::SetStdHandle(STD_ERROR_HANDLE, handles[1]);
-    ::SetStdHandle(STD_INPUT_HANDLE, handles[2]);
-  }
-
-  auto set_handles(array<std::FILE*, 3> const& handles) noexcept -> void {
-    ::SetStdHandle(STD_OUTPUT_HANDLE, handles[0]);
-    ::SetStdHandle(STD_ERROR_HANDLE, handles[1]);
-    ::SetStdHandle(STD_INPUT_HANDLE, handles[2]);
-  }
 }
 
 namespace winapi
@@ -65,7 +46,6 @@ namespace winapi
   ConsoleHost::ConsoleHost(Mode mode) noexcept(false)
     : m_attached(false)
     , m_handles({nullptr, nullptr, nullptr})
-    , m_original_handles(::get_handles())
   {
     try {
       ::try_alloc();
@@ -85,7 +65,9 @@ namespace winapi
     if(bool(mode & Mode::Stdin))
       ::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin);
 
-    ::set_handles(this->m_handles);
+    if(not this->m_handles[0] or not this->m_handles[1] or not this->m_handles[2])
+      throw windows_exception("Failed to create console handles");
+
     std::cout.clear();
     std::clog.clear();
     std::cerr.clear();
@@ -96,7 +78,6 @@ namespace winapi
   ConsoleHost::ConsoleHost(Mode mode, PID pid) noexcept(false)
     : m_attached(false)
     , m_handles({nullptr, nullptr, nullptr})
-    , m_original_handles(::get_handles())
   {
     try {
       ::try_attach(*pid);
@@ -108,13 +89,12 @@ namespace winapi
         throw e;
       }
     }
-    if(bool(mode & Mode::Stdout))
-      ::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout);
-    if(bool(mode & Mode::Stderr))
-      ::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr);
-    if(bool(mode & Mode::Stdin))
-      ::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin);
-    ::set_handles(this->m_handles);
+//    if(bool(mode & Mode::Stdout))
+//      ::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout);
+//    if(bool(mode & Mode::Stderr))
+//      ::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr);
+//    if(bool(mode & Mode::Stdin))
+//      ::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin);
     std::cout.clear();
     std::clog.clear();
     std::cerr.clear();
@@ -132,7 +112,6 @@ namespace winapi
       if(h)
         ::fclose(h);
     ConsoleHost::free();
-    ::set_handles(this->m_original_handles);
   }
 
   auto ConsoleHost::is_attached() const noexcept -> bool { return this->m_attached; }

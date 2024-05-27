@@ -10,6 +10,7 @@ TEST(ConsoleAPI, ConsoleHost)
 {
   // todo: this test doesn't work
   #if 1
+  {
   auto host = winapi::ConsoleHost(winapi::ConsoleHost::Mode::All);
 
   EXPECT_TRUE(host.is_attached());
@@ -18,6 +19,7 @@ TEST(ConsoleAPI, ConsoleHost)
 
   cout << "Test is ok" << endl;
   cin.get();
+  }
   #endif
   GTEST_SUCCEED();
 }
