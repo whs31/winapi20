@@ -24,6 +24,16 @@ using std::string_view;
 using std::wstring;
 
 namespace {
+  struct FileDescriptor
+  {
+    fpos_t pos = 0;
+    int handle = -1;
+  };
+
+  FileDescriptor out;
+  FileDescriptor err;
+  FileDescriptor in;
+
   auto try_alloc() noexcept(false) -> void {
     if(not AllocConsole())
       throw winapi::windows_exception(winapi::last_error_string());
@@ -58,6 +68,16 @@ namespace winapi
       }
     }
 
+    ::fflush(stdout);
+    ::fflush(stderr);
+    ::fflush(stdin);
+    ::fgetpos(stdout, &out.pos);
+    ::fgetpos(stderr, &err.pos);
+    ::fgetpos(stdin, &in.pos);
+    out.pos = ::_dup(::_fileno(stdout));
+    err.pos = ::_dup(::_fileno(stderr));
+    in.pos = ::_dup(::_fileno(stdin));
+
     if(not not(mode & Mode::Stdout))
       if(::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout))
         fatal_application_exit("failed to create console handles (stdout)");
@@ -65,11 +85,8 @@ namespace winapi
       if(::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr))
         fatal_application_exit("failed to create console handles (stderr)");
     if(not not(mode & Mode::Stdin))
-      if(::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin))
+      if(::freopen_s(&this->m_handles[2], "CONIN$", "w+", stdin))
         fatal_application_exit("failed to create console handles (stdin)");
-
-    if(not this->m_handles[0] or not this->m_handles[1] or not this->m_handles[2])
-      throw windows_exception("Failed to create console handles");
 
     std::cout.clear();
     std::clog.clear();
@@ -112,8 +129,13 @@ namespace winapi
 
   ConsoleHost::~ConsoleHost() noexcept {
     for(auto& h : this->m_handles)
-      if(h)
-        ::fclose(h);
+      if(h) {
+        ::_dup2(out.pos, _fileno(stdout));
+        ::_close(out.pos);
+        ::clearerr(stdout);
+        ::fsetpos(stdout, &out.pos);
+        //::fclose(h);
+      }
     ConsoleHost::free();
   }
 
