@@ -26,10 +26,25 @@ using std::wstring;
 namespace {
   struct FileDescriptor
   {
+    decltype(stdout) type = nullptr;
     fpos_t pos = 0;
     int handle = -1;
+
+    auto init(decltype(stdout) t) noexcept -> void {
+      this->type = t;
+      ::fflush(this->type);
+      ::fgetpos(this->type, &this->pos);
+      this->handle = ::_dup(::_fileno(this->type));
+    }
+
+    auto close() noexcept -> void {
+      ::_dup2(this->handle, _fileno(this->type));
+      ::_close(this->handle);
+      ::clearerr(stdout);
+      ::fsetpos(stdout, &this->pos);
+    }
   };
-  bool already_allocated = false;
+  auto already_allocated = false;
 
   FileDescriptor out;
   FileDescriptor err;
@@ -69,15 +84,12 @@ namespace winapi
       }
     }
 
-    ::fflush(stdout);
-    ::fflush(stderr);
-    ::fflush(stdin);
-    ::fgetpos(stdout, &out.pos);
-    ::fgetpos(stderr, &err.pos);
-    ::fgetpos(stdin, &in.pos);
-    out.handle = ::_dup(::_fileno(stdout));
-    err.handle = ::_dup(::_fileno(stderr));
-    in.handle = ::_dup(::_fileno(stdin));
+    if(::already_allocated)
+      throw windows_exception("console is already allocated");
+
+    out.init(stdout);
+    err.init(stderr);
+    in.init(stdin);
 
     if(not not(mode & Mode::Stdout))
       if(::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout))
@@ -88,7 +100,6 @@ namespace winapi
     if(not not(mode & Mode::Stdin))
       if(::freopen_s(&this->m_handles[2], "CONIN$", "w+", stdin))
         fatal_application_exit("failed to create console handles (stdin)");
-
     std::cout.clear();
     std::clog.clear();
     std::cerr.clear();
@@ -110,12 +121,23 @@ namespace winapi
         throw e;
       }
     }
-//    if(not not (mode & Mode::Stdout))
-//      ::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout);
-//    if(not not (mode & Mode::Stderr))
-//      ::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr);
-//    if(not not (mode & Mode::Stdin))
-//      ::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin);
+
+    if(::already_allocated)
+      throw windows_exception("console is already allocated");
+
+    out.init(stdout);
+    err.init(stderr);
+    in.init(stdin);
+
+    if(not not(mode & Mode::Stdout))
+      if(::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout))
+        fatal_application_exit("failed to create console handles (stdout)");
+    if(not not(mode & Mode::Stderr))
+      if(::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr))
+        fatal_application_exit("failed to create console handles (stderr)");
+    if(not not(mode & Mode::Stdin))
+      if(::freopen_s(&this->m_handles[2], "CONIN$", "w+", stdin))
+        fatal_application_exit("failed to create console handles (stdin)");
     std::cout.clear();
     std::clog.clear();
     std::cerr.clear();
@@ -129,15 +151,11 @@ namespace winapi
   }
 
   ConsoleHost::~ConsoleHost() noexcept {
-    for(auto& h : this->m_handles)
-      if(h) {
-        ::_dup2(out.handle, _fileno(stdout));
-        ::_close(out.handle);
-        ::clearerr(stdout);
-        ::fsetpos(stdout, &out.pos);
-        //::fclose(h);
-      }
+    out.close();
+    err.close();
+    in.close();
     ConsoleHost::free();
+    ::already_allocated = false;
   }
 
   auto ConsoleHost::is_attached() const noexcept -> bool { return this->m_attached; }
