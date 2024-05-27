@@ -29,6 +29,7 @@ namespace {
     fpos_t pos = 0;
     int handle = -1;
   };
+  bool already_allocated = false;
 
   FileDescriptor out;
   FileDescriptor err;
@@ -74,9 +75,9 @@ namespace winapi
     ::fgetpos(stdout, &out.pos);
     ::fgetpos(stderr, &err.pos);
     ::fgetpos(stdin, &in.pos);
-    out.pos = ::_dup(::_fileno(stdout));
-    err.pos = ::_dup(::_fileno(stderr));
-    in.pos = ::_dup(::_fileno(stdin));
+    out.handle = ::_dup(::_fileno(stdout));
+    err.handle = ::_dup(::_fileno(stderr));
+    in.handle = ::_dup(::_fileno(stdin));
 
     if(not not(mode & Mode::Stdout))
       if(::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout))
@@ -130,8 +131,8 @@ namespace winapi
   ConsoleHost::~ConsoleHost() noexcept {
     for(auto& h : this->m_handles)
       if(h) {
-        ::_dup2(out.pos, _fileno(stdout));
-        ::_close(out.pos);
+        ::_dup2(out.handle, _fileno(stdout));
+        ::_close(out.handle);
         ::clearerr(stdout);
         ::fsetpos(stdout, &out.pos);
         //::fclose(h);
