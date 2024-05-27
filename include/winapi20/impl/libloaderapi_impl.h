@@ -34,6 +34,11 @@ namespace winapi::dll
       };
 
       WINAPI20_EXPORT explicit Library(
+          std::string name,
+          HandleFlags flags = HandleFlags::None
+      ) noexcept(false);
+      
+      WINAPI20_EXPORT explicit Library(
           OwnershipMode mode,
           std::string name,
           PID pid,

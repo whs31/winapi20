@@ -45,6 +45,6 @@ namespace winapi
   Process::~Process() = default;
 
   Process::Process(Handle&& handle) noexcept
-      : m_handle(std::move(handle))
+    : m_handle(std::move(handle))
   {}
 } // namespace winapi
