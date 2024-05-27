@@ -91,5 +91,26 @@ namespace winapi
       using ut = std::underlying_type_t<T>;
       return static_cast<T>(static_cast<ut>(lhs) & static_cast<ut>(rhs));
     }
+
+    template <typename T>
+    requires(std::is_enum_v<T>)
+    constexpr auto operator^(T const lhs, T const rhs) noexcept {
+      using ut = std::underlying_type_t<T>;
+      return static_cast<T>(static_cast<ut>(lhs) ^ static_cast<ut>(rhs));
+    }
+
+    template <typename T>
+    requires(std::is_enum_v<T>)
+    constexpr auto operator~(T const value) noexcept {
+      using ut = std::underlying_type_t<T>;
+      return static_cast<T>(~static_cast<ut>(value));
+    }
+
+    template <typename T>
+    requires(std::is_enum_v<T>)
+    constexpr auto operator!(T const value) noexcept -> bool {
+      using ut = std::underlying_type_t<T>;
+      return !static_cast<ut>(value);
+    }
   }
 }

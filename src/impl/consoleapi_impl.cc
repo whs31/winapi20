@@ -58,12 +58,15 @@ namespace winapi
       }
     }
 
-    if(bool(mode & Mode::Stdout))
-      ::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout);
-    if(bool(mode & Mode::Stderr))
-      ::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr);
-    if(bool(mode & Mode::Stdin))
-      ::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin);
+    if(not not(mode & Mode::Stdout))
+      if(not ::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout))
+        throw windows_exception("failed to create console handles (stdout)");
+    if(not not(mode & Mode::Stderr))
+      if(not ::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr))
+        throw windows_exception("failed to create console handles (stderr)");
+    if(not not(mode & Mode::Stdin))
+      if(not ::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin))
+        throw windows_exception("failed to create console handles (stdin)");
 
     if(not this->m_handles[0] or not this->m_handles[1] or not this->m_handles[2])
       throw windows_exception("Failed to create console handles");
@@ -89,11 +92,11 @@ namespace winapi
         throw e;
       }
     }
-//    if(bool(mode & Mode::Stdout))
+//    if(not not (mode & Mode::Stdout))
 //      ::freopen_s(&this->m_handles[0], "CONOUT$", "w", stdout);
-//    if(bool(mode & Mode::Stderr))
+//    if(not not (mode & Mode::Stderr))
 //      ::freopen_s(&this->m_handles[1], "CONOUT$", "w", stderr);
-//    if(bool(mode & Mode::Stdin))
+//    if(not not (mode & Mode::Stdin))
 //      ::freopen_s(&this->m_handles[2], "CONIN$", "r", stdin);
     std::cout.clear();
     std::clog.clear();
