@@ -8,7 +8,7 @@ project(winapi20
   HOMEPAGE_URL "https://github.com/whs31/winapi20"
   LANGUAGES C CXX
 )
-set(PROJECT_NAMESPACE windows::)
+set(PROJECT_NAMESPACE winapi::)
 
 option(TESTS "Enable tests" OFF)
 option(EXAMPLES "Enable examples" OFF)
@@ -22,10 +22,10 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 include(CMakePrintHelpers)
-find_package(fmt REQUIRED)
+find_package(fmt)
 
 add_library(${PROJECT_NAME})
-add_library(${PROJECT_NAMESPACE}api20 ALIAS ${PROJECT_NAME})
+add_library(${PROJECT_NAMESPACE}${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 20
